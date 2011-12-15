@@ -1,0 +1,6 @@
+<model name="Geography3D">
+	<classpath>
+		<agents path="../bin" />
+		<entry path="../lib" />
+	</classpath>
+</model>

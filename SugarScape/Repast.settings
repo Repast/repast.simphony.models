@@ -1,0 +1,15 @@
+<simphony.settings.SettingsRegistry serialization="custom">
+  <unserializable-parents/>
+  <hashtable>
+    <default>
+      <loadFactor>0.75</loadFactor>
+      <threshold>8</threshold>
+    </default>
+    <int>11</int>
+    <int>2</int>
+    <string>SettingsRegistryId</string>
+    <string>Repast.registry</string>
+    <string>LastLoadedScenario</string>
+    <string>E:\Repast Demo Library\SugarScape\SugarScape.rs</string>
+  </hashtable>
+</simphony.settings.SettingsRegistry>

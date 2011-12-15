@@ -1,0 +1,7 @@
+<context id="SugarScape">
+	<context id="SugarSpace">
+		<projection id="Grid" type="grid" />
+		<projection id="CurrentSugar" type="value layer" />
+		<projection id="MaxSugar" type="value layer" />
+	</context>
+</context>

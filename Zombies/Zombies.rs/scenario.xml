@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Scenario>
+<repast.simphony.dataLoader.engine.ClassNameDataLoaderAction context="Zombies" file="repast.simphony.dataLoader.engine.ClassNameDataLoaderAction_0.xml" />
+<repast.simphony.action.data_set context="Zombies" file="repast.simphony.action.data_set_1.xml" />
+<repast.simphony.action.file_sink context="Zombies" file="repast.simphony.action.file_sink_2.xml" />
+<repast.simphony.userpanel.ui.DefaultUserPanelDescriptorAction context="Zombies" file="repast.simphony.userpanel.ui.DefaultUserPanelDescriptorAction_3.xml" />
+<repast.simphony.action.display context="default_observer_context" file="repast.simphony.action.display_4.xml" />
+<model.initializer class="repast.simphony.relogo.ReLogoInitializer" />
+</Scenario>

@@ -1,0 +1,5 @@
+<context id="Schelling Model">
+
+	<projection id="Grid" type="grid" />
+	
+</context>

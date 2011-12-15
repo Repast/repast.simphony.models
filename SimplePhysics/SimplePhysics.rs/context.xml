@@ -1,0 +1,5 @@
+<context id="Simple Physics">
+
+	<projection id="Physics Space" type="continuous space" />
+	
+</context>

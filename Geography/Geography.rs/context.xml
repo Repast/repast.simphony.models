@@ -1,0 +1,5 @@
+<context id="Geo Model">
+
+	<projection id="Geography" type="geography" />
+
+</context>

@@ -1,9 +1,0 @@
-<model name="Zombies">
-	<classpath>
-		<agents path="../bin" />
-		<entry path="../lib" />
-		<builtin fullname="repast.simphony.relogo.WayPoint"/>
-		<builtin fullname="repast.simphony.relogo.BaseTurtle"/>
-		<builtin fullname="repast.simphony.relogo.BasePatch"/>
-	</classpath>
-</model>

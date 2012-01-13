@@ -18,6 +18,7 @@ import repast.simphony.relogo.styles.ReLogoImageSpatialSource;
 import repast.simphony.relogo.styles.ReLogoSVGSpatialSource;
 import repast.simphony.relogo.styles.ReLogoSpatialSource;
 import repast.simphony.relogo.styles.StyleUtility;
+import repast.simphony.scenario.ScenarioUtils;
 import repast.simphony.visualizationOGL2D.SVGSpatialSource;
 import repast.simphony.visualizationOGL2D.StyleOGL2D;
 import saf.v3d.ShapeFactory2D;
@@ -34,62 +35,83 @@ public class TurtleStyle implements StyleOGL2D<Turtle> {
 
 	ShapeFactory2D shapeFactory;
 	Map<String, ReLogoSpatialSource> reLogoSpatialSources = new HashMap<String, ReLogoSpatialSource>();
-  	
-  	@SuppressWarnings("unchecked")
+
+	@SuppressWarnings("unchecked")
 	public void init(ShapeFactory2D shapeFactory) {
 		this.shapeFactory = shapeFactory;
 		Map<String, String> props = new HashMap<String, String>();
 		props.put(SVGSpatialSource.KEY_BSQUARE_SIZE, "15");
 		XStream xstream = new XStream();
 		xstream.setClassLoader(this.getClass().getClassLoader());
-		String shapesDirString = "." + File.separator + "shapes";
-		String xml = shapesDirString + File.separator + "turtleShapes.xml";
-		File shapesDir = new File(shapesDirString);
-		try {
-			if (new File(xml).exists()){
-				for (NLImage image : (List<NLImage>) xstream
-						.fromXML(new FileReader(xml))) {
-					NLImageSpatialSource source = new NLImageSpatialSource(image);
-					reLogoSpatialSources.put(source.getID(), source);
+		File scenarioDir = ScenarioUtils.getScenarioDir();
+		if (scenarioDir != null) {
+			File projectDir = scenarioDir.getParentFile();
+			if (projectDir != null) {
+				File shapesDir = new File(projectDir, "shapes");
+				if (shapesDir != null) {
+					String xml = "turtleShapes.xml";
 					try {
-						source.registerSource(shapeFactory, props);
-					} catch (IOException e) {
+						File shapesXml = new File(shapesDir, xml); 
+						if (shapesXml.exists()) {
+							for (NLImage image : (List<NLImage>) xstream
+									.fromXML(new FileReader(shapesXml))) {
+								NLImageSpatialSource source = new NLImageSpatialSource(
+										image);
+								reLogoSpatialSources
+										.put(source.getID(), source);
+								try {
+									source.registerSource(shapeFactory, props);
+								} catch (IOException e) {
+									e.printStackTrace();
+								}
+							}
+						}
+						Map<String, String> svgAndImageProps = new HashMap<String, String>();
+			svgAndImageProps.put(SVGSpatialSource.KEY_BSQUARE_SIZE, "90");
+						try {
+							Map<String, String> svgFileNamesAndPaths = StyleUtility
+									.getSVGFileNamesAndPaths(shapesDir);
+							for (String svgFileName : svgFileNamesAndPaths
+									.keySet()) {
+								ReLogoSVGSpatialSource source = new ReLogoSVGSpatialSource(
+										svgFileName,
+										svgFileNamesAndPaths.get(svgFileName));
+								reLogoSpatialSources
+										.put(source.getID(), source);
+								if (source.isSimple()) {
+									// use props
+									source.registerSource(shapeFactory, props);
+								} else {
+									// use svgAndImageProps
+									source.registerSource(shapeFactory,
+											svgAndImageProps);
+								}
+							}
+						} catch (Exception ex) {
+							ex.printStackTrace();
+						}
+						try {
+							Map<String, String> imageTurtleShapesMap = StyleUtility
+									.getImageFileNamesAndPaths(shapesDir);
+							for (String imageFileName : imageTurtleShapesMap
+									.keySet()) {
+								ReLogoImageSpatialSource source = new ReLogoImageSpatialSource(
+										imageFileName,
+										imageTurtleShapesMap.get(imageFileName));
+								reLogoSpatialSources
+										.put(source.getID(), source);
+								source.registerSource(shapeFactory,
+										svgAndImageProps);
+							}
+						} catch (Exception ex) {
+							ex.printStackTrace();
+						}
+
+					} catch (FileNotFoundException e) {
 						e.printStackTrace();
 					}
 				}
 			}
-			Map<String, String> svgAndImageProps = new HashMap<String, String>();
-			svgAndImageProps.put(SVGSpatialSource.KEY_BSQUARE_SIZE, "90");
-			try {				
-				Map<String, String> svgFileNamesAndPaths = StyleUtility
-						.getSVGFileNamesAndPaths(shapesDir);
-				for (String svgFileName : svgFileNamesAndPaths.keySet()) {
-					ReLogoSVGSpatialSource source = new ReLogoSVGSpatialSource(svgFileName, svgFileNamesAndPaths.get(svgFileName));
-					reLogoSpatialSources.put(source.getID(), source);
-					if (source.isSimple()){
-						// use props
-						source.registerSource(shapeFactory, props);
-					}
-					else {
-						// use svgAndImageProps
-						source.registerSource(shapeFactory, svgAndImageProps);
-					}
-				}
-			} catch (Exception ex) {
-				ex.printStackTrace();
-			}
-			try{
-				Map<String, String> imageTurtleShapesMap = StyleUtility.getImageFileNamesAndPaths(shapesDir);
-			for (String imageFileName : imageTurtleShapesMap.keySet()) {
-				ReLogoImageSpatialSource source = new ReLogoImageSpatialSource(imageFileName, imageTurtleShapesMap.get(imageFileName));
-				reLogoSpatialSources.put(source.getID(), source);
-				source.registerSource(shapeFactory, svgAndImageProps);
-			}
-			} catch (Exception ex) {
-				ex.printStackTrace();
-			}
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
 		}
 	}
 
@@ -117,54 +139,53 @@ public class TurtleStyle implements StyleOGL2D<Turtle> {
 		return spatial;
 	}
 
-  	public Color getColor(Turtle agent) {
-    	return ReLogoSupport.lookupColor(agent.getColor());
-  	}
+	public Color getColor(Turtle agent) {
+		return ReLogoSupport.lookupColor(agent.getColor());
+	}
 
 	public float getRotation(Turtle agent) {
 		String agentShape = agent.getShape();
-		
+
 		if (!shapeFactory.isNameRegistered(agentShape)) {
 			// Default shape rotates
 			return (float) agent.getHeading();
 		}
 		float offset = reLogoSpatialSources.get(agentShape).getOffset();
-		if (reLogoSpatialSources.get(agentShape).doRotate()){
+		if (reLogoSpatialSources.get(agentShape).doRotate()) {
 			return offset + (float) agent.getHeading();
-		}
-		else {
+		} else {
 			return offset;
 		}
 	}
 
-  /*
-   * (non-Javadoc)
-   * 
-   * @see
-   * repast.simphony.visualizationOGL2D.StyleOGL2D#getBorderColor(java.lang.
-   * Object)
-   */
-  public Color getBorderColor(Turtle object) {
-    return Color.BLACK;
-  }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * repast.simphony.visualizationOGL2D.StyleOGL2D#getBorderColor(java.lang.
+	 * Object)
+	 */
+	public Color getBorderColor(Turtle object) {
+		return Color.BLACK;
+	}
 
-  /*
-   * (non-Javadoc)
-   * 
-   * @see
-   * repast.simphony.visualizationOGL2D.StyleOGL2D#getBorderSize(java.lang.Object
-   * )
-   */
-  public int getBorderSize(Turtle object) {
-    return 0;
-  }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * repast.simphony.visualizationOGL2D.StyleOGL2D#getBorderSize(java.lang
+	 * .Object )
+	 */
+	public int getBorderSize(Turtle object) {
+		return 0;
+	}
 
-  /*
-   * (non-Javadoc)
-   * 
-   * @see
-   * repast.simphony.visualizationOGL2D.StyleOGL2D#getScale(java.lang.Object)
-   */
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * repast.simphony.visualizationOGL2D.StyleOGL2D#getScale(java.lang.Object)
+	 */
 	public float getScale(Turtle object) {
 		ReLogoSpatialSource rss = reLogoSpatialSources.get(object.getShape());
 		if (rss != null && !rss.isSimple()) {
@@ -172,11 +193,11 @@ public class TurtleStyle implements StyleOGL2D<Turtle> {
 		}
 		return (float) object.getSize();
 	}
-  
-  	@Override
+
+	@Override
 	public String getLabel(Turtle object) {
 		Object label = object.getLabel();
-		if (label != null && !label.toString().equals("")){
+		if (label != null && !label.toString().equals("")) {
 			return label.toString();
 		}
 		return null;

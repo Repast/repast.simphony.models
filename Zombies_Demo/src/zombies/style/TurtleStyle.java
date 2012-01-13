@@ -42,8 +42,9 @@ public class TurtleStyle implements StyleOGL2D<Turtle> {
 		props.put(SVGSpatialSource.KEY_BSQUARE_SIZE, "15");
 		XStream xstream = new XStream();
 		xstream.setClassLoader(this.getClass().getClassLoader());
-		String xml = "./shapes/turtleShapes.xml";
-		File shapesDir = new File("./shapes");
+		String shapesDirString = "./shapes";
+		String xml = shapesDirString + File.separator + "turtleShapes.xml";
+		File shapesDir = new File(shapesDirString);
 		try {
 			if (new File(xml).exists()){
 				for (NLImage image : (List<NLImage>) xstream

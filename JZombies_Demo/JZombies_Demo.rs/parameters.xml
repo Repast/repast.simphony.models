@@ -12,12 +12,7 @@
 						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
 									
 		/>
-				<parameter name="foo" displayName="bar" type="int" 
-						defaultValue="1" 
-						isReadOnly="false" 
-						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
-									
-		/>
+			
 				<parameter name="zombie_count" displayName="Zombie Count" type="int" 
 						defaultValue="5" 
 						isReadOnly="false" 

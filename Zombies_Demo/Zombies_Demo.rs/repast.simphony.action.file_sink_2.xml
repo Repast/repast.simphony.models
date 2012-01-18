@@ -4,10 +4,10 @@
   <delimiter>,</delimiter>
   <format>TABULAR</format>
   <sourceIds class="linked-hash-set">
-    <string>tick</string>
-    <string>relogo_run</string>
-    <string>humans</string>
-    <string>zombies</string>
+    <string>timestamp</string>
+    <string>RelogoRun</string>
+    <string>remainingHumans</string>
+    <string>remainingZombies</string>
   </sourceIds>
   <fileName>ModelOutput.txt</fileName>
   <addTimeStamp>true</addTimeStamp>

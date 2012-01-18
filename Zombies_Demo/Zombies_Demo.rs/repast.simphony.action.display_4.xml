@@ -1,15 +1,14 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <repast.simphony.visualization.engine.DefaultDisplayDescriptor>
   <name>ReLogo Default Display</name>
   <type>TWO_D</type>
   <styles>
     <entry>
-      <string>repast.simphony.relogo.WayPoint</string>
-      <string>zombies.style.WayPointStyle</string>
-    </entry>
-    <entry>
       <string>repast.simphony.relogo.BaseTurtle</string>
       <string>zombies.style.TurtleStyle</string>
+    </entry>
+    <entry>
+      <string>repast.simphony.relogo.WayPoint</string>
+      <string>zombies.style.WayPointStyle</string>
     </entry>
     <entry>
       <string>repast.simphony.relogo.BasePatch</string>
@@ -18,11 +17,11 @@
   </styles>
   <editedStyles>
     <entry>
-      <string>repast.simphony.relogo.WayPoint</string>
+      <string>repast.simphony.relogo.BaseTurtle</string>
       <null/>
     </entry>
     <entry>
-      <string>repast.simphony.relogo.BaseTurtle</string>
+      <string>repast.simphony.relogo.WayPoint</string>
       <null/>
     </entry>
     <entry>
@@ -31,6 +30,10 @@
     </entry>
   </editedStyles>
   <netStyles>
+    <entry>
+      <string>UserLink</string>
+      <string>zombies.style.LinkStyle</string>
+    </entry>
     <entry>
       <string>DirectedLinks</string>
       <string>zombies.style.LinkStyle</string>
@@ -44,15 +47,15 @@
       <string>zombies.style.TrackingLinkStyle</string>
     </entry>
     <entry>
-      <string>UserLink</string>
-      <string>zombies.style.LinkStyle</string>
-    </entry>
-    <entry>
       <string>Infection</string>
       <string>zombies.style.LinkStyle</string>
     </entry>
   </netStyles>
   <editedNetStyles>
+    <entry>
+      <string>UserLink</string>
+      <null/>
+    </entry>
     <entry>
       <string>DirectedLinks</string>
       <null/>
@@ -63,10 +66,6 @@
     </entry>
     <entry>
       <string>Tracking Network</string>
-      <null/>
-    </entry>
-    <entry>
-      <string>UserLink</string>
       <null/>
     </entry>
     <entry>
@@ -87,16 +86,16 @@
   <layoutInterval>0</layoutInterval>
   <layerOrder>
     <entry>
+      <string>repast.simphony.relogo.BaseTurtle</string>
+      <int>2</int>
+    </entry>
+    <entry>
       <string>repast.simphony.relogo.WayPoint</string>
       <int>0</int>
     </entry>
     <entry>
       <string>repast.simphony.relogo.BasePatch</string>
       <int>1</int>
-    </entry>
-    <entry>
-      <string>repast.simphony.relogo.BaseTurtle</string>
-      <int>2</int>
     </entry>
   </layerOrder>
   <projections>
@@ -136,6 +135,13 @@
     <unitSize>15.0</unitSize>
   </visualizationProperties>
   <projectionDescriptors>
+    <entry>
+      <string>UserLink</string>
+      <repast.simphony.visualization.engine.DefaultProjectionDescriptor>
+        <proj reference="../../../../projections/repast.simphony.scenario.data.ProjectionData[5]"/>
+        <props/>
+      </repast.simphony.visualization.engine.DefaultProjectionDescriptor>
+    </entry>
     <entry>
       <string>DirectedLinks</string>
       <repast.simphony.visualization.engine.DefaultProjectionDescriptor>
@@ -181,13 +187,6 @@
           </entry>
         </props>
       </repast.simphony.visualization.continuous.ContinuousProjectionDescriptor>
-    </entry>
-    <entry>
-      <string>UserLink</string>
-      <repast.simphony.visualization.engine.DefaultProjectionDescriptor>
-        <proj reference="../../../../projections/repast.simphony.scenario.data.ProjectionData[5]"/>
-        <props/>
-      </repast.simphony.visualization.engine.DefaultProjectionDescriptor>
     </entry>
     <entry>
       <string>Infection</string>

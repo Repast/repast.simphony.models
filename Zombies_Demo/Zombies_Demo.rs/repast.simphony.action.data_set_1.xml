@@ -1,6 +1,7 @@
 <repast.simphony.data2.engine.DataSetDescriptor>
   <name>Agent Counts</name>
-  <type>AGGREGATE</type>
+  <type>NON_AGGREGATE</type>
+  <sourceType>zombies.relogo.UserObserver</sourceType>
   <inclTick>false</inclTick>
   <inclBatchRun>false</inclBatchRun>
   <inclRandomSeed>false</inclRandomSeed>
@@ -13,40 +14,39 @@
   </scheduleParams>
   <methodDataSources class="linked-hash-map">
     <entry>
-      <string>tick</string>
+      <string>timestamp</string>
       <repast.simphony.data2.engine.MethodDataSourceDefinition>
-        <id>tick</id>
+        <id>timestamp</id>
         <className>zombies.relogo.UserObserver</className>
         <methodName>timestamp</methodName>
-        <aggType>MAX</aggType>
       </repast.simphony.data2.engine.MethodDataSourceDefinition>
     </entry>
     <entry>
-      <string>relogo_run</string>
+      <string>RelogoRun</string>
       <repast.simphony.data2.engine.MethodDataSourceDefinition>
-        <id>relogo_run</id>
+        <id>RelogoRun</id>
         <className>zombies.relogo.UserObserver</className>
         <methodName>getRelogoRun</methodName>
-        <aggType>MAX</aggType>
+      </repast.simphony.data2.engine.MethodDataSourceDefinition>
+    </entry>
+    <entry>
+      <string>remainingHumans</string>
+      <repast.simphony.data2.engine.MethodDataSourceDefinition>
+        <id>remainingHumans</id>
+        <className>zombies.relogo.UserObserver</className>
+        <methodName>remainingHumans</methodName>
+      </repast.simphony.data2.engine.MethodDataSourceDefinition>
+    </entry>
+    <entry>
+      <string>remainingZombies</string>
+      <repast.simphony.data2.engine.MethodDataSourceDefinition>
+        <id>remainingZombies</id>
+        <className>zombies.relogo.UserObserver</className>
+        <methodName>remainingZombies</methodName>
       </repast.simphony.data2.engine.MethodDataSourceDefinition>
     </entry>
   </methodDataSources>
-  <countSources class="linked-hash-map">
-    <entry>
-      <string>humans</string>
-      <repast.simphony.data2.engine.CountSourceDefinition>
-        <typeName>zombies.relogo.Human</typeName>
-        <id>humans</id>
-      </repast.simphony.data2.engine.CountSourceDefinition>
-    </entry>
-    <entry>
-      <string>zombies</string>
-      <repast.simphony.data2.engine.CountSourceDefinition>
-        <typeName>zombies.relogo.Zombie</typeName>
-        <id>zombies</id>
-      </repast.simphony.data2.engine.CountSourceDefinition>
-    </entry>
-  </countSources>
+  <countSources class="linked-hash-map"/>
   <customNADataSources class="linked-hash-map"/>
   <customAggDataSources class="linked-hash-map"/>
 </repast.simphony.data2.engine.DataSetDescriptor>

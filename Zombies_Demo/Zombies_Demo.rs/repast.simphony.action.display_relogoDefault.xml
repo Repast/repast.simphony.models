@@ -1,8 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <repast.simphony.visualization.engine.DefaultDisplayDescriptor>
   <name>ReLogo Default Display</name>
   <type>TWO_D</type>
   <styles>
-  	<entry>
+    <entry>
       <string>repast.simphony.relogo.WayPoint</string>
       <string>zombies.style.WayPointStyle</string>
     </entry>
@@ -16,7 +17,7 @@
     </entry>
   </styles>
   <editedStyles>
-  	<entry>
+    <entry>
       <string>repast.simphony.relogo.WayPoint</string>
       <null/>
     </entry>
@@ -42,6 +43,14 @@
       <string>Tracking Network</string>
       <string>zombies.style.TrackingLinkStyle</string>
     </entry>
+    <entry>
+      <string>UserLink</string>
+      <string>zombies.style.LinkStyle</string>
+    </entry>
+    <entry>
+      <string>Infection</string>
+      <string>zombies.style.LinkStyle</string>
+    </entry>
   </netStyles>
   <editedNetStyles>
     <entry>
@@ -54,6 +63,14 @@
     </entry>
     <entry>
       <string>Tracking Network</string>
+      <null/>
+    </entry>
+    <entry>
+      <string>UserLink</string>
+      <null/>
+    </entry>
+    <entry>
+      <string>Infection</string>
       <null/>
     </entry>
   </editedNetStyles>
@@ -69,7 +86,7 @@
   <layoutProjection>Space2d</layoutProjection>
   <layoutInterval>0</layoutInterval>
   <layerOrder>
-  	<entry>
+    <entry>
       <string>repast.simphony.relogo.WayPoint</string>
       <int>0</int>
     </entry>
@@ -100,6 +117,16 @@
     </repast.simphony.scenario.data.ProjectionData>
     <repast.simphony.scenario.data.ProjectionData>
       <id>Tracking Network</id>
+      <attributes/>
+      <type>NETWORK</type>
+    </repast.simphony.scenario.data.ProjectionData>
+    <repast.simphony.scenario.data.ProjectionData>
+      <id>UserLink</id>
+      <attributes/>
+      <type>NETWORK</type>
+    </repast.simphony.scenario.data.ProjectionData>
+    <repast.simphony.scenario.data.ProjectionData>
+      <id>Infection</id>
       <attributes/>
       <type>NETWORK</type>
     </repast.simphony.scenario.data.ProjectionData>
@@ -154,6 +181,20 @@
           </entry>
         </props>
       </repast.simphony.visualization.continuous.ContinuousProjectionDescriptor>
+    </entry>
+    <entry>
+      <string>UserLink</string>
+      <repast.simphony.visualization.engine.DefaultProjectionDescriptor>
+        <proj reference="../../../../projections/repast.simphony.scenario.data.ProjectionData[5]"/>
+        <props/>
+      </repast.simphony.visualization.engine.DefaultProjectionDescriptor>
+    </entry>
+    <entry>
+      <string>Infection</string>
+      <repast.simphony.visualization.engine.DefaultProjectionDescriptor>
+        <proj reference="../../../../projections/repast.simphony.scenario.data.ProjectionData[6]"/>
+        <props/>
+      </repast.simphony.visualization.engine.DefaultProjectionDescriptor>
     </entry>
   </projectionDescriptors>
   <props/>

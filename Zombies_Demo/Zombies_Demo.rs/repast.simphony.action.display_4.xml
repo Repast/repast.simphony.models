@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <repast.simphony.visualization.engine.DefaultDisplayDescriptor>
   <name>ReLogo Default Display</name>
   <type>TWO_D</type>
@@ -31,10 +32,6 @@
   </editedStyles>
   <netStyles>
     <entry>
-      <string>UserLink</string>
-      <string>zombies.style.LinkStyle</string>
-    </entry>
-    <entry>
       <string>DirectedLinks</string>
       <string>zombies.style.LinkStyle</string>
     </entry>
@@ -47,15 +44,15 @@
       <string>zombies.style.TrackingLinkStyle</string>
     </entry>
     <entry>
+      <string>UserLink</string>
+      <string>zombies.style.LinkStyle</string>
+    </entry>
+    <entry>
       <string>Infection</string>
       <string>zombies.style.LinkStyle</string>
     </entry>
   </netStyles>
   <editedNetStyles>
-    <entry>
-      <string>UserLink</string>
-      <null/>
-    </entry>
     <entry>
       <string>DirectedLinks</string>
       <null/>
@@ -66,6 +63,10 @@
     </entry>
     <entry>
       <string>Tracking Network</string>
+      <null/>
+    </entry>
+    <entry>
+      <string>UserLink</string>
       <null/>
     </entry>
     <entry>
@@ -136,13 +137,6 @@
   </visualizationProperties>
   <projectionDescriptors>
     <entry>
-      <string>UserLink</string>
-      <repast.simphony.visualization.engine.DefaultProjectionDescriptor>
-        <proj reference="../../../../projections/repast.simphony.scenario.data.ProjectionData[5]"/>
-        <props/>
-      </repast.simphony.visualization.engine.DefaultProjectionDescriptor>
-    </entry>
-    <entry>
       <string>DirectedLinks</string>
       <repast.simphony.visualization.engine.DefaultProjectionDescriptor>
         <proj reference="../../../../projections/repast.simphony.scenario.data.ProjectionData[2]"/>
@@ -187,6 +181,13 @@
           </entry>
         </props>
       </repast.simphony.visualization.continuous.ContinuousProjectionDescriptor>
+    </entry>
+    <entry>
+      <string>UserLink</string>
+      <repast.simphony.visualization.engine.DefaultProjectionDescriptor>
+        <proj reference="../../../../projections/repast.simphony.scenario.data.ProjectionData[5]"/>
+        <props/>
+      </repast.simphony.visualization.engine.DefaultProjectionDescriptor>
     </entry>
     <entry>
       <string>Infection</string>

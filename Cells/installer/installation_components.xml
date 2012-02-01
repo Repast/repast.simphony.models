@@ -24,6 +24,7 @@
     <variables>
     	<variable name="DesktopShortcutCheckboxEnabled" value="true"/>
     	<variable name="REPAST_VERSION" value="$REPAST_VERSION"/>
+    	<variable name="Groovy_All_Jar" value="$Groovy_All_Jar"/>
     </variables>
     <locale>
         <langpack iso3="eng"/>
@@ -99,6 +100,9 @@
             <file src="$StagingArea/installer/start_model.bat" targetdir="$INSTALL_PATH"/>
             <file src="$StagingArea/installer/start_model.command" targetdir="$INSTALL_PATH"/>
             <file src="$StagingArea" targetdir="$INSTALL_PATH"/>
+            
+            <!-- Groovy Library -->
+            <file src="$GroovyAllJarLocation" targetdir="$INSTALL_PATH/groovylib"/>
         
         		<!-- Repast comppnents  -->
             <file src="$EclipsePluginsDirectory/libs.bsf_$REPAST_VERSION" targetdir="$INSTALL_PATH/repast.simphony"/>
@@ -107,10 +111,10 @@
             <file src="$EclipsePluginsDirectory/repast.simphony.chart_$REPAST_VERSION" targetdir="$INSTALL_PATH/repast.simphony"/>
             <file src="$EclipsePluginsDirectory/repast.simphony.core_$REPAST_VERSION" targetdir="$INSTALL_PATH/repast.simphony"/>
             <file src="$EclipsePluginsDirectory/repast.simphony.data_$REPAST_VERSION" targetdir="$INSTALL_PATH/repast.simphony"/>
-            <file src="$EclipsePluginsDirectory/repast.simphony.data.bsf_$REPAST_VERSION" targetdir="$INSTALL_PATH/repast.simphony"/>
             <file src="$EclipsePluginsDirectory/repast.simphony.data.ui_$REPAST_VERSION" targetdir="$INSTALL_PATH/repast.simphony"/>
             <file src="$EclipsePluginsDirectory/repast.simphony.dataLoader_$REPAST_VERSION" targetdir="$INSTALL_PATH/repast.simphony"/>
             <file src="$EclipsePluginsDirectory/repast.simphony.dataLoader.ui_$REPAST_VERSION" targetdir="$INSTALL_PATH/repast.simphony"/>
+            <file src="$EclipsePluginsDirectory/repast.simphony.distributedBatch_$REPAST_VERSION" targetdir="$INSTALL_PATH/repast.simphony"/>
             <file src="$EclipsePluginsDirectory/repast.simphony.essentials_$REPAST_VERSION" targetdir="$INSTALL_PATH/repast.simphony"/>
             <file src="$EclipsePluginsDirectory/repast.simphony.freezedry_$REPAST_VERSION" targetdir="$INSTALL_PATH/repast.simphony"/>
             <file src="$EclipsePluginsDirectory/repast.simphony.gis_$REPAST_VERSION" targetdir="$INSTALL_PATH/repast.simphony"/>
@@ -133,7 +137,7 @@
             <file src="$EclipsePluginsDirectory/repast.simphony.eclipse_$REPAST_VERSION" targetdir="$INSTALL_PATH/repast.simphony"/>
             <file src="$EclipsePluginsDirectory/repast.simphony.scenario_$REPAST_VERSION" targetdir="$INSTALL_PATH/repast.simphony"/>
             <file src="$EclipsePluginsDirectory/repast.simphony.spreadsheet_$REPAST_VERSION" targetdir="$INSTALL_PATH/repast.simphony"/>
-    
+            <file src="$EclipsePluginsDirectory/repast.simphony.distributedBatch_$REPAST_VERSION" targetdir="$INSTALL_PATH/repast.simphony"/>
     		<!-- NOTE! -->
             <file src="$EclipsePluginsDirectory/repast.simphony.sql_$REPAST_VERSION.jar" targetdir="$INSTALL_PATH/repast.simphony"/>
             <file src="$EclipsePluginsDirectory/repast.simphony.systemdynamics_$REPAST_VERSION" targetdir="$INSTALL_PATH/repast.simphony"/>

@@ -4,5 +4,10 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry exported="true" kind="con" path="GROOVY_SUPPORT"/>
 	<classpathentry kind="con" path="REPAST_SIMPHONY_SUPPORT"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/repast.simphony.core"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/repast.simphony.data"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/repast.simphony.dataLoader"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/repast.simphony.visualization"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/saf.core.ui"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -1,12 +1,10 @@
 <repast.simphony.visualization.engine.DefaultDisplayDescriptor>
+  <name>Traps</name>
   <type>THREE_D</type>
-  <styles>
-    <entry>
-      <string>Mousetrap.MouseTrap</string>
-      <string>Mousetrap.MouseTrapNodeStyle</string>
-    </entry>
-  </styles>
-  <netStyles></netStyles>
+  <styles/>
+  <editedStyles/>
+  <netStyles/>
+  <editedNetStyles/>
   <frequency>ON_MOVE</frequency>
   <schedParams>
     <start>1.0</start>
@@ -19,36 +17,36 @@
   <valueLayerStyleName>Mousetrap.MouseTrapValueLayerStyle</valueLayerStyleName>
   <layoutProjection>Gym Floor</layoutProjection>
   <layoutInterval>0</layoutInterval>
+  <layerOrder/>
   <projections>
-<repast.simphony.scenario.data.ProjectionData>
-<id>Gym Floor</id>
-<attributes/>
-<type>GRID</type>
-</repast.simphony.scenario.data.ProjectionData>
-</projections>
+    <repast.simphony.scenario.data.ProjectionData>
+      <id>Gym Floor</id>
+      <attributes/>
+      <type>GRID</type>
+    </repast.simphony.scenario.data.ProjectionData>
+  </projections>
   <valueLayers>
     <string>Trap Values</string>
   </valueLayers>
-  <visualizationProperties class='repast.simphony.visualization.UnitSizeLayoutProperties'>
+  <visualizationProperties class="repast.simphony.visualization.UnitSizeLayoutProperties">
     <unitSize>0.06</unitSize>
   </visualizationProperties>
   <projectionDescriptors>
     <entry>
       <string>Gym Floor</string>
       <repast.simphony.visualization.grid.GridProjectionDescriptor>
-        <proj reference="../../../../projections/repast.simphony.scenario.data.ProjectionData">
-</proj>
+        <proj reference="../../../../projections/repast.simphony.scenario.data.ProjectionData"/>
         <props>
           <entry>
             <string>repast.simphony.visualization.grid.GridDecorator</string>
             <map>
               <entry>
-                <string>SHOW</string>
-                <boolean>true</boolean>
-              </entry>
-              <entry>
                 <string>UNIT_SIZE</string>
                 <float>0.06</float>
+              </entry>
+              <entry>
+                <string>SHOW</string>
+                <boolean>false</boolean>
               </entry>
               <entry>
                 <string>COLOR</string>
@@ -60,5 +58,11 @@
       </repast.simphony.visualization.grid.GridProjectionDescriptor>
     </entry>
   </projectionDescriptors>
-  <name>Floor &amp; Traps</name>
+  <props/>
+  <backgroundColor>
+    <red>0</red>
+    <green>0</green>
+    <blue>0</blue>
+    <alpha>255</alpha>
+  </backgroundColor>
 </repast.simphony.visualization.engine.DefaultDisplayDescriptor>

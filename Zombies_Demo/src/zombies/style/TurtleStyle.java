@@ -228,4 +228,11 @@ public class TurtleStyle implements StyleOGL2D<Turtle> {
 		return ReLogoSupport.lookupColor(object.getLabelColor());
 	}
 
+	/* (non-Javadoc)
+	 * @see repast.simphony.visualizationOGL2D.StyleOGL2D#getLabelAntialiased()
+	 */
+	@Override
+	public boolean getLabelAntialiased() {
+		return false;
+	}
 }

@@ -88,4 +88,12 @@ public class WayPointStyle implements StyleOGL2D<WayPoint> {
 		return null;
 	}
 
+	/* (non-Javadoc)
+	 * @see repast.simphony.visualizationOGL2D.StyleOGL2D#getLabelAntialiased()
+	 */
+	@Override
+	public boolean getLabelAntialiased() {
+		return false;
+	}
+
 }

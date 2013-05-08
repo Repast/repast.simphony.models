@@ -119,12 +119,4 @@ public class PatchStyle implements StyleOGL2D<Patch> {
 	public Color getLabelColor(Patch object) {
 		return ReLogoSupport.lookupColor(object.getPlabelColor());
 	}
-
-	/* (non-Javadoc)
-	 * @see repast.simphony.visualizationOGL2D.StyleOGL2D#getLabelAntialiased()
-	 */
-	@Override
-	public boolean getLabelAntialiased() {
-		return false;
-	}
 }

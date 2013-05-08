@@ -160,10 +160,4 @@ public class HeatbugStyle implements StyleOGL2D<Heatbug> {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
-	@Override
-	public boolean getLabelAntialiased() {
-		return false;
-	}
-
 }

@@ -227,5 +227,4 @@ public class TurtleStyle implements StyleOGL2D<Turtle> {
 	public Color getLabelColor(Turtle object) {
 		return ReLogoSupport.lookupColor(object.getLabelColor());
 	}
-
 }

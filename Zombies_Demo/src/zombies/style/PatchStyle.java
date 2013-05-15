@@ -119,5 +119,4 @@ public class PatchStyle implements StyleOGL2D<Patch> {
 	public Color getLabelColor(Patch object) {
 		return ReLogoSupport.lookupColor(object.getPlabelColor());
 	}
-  
 }

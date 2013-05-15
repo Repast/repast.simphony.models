@@ -64,6 +64,10 @@ public class JZombiesBuilder implements ContextBuilder<Object> {
 			NdPoint pt = space.getLocation(obj);
 			grid.moveTo(obj, (int) pt.getX(), (int) pt.getY());
 		}
+		
+		if (RunEnvironment.getInstance().isBatch()) {
+			RunEnvironment.getInstance().endAt(20);
+		}
 
 		return context;
 	}

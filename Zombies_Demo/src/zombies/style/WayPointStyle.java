@@ -87,5 +87,4 @@ public class WayPointStyle implements StyleOGL2D<WayPoint> {
 	public Color getLabelColor(WayPoint object) {
 		return null;
 	}
-
 }

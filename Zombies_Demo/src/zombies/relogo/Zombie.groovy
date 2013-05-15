@@ -8,8 +8,9 @@ import repast.simphony.relogo.Plural;
 import repast.simphony.relogo.Stop;
 import repast.simphony.relogo.Utility;
 import repast.simphony.relogo.UtilityG;
+import zombies.ReLogoTurtle;
 
-class Zombie extends BaseTurtle {
+class Zombie extends ReLogoTurtle {
 
 	def step(){
 		def winner = maxOneOf(neighbors()){

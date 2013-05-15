@@ -9,7 +9,8 @@ import repast.simphony.relogo.Stop;
 import repast.simphony.relogo.Undirected;
 import repast.simphony.relogo.Utility;
 import repast.simphony.relogo.UtilityG;
+import zombies.ReLogoLink;
 
-class Infection extends BaseLink {
+class Infection extends ReLogoLink {
 
 }

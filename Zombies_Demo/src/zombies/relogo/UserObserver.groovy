@@ -6,8 +6,9 @@ import repast.simphony.relogo.BaseObserver;
 import repast.simphony.relogo.Stop;
 import repast.simphony.relogo.Utility;
 import repast.simphony.relogo.UtilityG;
+import zombies.ReLogoObserver;
 
-class UserObserver extends BaseObserver{
+class UserObserver extends ReLogoObserver {
 
 	/**
 	 * Add observer methods here. For example:

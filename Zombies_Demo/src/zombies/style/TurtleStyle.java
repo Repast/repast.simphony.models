@@ -11,13 +11,13 @@ import java.util.List;
 import java.util.Map;
 
 import repast.simphony.relogo.Turtle;
-import repast.simphony.relogo.ide.image.NLImage;
-import repast.simphony.relogo.ide.runtime.ReLogoSupport;
+import repast.simphony.relogo.image.NLImage;
 import repast.simphony.relogo.styles.NLImageSpatialSource;
 import repast.simphony.relogo.styles.ReLogoImageSpatialSource;
 import repast.simphony.relogo.styles.ReLogoSVGSpatialSource;
 import repast.simphony.relogo.styles.ReLogoSpatialSource;
 import repast.simphony.relogo.styles.StyleUtility;
+import repast.simphony.relogo.util.ReLogoSupport;
 import repast.simphony.scenario.ScenarioUtils;
 import repast.simphony.visualizationOGL2D.SVGSpatialSource;
 import repast.simphony.visualizationOGL2D.StyleOGL2D;

@@ -8,8 +8,9 @@ import repast.simphony.relogo.Plural;
 import repast.simphony.relogo.Stop;
 import repast.simphony.relogo.Utility;
 import repast.simphony.relogo.UtilityG;
+import zombies.ReLogoTurtle;
 
-class Human extends BaseTurtle {
+class Human extends ReLogoTurtle {
 
 	def infected = false
 	def infectionTime = 0

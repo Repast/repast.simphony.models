@@ -7,8 +7,9 @@ import repast.simphony.relogo.Stop;
 import repast.simphony.relogo.Utility;
 import repast.simphony.relogo.UtilityG;
 import repast.simphony.relogo.ast.Diffusible;
+import zombies.ReLogoPatch;
 
-class UserPatch extends BasePatch{
+class UserPatch extends ReLogoPatch {
 
 	@Diffusible
 	def zombieSignal

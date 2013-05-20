@@ -6,19 +6,22 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import org.geotools.data.shapefile.ShapefileDataStore;
-import org.geotools.feature.Feature;
-import org.geotools.feature.FeatureIterator;
+import org.geotools.data.simple.SimpleFeatureIterator;
+import org.opengis.feature.simple.SimpleFeature;
+import org.opengis.referencing.crs.CoordinateReferenceSystem;
 
 import repast.simphony.context.Context;
 import repast.simphony.context.space.gis.GeographyFactoryFinder;
-import repast.simphony.context.space.graph.NetworkFactoryFinder;
 import repast.simphony.dataLoader.ContextBuilder;
 import repast.simphony.space.gis.Geography;
 import repast.simphony.space.gis.GeographyParameters;
-import repast.simphony.space.graph.Network;
+import repast.simphony.visualization.gis3D.WWUtils;
 
 import com.vividsolutions.jts.geom.Coordinate;
+import com.vividsolutions.jts.geom.Geometry;
 import com.vividsolutions.jts.geom.GeometryFactory;
+import com.vividsolutions.jts.geom.LineString;
+import com.vividsolutions.jts.geom.MultiLineString;
 import com.vividsolutions.jts.geom.MultiPolygon;
 import com.vividsolutions.jts.geom.Point;
 import com.vividsolutions.jts.geom.Polygon;
@@ -29,7 +32,7 @@ import com.vividsolutions.jts.geom.Polygon;
  * @author Eric Tatara
  *
  */
-public class ContextCreator implements ContextBuilder<GisAgent> {
+public class ContextCreator implements ContextBuilder {
 
 	public Context build(Context context) {
 
@@ -37,29 +40,24 @@ public class ContextCreator implements ContextBuilder<GisAgent> {
 		Geography geography = GeographyFactoryFinder.createGeographyFactory(null)
 		.createGeography("Geography", context, geoParams);
 
-		Network network = NetworkFactoryFinder.createNetworkFactory(null)
-		.createNetwork("Network", context, true);
-
 		GeometryFactory fac = new GeometryFactory();
 
-		for (int i = 0; i < 20; i++) {
+		for (int i = 0; i < 1000; i++) {
 			GisAgent agent = new GisAgent("Site " + i);
 			context.add(agent);
-			agent.setWealth(i);
 			Coordinate coord = new Coordinate(-87.75 + 0.1* Math.random(), 41.82 + 0.1 * Math.random());
 			Point geom = fac.createPoint(coord);
 			geography.move(agent, geom);
-
-//			if (i > 1){
-//				GisAgent otherAgent = (GisAgent)context.getRandomObjects(GisAgent.class, 1).iterator().next();
-//
-//				network.addEdge(agent, otherAgent);
-//			}
 		}
 
-//		String filename = System.getProperty("ZoneShapeFile");
-    String filename = "gisdata/Zones.shp";
-		
+    loadFeatures( "gisdata/Zones.shp", context, geography);
+//    loadFeatures( "gisdata/Agents.shp", context, geography);
+//    loadFeatures( "gisdata/Water_lines.shp", context, geography);
+	
+		return context;
+	}
+	
+	private void loadFeatures (String filename, Context context, Geography geography){
 		URL url = null;
 		try {
 			url = new File(filename).toURL();
@@ -67,7 +65,7 @@ public class ContextCreator implements ContextBuilder<GisAgent> {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		FeatureIterator fiter = null;
+		SimpleFeatureIterator fiter = null;
 		ShapefileDataStore store = null;
 		try {
 			store = new ShapefileDataStore(url);
@@ -75,6 +73,17 @@ public class ContextCreator implements ContextBuilder<GisAgent> {
 			e.printStackTrace();
 		}
 
+		CoordinateReferenceSystem crs = null;
+		try {
+			crs = store.getSchema().getCoordinateReferenceSystem();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+//		if (crs != null)
+//			geography.setCRS(crs);
+		
 		try {
 			fiter = store.getFeatureSource().getFeatures().features();
 		} catch (IOException e) {
@@ -82,15 +91,46 @@ public class ContextCreator implements ContextBuilder<GisAgent> {
 		}
 
 		while(fiter.hasNext()){
-			Feature feature = fiter.next();
-
-			MultiPolygon mp = (MultiPolygon)feature.getDefaultGeometry();
-			Polygon polygon = (Polygon)mp.getGeometryN(0);
+			SimpleFeature feature = fiter.next();
+      Geometry geom = (Geometry)feature.getDefaultGeometry();
+			Object agent = null;
+      
+			if (geom instanceof MultiPolygon){
+				MultiPolygon mp = (MultiPolygon)feature.getDefaultGeometry();
+				geom = (Polygon)mp.getGeometryN(0);
+				
+				String name = (String)feature.getAttribute("Name");
+				
+				agent = new ZoneAgent(name);
+			}
+			else if (geom instanceof Point){
+				geom = (Point)feature.getDefaultGeometry();				
+				String name = (String)feature.getAttribute("Name");
+//				double wealth = (double)feature.getAttribute("Wealth");
+				
+				agent = new GisAgent(name);
+			}
+			else if (geom instanceof MultiLineString){
+				MultiLineString line = (MultiLineString)feature.getDefaultGeometry();
+				geom = (LineString)line.getGeometryN(0);
+				String name = (String)feature.getAttribute("Name");
+				
+				agent = new WaterLine(name);
+			}
 			
-			ZoneAgent zone = new ZoneAgent();
-			context.add(zone);
-			geography.move(zone, polygon);
+			if (agent != null){
+			  context.add(agent);
+			  
+			  if (crs != null){
+					WWUtils.projectGeometryToWGS84(geom, crs);
+				}
+			  
+			  geography.move(agent, geom);
+			}
+			else{
+				System.out.println("NULL agent for  " + geom);
+			}
+			
 		}				
-		return context;
 	}
 }

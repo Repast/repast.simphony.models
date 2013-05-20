@@ -1,11 +1,10 @@
 package Geography3D;
 
-
-public class ZoneAgent {
+public class WaterLine {
 
 	private String name;
 	
-	public ZoneAgent(String name){
+	public WaterLine(String name){
 		this.name = name;
 	}
 
@@ -16,4 +15,6 @@ public class ZoneAgent {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+	
 }

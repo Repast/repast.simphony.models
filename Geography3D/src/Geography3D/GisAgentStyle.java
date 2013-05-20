@@ -1,25 +1,37 @@
 package Geography3D;
 
-import java.awt.Color;
+import gov.nasa.worldwind.WorldWind;
+import gov.nasa.worldwind.render.BasicWWTexture;
 
-import repast.simphony.visualization.gisnew.DefaultStyleGIS;
-import repast.simphony.visualization.gisnew.GeoShape.FeatureType;
+import java.net.URL;
+
+import repast.simphony.visualization.gis3D.style.DefaultMarkStyle;
 
 /**
  * 
  * @author Eric Tatara
  *
  */
-public class GisAgentStyle extends DefaultStyleGIS<GisAgent>{
-
-	@Override
-	public FeatureType getFeatureType(GisAgent agent) {
-		return FeatureType.POINT;
-	}
+public class GisAgentStyle extends DefaultMarkStyle<GisAgent>{
 	
-  @Override
-  public Color getFillColor(GisAgent agent) {
-		return Color.GREEN;
-	}
+	@Override
+	public BasicWWTexture getTexture(GisAgent object, BasicWWTexture texture) {
+	
+		if (texture != null)
+			return texture;
 
+		URL localUrl = WorldWind.getDataFileStore().requestFile("icons/bug.png");
+		if (localUrl != null)	{
+			return new BasicWWTexture(localUrl, false);
+		}
+		
+//		Color color = Color.red;
+//		
+//		BufferedImage image = PatternFactory.createPattern(PatternFactory.PATTERN_SQUARE, 
+//				new Dimension(10, 10), 0.7f,  color, new Color(color.getRed(), color.getGreen(), color.getBlue(), 0));
+//		
+//		return new BasicWWTexture(image);	
+		
+		return null;
+	}
 }

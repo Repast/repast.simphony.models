@@ -1,6 +1,5 @@
 <context id="Geo Model">
 
 	<projection id="Geography" type="geography" />
-	<projection id="Network" type="geography" />
 
 </context>

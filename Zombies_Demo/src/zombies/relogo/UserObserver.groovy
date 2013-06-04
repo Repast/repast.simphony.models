@@ -6,6 +6,8 @@ import repast.simphony.relogo.BaseObserver;
 import repast.simphony.relogo.Stop;
 import repast.simphony.relogo.Utility;
 import repast.simphony.relogo.UtilityG;
+import repast.simphony.relogo.schedule.Go;
+import repast.simphony.relogo.schedule.Setup;
 import zombies.ReLogoObserver;
 
 class UserObserver extends ReLogoObserver {
@@ -36,6 +38,7 @@ class UserObserver extends ReLogoObserver {
 	
 	def relogoRun = 0;
 	
+	@Setup
 	def setup(){
 		relogoRun++
 		clearAll()
@@ -51,6 +54,7 @@ class UserObserver extends ReLogoObserver {
 		
 	}
 	
+	@Go
 	def go(){
 		ask (zombies()){
 			step()

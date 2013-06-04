@@ -27,9 +27,6 @@ public class UserGlobalsAndPanelFactory extends AbstractReLogoGlobalsAndPanelFac
 		        // Chooser without label  ( variable name, list of choices , zero-based index of initial value )
 		        addChooser("chooserVariable2", [1, 66, "seven"], 0)
 		 */
-		addButtonWL("setup","Setup")
-		addButtonWL("go","Go Once")
-		addToggleButtonWL("go","Go")
 		addSliderWL("numHumans", "Number of Humans", 1, 1, 100, 50)
 		addSliderWL("numZombies", "Number of Zombies", 1, 1, 10, 5)
 		addSliderWL("gestationPeriod", "Gestation", 5, 1, 30, 5)

@@ -9,6 +9,8 @@ import repast.simphony.relogo.Stop;
 import repast.simphony.relogo.Undirected;
 import repast.simphony.relogo.Utility;
 import repast.simphony.relogo.UtilityG;
+import repast.simphony.relogo.schedule.Go;
+import repast.simphony.relogo.schedule.Setup;
 import zombies.ReLogoLink;
 
 class UserLink extends ReLogoLink	{

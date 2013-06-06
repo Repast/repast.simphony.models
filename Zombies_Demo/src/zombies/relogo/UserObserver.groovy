@@ -36,11 +36,8 @@ class UserObserver extends ReLogoObserver {
 
 	 */
 	
-	def relogoRun = 0;
-	
 	@Setup
 	def setup(){
-		relogoRun++
 		clearAll()
 		setDefaultShape(Human,"person")
 		createHumans(numHumans){
@@ -56,6 +53,11 @@ class UserObserver extends ReLogoObserver {
 	
 	@Go
 	def go(){
+		
+		if (emptyQ(humans())){
+			pause()
+		}
+		
 		ask (zombies()){
 			step()
 			zombieSignal++
@@ -69,7 +71,6 @@ class UserObserver extends ReLogoObserver {
 			step()
 		}
 		
-		tick()
 	}
 	
 	def remainingHumans(){

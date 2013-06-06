@@ -4,8 +4,7 @@
   <delimiter>,</delimiter>
   <format>TABULAR</format>
   <sourceIds class="linked-hash-set">
-    <string>timestamp</string>
-    <string>RelogoRun</string>
+    <string>tick</string>
     <string>remainingHumans</string>
     <string>remainingZombies</string>
   </sourceIds>

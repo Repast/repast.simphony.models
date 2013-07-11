@@ -1,32 +1,34 @@
 package Geography;
 
-import com.vividsolutions.jts.geom.Coordinate;
-import com.vividsolutions.jts.geom.Geometry;
-import org.jscience.physics.amount.Amount;
 import repast.simphony.context.Context;
 import repast.simphony.engine.schedule.ScheduledMethod;
-import repast.simphony.space.gis.Geography;
 import repast.simphony.random.RandomHelper;
-import repast.simphony.annotate.AgentAnnot;
-import repast.simphony.ui.probe.ProbeID;
+import repast.simphony.space.gis.Geography;
 import repast.simphony.util.ContextUtils;
 
-import javax.measure.unit.SI;
+import com.vividsolutions.jts.geom.Coordinate;
+import com.vividsolutions.jts.geom.Geometry;
+import com.vividsolutions.jts.geom.GeometryFactory;
 
-@AgentAnnot(displayName = "Geo Agent")
 public class GisAgent {
 
-  private double wealth = 10;
-  private Amount amount = Amount.valueOf(10, SI.METER);
+  private double wealth;
 
-  public GisAgent() {
-	}
+  private String name;
 
-  @ProbeID
-  public String getName() {
-    return "Site 3";
+  public GisAgent(String name) {
+  	this.name = name;
+  	wealth = 0;  
   }
 
+  public String getName() {
+    return name;
+  }
+
+  @Override
+  public String toString(){
+  	return name;
+  }
 
   public double getWealth() {
     return wealth;
@@ -36,35 +38,40 @@ public class GisAgent {
     this.wealth = wealth;
   }
 
-
-  /*
-  public void setAmount(Amount amt) {
-    amount = amt;
-  }
-
-  public Amount getAmount() {
-    return amount;
-  }
-  */
-
   @ScheduledMethod(start = 1, pick = 1, interval = 1)
-	public void step() {
-
+	public void step() {  	
     Context context = ContextUtils.getContext(this);
 
     Geography<GisAgent> geography = (Geography)context.getProjection("Geography");
     Geometry geom = geography.getGeometry(this);
     Coordinate coord = geom.getCoordinates()[0];
-    coord.x += .005;
-    coord.y += .005;
+    coord.x += RandomHelper.nextDoubleFromTo(-0.005, 0.005);
+    coord.y += RandomHelper.nextDoubleFromTo(-0.005, 0.005);
     geography.move(this, geom);
 
-    //GisAgent agent = new GisAgent();
-    //context.add(agent);
-    //geography.move(agent, new GeometryFactory().createPoint(coord));
-
-
-
-    this.wealth = RandomHelper.getUniform().nextIntFromTo(0, 8);
+    wealth += RandomHelper.getUniform().nextDoubleFromTo(1,5);
   }
+  
+  @ScheduledMethod(start = 1, pick = 1, interval = 1)
+ 	public void reproduce() {
+
+     Context context = ContextUtils.getContext(this);
+     Geography<GisAgent> geography = (Geography)context.getProjection("Geography");
+     Geometry geom = geography.getGeometry(this);
+     Coordinate coord = geom.getCoordinates()[0];
+
+     GisAgent child = new GisAgent("Child Site-" + RandomHelper.nextIntFromTo(1, 1000000));
+     context.add(child);
+     double xo = RandomHelper.nextDoubleFromTo(-0.05, 0.05);
+     double yo = RandomHelper.nextDoubleFromTo(-0.05, 0.05);
+     
+     Coordinate c2 = new Coordinate(coord.x + xo, coord.y + yo);
+     geography.move(child, new GeometryFactory().createPoint(c2));
+   }
+  
+  @ScheduledMethod(start = 5, pick = 1, interval = 1)
+ 	public void die() {  	 
+    Context context = ContextUtils.getContext(this);
+    context.remove(this);
+   }
 }

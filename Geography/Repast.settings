@@ -3,14 +3,14 @@
   <hashtable>
     <default>
       <loadFactor>0.75</loadFactor>
-      <threshold>8</threshold>
+      <threshold>2</threshold>
     </default>
     <int>3</int>
     <int>3</int>
     <string>SettingsFileName</string>
     <string>Repast.settings</string>
     <string>LastLoadedScenario</string>
-    <string>E:\Repast Demo Library\Geography\Geography.rs</string>
+    <string>E:\Repast-Models\Geography\Geography.rs</string>
     <string>SettingsRegistryId</string>
     <string>Repast.registry</string>
   </hashtable>

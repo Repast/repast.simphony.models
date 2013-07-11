@@ -3,13 +3,15 @@
   <hashtable>
     <default>
       <loadFactor>0.75</loadFactor>
-      <threshold>8</threshold>
+      <threshold>5</threshold>
     </default>
-    <int>11</int>
-    <int>2</int>
+    <int>7</int>
+    <int>3</int>
     <string>SettingsRegistryId</string>
     <string>Repast.registry</string>
     <string>LastLoadedScenario</string>
-    <string>E:\Repast Demo Library\Autocatalysis\Autocatalysis.rs</string>
+    <string>E:\Repast-Models\Autocatalysis\Autocatalysis.rs</string>
+    <string>SettingsFileName</string>
+    <string>Repast.settings</string>
   </hashtable>
 </simphony.settings.SettingsRegistry>

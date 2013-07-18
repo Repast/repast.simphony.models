@@ -15,6 +15,7 @@ class UserObserver extends ReLogoObserver {
 	/**
 	 * Add observer methods here. For example:
 
+		@Setup
 		def setup(){
 			clearAll()
 			createTurtles(10){
@@ -26,6 +27,7 @@ class UserObserver extends ReLogoObserver {
 	 * or
 	 * 	
 	
+		@Go
 		def go(){
 			ask(turtles()){
 				left(random(90))
@@ -48,15 +50,10 @@ class UserObserver extends ReLogoObserver {
 			setxy(randomXcor(),randomYcor())
 			size = 2
 		}
-		
 	}
 	
 	@Go
-	def go(){
-		
-		if (emptyQ(humans())){
-			pause()
-		}
+	def go(){		
 		
 		ask (zombies()){
 			step()
@@ -71,20 +68,20 @@ class UserObserver extends ReLogoObserver {
 			step()
 		}
 		
+		// Ends the simulation when
+		// no humans are left
+		if (emptyQ(humans())){
+			stop()
+			// Could choose to pause as well.
+			// pause()
+		}
+		
 	}
 	
 	def remainingHumans(){
 		count(humans())
 	}
-	
-	def remainingZombies(){
-		count(zombies())
-	}
-	
-	def timestamp(){
-		ticks()
-	}
-	
+		
 	def diffuseAndEvaporate(){
 		diffuse("zombieSignal",zombieDiffusionRate)
 		diffusibleMultiply("zombieSignal", 1 - zombieEvaporationRate)

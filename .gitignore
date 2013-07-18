@@ -1,2 +1,7 @@
 .DS_Store
 bin/
+src-gen/
+Repast.settings
+debug.log
+velocity.log*
+

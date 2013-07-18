@@ -16,6 +16,8 @@ import repast.simphony.space.continuous.NdPoint;
 import repast.simphony.space.grid.Grid;
 import repast.simphony.space.grid.GridPoint;
 import repast.simphony.util.SimUtilities;
+import jzombies.chart.DiseaseStatechart;
+import repast.simphony.ui.probe.ProbedProperty;
 
 /**
  * @author nick
@@ -26,6 +28,8 @@ public class Human {
 	private ContinuousSpace<Object> space;
 	private Grid<Object> grid;
 	private int energy, startingEnergy;
+	@ProbedProperty(displayName="Disease Statechart")
+	DiseaseStatechart diseaseStatechart = DiseaseStatechart.createStateChart(this, 0);
 
 	public Human(ContinuousSpace<Object> space, Grid<Object> grid, int energy) {
 		this.space = space;

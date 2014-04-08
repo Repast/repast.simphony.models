@@ -1,5 +1,5 @@
 <repast.simphony.visualization.editedStyle.DefaultEditedStyleData3D>
-  <shapeWkt>cube</shapeWkt>
+  <shapeWkt>sphere</shapeWkt>
   <size>0.02</size>
   <sizeMax>0.1</sizeMax>
   <sizeMin>0.0</sizeMin>

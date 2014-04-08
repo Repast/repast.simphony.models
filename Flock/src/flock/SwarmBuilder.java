@@ -3,8 +3,17 @@
 import repast.simphony.context.Context;
 import repast.simphony.context.space.continuous.ContinuousSpaceFactoryFinder;
 import repast.simphony.dataLoader.ContextBuilder;
+import repast.simphony.engine.environment.RunEnvironment;
+import repast.simphony.parameter.Parameters;
+import repast.simphony.space.continuous.AbstractPointTranslator;
+import repast.simphony.space.continuous.StickyBorders;
+import repast.simphony.space.continuous.WrapAroundBorders;
+import repast.simphony.space.continuous.InfiniteBorders;
 
 /**
+ * Flocking model that simulates a large flock of smaller prey birds
+ *   that attempt to avoid larger predator birds.
+ * 
  * Adopted from the C# Swarm model by Daniel Greenheck: 
  *   http://greenhecktech.com/2014/04/03/throwback-thursday-swarm-intelligence/
  * 
@@ -12,37 +21,39 @@ import repast.simphony.dataLoader.ContextBuilder;
  *
  */
 public class SwarmBuilder implements ContextBuilder<Boid> {
-	public static int preyCount = 3000;    // Initial number of prey rows  
-	public static int predCount = 2;    // Initial number of predators
-
-	// Parameters
-	public static float PreySpacing = 8;           // Smaller cloth give a more organized, cloth like look
-	public static float PreyAcceleration = 0.75f;  // Starling acceleration
-	public static float PreyMaxSpeed = 70;         // Max speed of the starling
-	public static float PredAcceleration = 3;
-	public static float PredMaxSpeed = 300;
-	public static float AttractForce = 160;         // Attraction force for prey
-	public static float RepelForce = -180;          // Higher repulsion force gives more randomness
-	public static float FearForce = -500000;       // Repulsion force for predator
-	public static float FearRadius = 80;           // The distance a starling can see a falcon
-	public static float KillRadius = 10;           // How close the predator has to be to the prey to kill it
-
+	
 	@Override
 	public Context<Boid> build(Context<Boid> context) {
+		Parameters param = RunEnvironment.getInstance().getParameters();
 		
+		int initialNumPrey = (Integer)param.getValue("initialNumPrey");
+		int initialNumPred = (Integer)param.getValue("initialNumPred");
+		
+		String borderType = param.getValueAsString("borderType");
+		AbstractPointTranslator border = null;
+		
+		if ("Wrap_Around".equals(borderType))
+			border = new WrapAroundBorders();
+		else if ("Bouncy".equals(borderType))
+			border = new repast.simphony.space.continuous.BouncyBorders();
+		else if ("Infinite".equals(borderType))
+			border = new InfiniteBorders<>();
+		else if ("Sticky".equals(borderType))
+			border = new StickyBorders();  
+			
 		ContinuousSpaceFactoryFinder.createContinuousSpaceFactory(null)
 				.createContinuousSpace("Space", context, 
-						new Adder<Boid>(),
-						new repast.simphony.space.continuous.WrapAroundBorders(), 
+						new Adder<Boid>(4),
+						border, 
 						500, 500, 500);
 		
 		// Add the prey
-		for(int i=0; i<preyCount; i++){
+		for(int i=0; i<initialNumPrey; i++){
 			context.add(new Prey());
 		}
 
 		// Add the predators
-		for(int i=0; i<predCount; i++){            	
+		for(int i=0; i<initialNumPred; i++){            	
 			context.add(new Predator());
 		}
 

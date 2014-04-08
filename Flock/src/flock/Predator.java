@@ -3,35 +3,46 @@
 import javax.vecmath.Vector3d;
 
 import repast.simphony.context.Context;
+import repast.simphony.engine.environment.RunEnvironment;
 import repast.simphony.engine.schedule.ScheduledMethod;
+import repast.simphony.parameter.Parameters;
 import repast.simphony.space.continuous.ContinuousSpace;
 import repast.simphony.space.continuous.NdPoint;
 import repast.simphony.util.ContextUtils;
+
+/**
+ * Predator grabs a random target prey and attempts to eat it.
+ * 
+ * Adopted from the C# Swarm model by Daniel Greenheck: 
+ *   http://greenhecktech.com/2014/04/03/throwback-thursday-swarm-intelligence/
+ * 
+ * @author Eric Tatara
+ * 
+ */
 public class Predator extends Boid {
 	
 	public Prey target;         // The current target
-	public Vector3d attackVector = new Vector3d(0,0,0);    // Vector to the prey
+	public Vector3d attackVector = new Vector3d();    // Vector to the prey
 
-	public Predator(){
-	}
-
-	/// <summary>
-	/// Update the boid
-	/// </summary>
-	/// <param name="rand"> Random number generator</param>
-	/// <param name="boids"> List of boids in the flock</param>
-	/// <param name="elapsedTime"> Elapsed time for this frame</param>
-	/// <param name="flockCenter"> Center of the flock</param>
-	/// <param name="flockVelocity"> Average velocity of the flock</param>
 	@ScheduledMethod(start=1, interval=1)
 	public void update(){
-		double elapsedTime = 0.05; //RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
-		Vector3d velocityUpdate = new Vector3d();     // Vector which will modify the boids velocity vector
-
-		// If we have no target or we killed this one, acquire a new one
+		Parameters param = RunEnvironment.getInstance().getParameters();
 		Context context = ContextUtils.getContext(this);
 		ContinuousSpace space = (ContinuousSpace)context.getProjection("Space");
-		if( target == null || attackVector.lengthSquared() < SwarmBuilder.KillRadius * SwarmBuilder.KillRadius ){
+		
+		// A smaller time scale results in smoother movement, but over a shorter
+		//  distance.  Reduce to speed up simluation speed.
+		double timeScale = (Double)param.getValue("timeScale");
+		
+		// Vector which will modify the boids velocity vector
+		Vector3d velocityUpdate = new Vector3d();     
+
+		// If we have no target or we killed this one, acquire a new one
+		
+		// How close the predator has to be to the prey to kill it
+		double killRadius = (Double)param.getValue("killRadius");
+		
+		if( target == null || attackVector.lengthSquared() < killRadius * killRadius){
 			target = (Prey)context.getRandomObjects(Prey.class, 1).iterator().next();
 		}
 
@@ -48,19 +59,23 @@ public class Predator extends Boid {
 
 		// Update the velocity of the boid
 		// Modify our velocity update vector to take into account acceleration over time
-		velocityUpdate.scale(SwarmBuilder.PredAcceleration * SwarmBuilder.PreyAcceleration * elapsedTime);
+		double preyAcceleration = (Double)param.getValue("preyAcceleration");
+		double predAcceleration = (Double)param.getValue("predAcceleration");
+		double predMaxSpeed = (Double)param.getValue("predMaxSpeed");
+		
+		velocityUpdate.scale(predAcceleration * preyAcceleration * timeScale);
 
 		// Apply the update to the velocity
-		Velocity.add(velocityUpdate);
+		velocity.add(velocityUpdate);
 
 		// If our velocity vector exceeds the max speed, throttle it back to the MAX_SPEED
-		if( Velocity.length() > SwarmBuilder.PredMaxSpeed ){
-			Velocity.normalize();
-			Velocity.scale(SwarmBuilder.PredMaxSpeed);
+		if (velocity.length() > predMaxSpeed ){
+			velocity.normalize();
+			velocity.scale(predMaxSpeed);
 		}
 
 		// Update the position of the boid
-		Velocity.scale(elapsedTime);
-		space.moveByDisplacement(this, Velocity.x, Velocity.y, Velocity.z);
+		velocity.scale(timeScale);
+		space.moveByDisplacement(this, velocity.x, velocity.y, velocity.z);
 	}
 }

@@ -5,15 +5,27 @@ import repast.simphony.space.Dimensions;
 import repast.simphony.space.continuous.ContinuousAdder;
 import repast.simphony.space.continuous.ContinuousSpace;
 
+/**
+ * A custom implementation of the continuous random adder that clusters newly
+ *   added agents near the origin.
+ *   
+ * @author Nick Collier  
+ * @author Eric Tatara
+ *
+ * @param <T>
+ */
 public class Adder <T> implements ContinuousAdder<T> {
+
 	/**
-	 * Adds the specified object to the space at a random location.
-	 * 
-	 * @param space
-	 *            the space to add the object to.
-	 * @param obj
-	 *            the object to add.
+	 * Divides the space by this number for adding.  Larger number results in
+	 *   closer packing.
 	 */
+	int clusterFactor;  
+	
+	public Adder(int clusterFactor){
+		this.clusterFactor = clusterFactor;
+	}
+	
 	public void add(ContinuousSpace<T> space, T obj) {
 		Dimensions dims = space.getDimensions();
 		double[] location = new double[dims.size()];
@@ -27,7 +39,8 @@ public class Adder <T> implements ContinuousAdder<T> {
 		double[] origin = dims.originToDoubleArray(null);
 		for (int i = 0; i < location.length; i++) {
 			try{
-				location[i] = RandomHelper.getUniform().nextDoubleFromTo(0, dims.getDimension(i)/4) - origin[i];
+				location[i] = RandomHelper.getUniform().nextDoubleFromTo(0, 
+						dims.getDimension(i)/clusterFactor) - origin[i];
 			}
 			catch(Exception e){
 				

@@ -31,13 +31,13 @@
 									
 		/>
 				<parameter name="timeScale" displayName="Time scale" type="double" 
-						defaultValue="0.1" 
+						defaultValue="0.075" 
 						isReadOnly="false" 
 						converter="repast.simphony.parameter.StringConverterFactory$DoubleConverter"
 									
 		/>
 				<parameter name="initialPreyNeighborDistance" displayName="Initial prey neighbor distance" type="int" 
-						defaultValue="100" 
+						defaultValue="20" 
 						isReadOnly="false" 
 						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
 									
@@ -55,7 +55,7 @@
 									
 		/>
 				<parameter name="initialNumPrey" displayName="Initial Number of Prey" type="int" 
-						defaultValue="5000" 
+						defaultValue="7000" 
 						isReadOnly="false" 
 						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
 									
@@ -79,7 +79,7 @@
 									
 		/>
 				<parameter name="initialNumPred" displayName="Initial Number of Predators" type="int" 
-						defaultValue="2" 
+						defaultValue="4" 
 						isReadOnly="false" 
 						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
 									

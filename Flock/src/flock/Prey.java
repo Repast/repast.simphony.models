@@ -46,7 +46,7 @@ public class Prey extends Boid{
 		space = (ContinuousSpace)context.getProjection("Space");
 		
 		// Find initial neighboring Prey to build a list of the closet Prey. 
-		//  This list will be remain unchanged during the simulation and, 
+		//  This list will remain unchanged during the simulation and, 
 		//  although this is somewhat of an approximation to the Prey behavior,
 		//  the computational efficiency of not needing to find neighbors each
 		//  step allows the simulation to run very fast.

@@ -9,6 +9,7 @@ import javax.vecmath.Vector3d;
 
 import repast.simphony.context.Context;
 import repast.simphony.engine.environment.RunEnvironment;
+import repast.simphony.engine.schedule.ScheduleParameters;
 import repast.simphony.engine.schedule.ScheduledMethod;
 import repast.simphony.parameter.Parameters;
 import repast.simphony.query.space.continuous.ContinuousWithin;
@@ -28,20 +29,21 @@ import repast.simphony.util.ContextUtils;
 public class Prey extends Boid{
 	private ArrayList<Prey> neighbors;       // List of neighboring Prey
 	private ArrayList<Predator> predators;   // List of Predators
-
+	private ContinuousSpace space;   // store so don't need to look up frequently
+	
 	public Prey(){
 		neighbors = new ArrayList<Prey>();
 		predators = new ArrayList<Predator>();
 	}
 	
 	/**
-	 * Prey initialization.
+	 * Prey initialization.  This can be very slow for a large number of Prey.
 	 */
 	@ScheduledMethod(start=0)
 	public void init(){
 		Parameters param = RunEnvironment.getInstance().getParameters();
 		Context context = ContextUtils.getContext(this);
-		ContinuousSpace space = (ContinuousSpace)context.getProjection("Space");
+		space = (ContinuousSpace)context.getProjection("Space");
 		
 		// Find initial neighboring Prey to build a list of the closet Prey. 
 		//  This list will be remain unchanged during the simulation and, 
@@ -54,7 +56,7 @@ public class Prey extends Boid{
 		ContinuousWithin query = new ContinuousWithin(context, this, initialPreyNeighborDistance);
 		
 		NdPoint q = space.getLocation(this);
-		Vector3d position = new Vector3d(q.getX(), q.getY(), q.getZ());
+		lastPosition = new Vector3d(q.getX(), q.getY(), q.getZ());
 		
 		TreeMap<Double,Prey> foundNeigh = new TreeMap<Double,Prey>();
 		for (Object o : query.query()){
@@ -67,7 +69,7 @@ public class Prey extends Boid{
 			NdPoint p = space.getLocation(neigh);
 			Vector3d neighPosition = new Vector3d(p.getX(), p.getY(), p.getZ());
 			Vector3d distanceToNeighbor = new Vector3d();
-			distanceToNeighbor.sub(neighPosition, position);
+			distanceToNeighbor.sub(neighPosition, lastPosition);
 			foundNeigh.put(distanceToNeighbor.length(), neigh);
 		}
 		
@@ -90,7 +92,6 @@ public class Prey extends Boid{
 		}
 	}
 	
-	@ScheduledMethod(start=1, interval=1)
 	public void update(){
 		Parameters param = RunEnvironment.getInstance().getParameters();
 		
@@ -103,12 +104,7 @@ public class Prey extends Boid{
 
 		// Calculate Attraction and Avoidance for Neighbors
 		// Calculate the avoidance vector for each boid
-		Context context = ContextUtils.getContext(this);
-		ContinuousSpace space = (ContinuousSpace)context.getProjection("Space");
-		
-		NdPoint q = space.getLocation(this);
-		Vector3d position = new Vector3d(q.getX(), q.getY(), q.getZ());
-		
+				
 		// Smaller cloth give a more organized, cloth like look
 		double preySpacing = (Double)param.getValue("preySpacing");
 		
@@ -119,13 +115,9 @@ public class Prey extends Boid{
 		double preyRepelForce = (Double)param.getValue("preyRepelForce");
 		
 		for (Prey neigh : neighbors){	
-			NdPoint p = space.getLocation(neigh);
-			
-			Vector3d neighPosition = new Vector3d(p.getX(), p.getY(), p.getZ());
 			Vector3d distanceToNeighbor = new Vector3d();
-			distanceToNeighbor.sub(neighPosition, position);
-			
-			
+			distanceToNeighbor.sub(neigh.getLastPosition(), lastPosition);
+						
 			// If it's too far away, go chase it
 			if ( distanceToNeighbor.lengthSquared() >= preySpacing * preySpacing){
 				distanceToNeighbor.scale(preyAttractForce);
@@ -150,11 +142,8 @@ public class Prey extends Boid{
 		for (Predator pred : predators){
 			// Get the vector from this boid to its neighbor
 			Vector3d distanceToFalcon = new Vector3d();
-			
-			NdPoint p = space.getLocation(pred);
-			Vector3d predPosition = new Vector3d(p.getX(), p.getY(), p.getZ());
-			
-			distanceToFalcon.sub(predPosition, position);
+						
+			distanceToFalcon.sub(pred.getLastPosition(), lastPosition);
 
 			// If it is within range, add the vector to the repulsion vector
 			if ( distanceToFalcon.lengthSquared() < preyFearRadius * preyFearRadius){
@@ -182,6 +171,18 @@ public class Prey extends Boid{
 
 		// Update the position of the boid
 		velocity.scale(timeScale);
+		lastPosition.add(velocity);	
+	}
+	
+	/**
+	 * Move the prey in the space to the location determined by update().  This is
+	 *   called separately because if the simulation is run multu-threaded,
+	 *   the Prey cannot modify it's position in the space in a thread-safe manner.
+	 *   Here the Prey updates is position in space after update() is executed, and
+	 *   the space position is used only for visualization.
+	 */
+	@ScheduledMethod(start=1, interval=1, priority=ScheduleParameters.LAST_PRIORITY)
+	public void move(){
 		space.moveByDisplacement(this, velocity.x, velocity.y, velocity.z);
 	}
 }

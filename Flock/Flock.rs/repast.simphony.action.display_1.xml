@@ -4,21 +4,21 @@
   <styles>
     <entry>
       <string>flock.Predator</string>
-      <string>repast.simphony.visualization.editedStyle.EditedStyle3D</string>
+      <string>flock.PredatorStyle</string>
     </entry>
     <entry>
       <string>flock.Prey</string>
-      <string>repast.simphony.visualization.editedStyle.EditedStyle3D</string>
+      <string>flock.PreyStyle</string>
     </entry>
   </styles>
   <editedStyles>
     <entry>
       <string>flock.Predator</string>
-      <string>flock.Predator.style_1.xml</string>
+      <null/>
     </entry>
     <entry>
       <string>flock.Prey</string>
-      <string>flock.Prey.style_0.xml</string>
+      <null/>
     </entry>
   </editedStyles>
   <netStyles/>
@@ -31,7 +31,7 @@
     <pType>LAST</pType>
     <duration>-1.0</duration>
     <frequency>REPEAT</frequency>
-    <hashCode>1572088290</hashCode>
+    <hashCode>760462669</hashCode>
   </schedParams>
   <layoutClassName>foo.bar.baz</layoutClassName>
   <layoutProjection>Space</layoutProjection>

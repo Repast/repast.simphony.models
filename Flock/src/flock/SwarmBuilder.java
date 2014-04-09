@@ -1,14 +1,19 @@
 ﻿package flock;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import repast.simphony.context.Context;
 import repast.simphony.context.space.continuous.ContinuousSpaceFactoryFinder;
 import repast.simphony.dataLoader.ContextBuilder;
 import repast.simphony.engine.environment.RunEnvironment;
+import repast.simphony.engine.schedule.ISchedule;
+import repast.simphony.engine.schedule.ScheduleParameters;
 import repast.simphony.parameter.Parameters;
 import repast.simphony.space.continuous.AbstractPointTranslator;
+import repast.simphony.space.continuous.InfiniteBorders;
 import repast.simphony.space.continuous.StickyBorders;
 import repast.simphony.space.continuous.WrapAroundBorders;
-import repast.simphony.space.continuous.InfiniteBorders;
 
 /**
  * Flocking model that simulates a large flock of smaller prey birds
@@ -20,10 +25,11 @@ import repast.simphony.space.continuous.InfiniteBorders;
  * @author Eric Tatara
  *
  */
-public class SwarmBuilder implements ContextBuilder<Boid> {
+@SuppressWarnings({ "rawtypes", "unchecked" })
+public class SwarmBuilder implements ContextBuilder {
 	
 	@Override
-	public Context<Boid> build(Context<Boid> context) {
+	public Context build(Context context) {
 		Parameters param = RunEnvironment.getInstance().getParameters();
 		
 		int initialNumPrey = (Integer)param.getValue("initialNumPrey");
@@ -43,20 +49,36 @@ public class SwarmBuilder implements ContextBuilder<Boid> {
 			
 		ContinuousSpaceFactoryFinder.createContinuousSpaceFactory(null)
 				.createContinuousSpace("Space", context, 
-						new Adder<Boid>(4),
+						new Adder(4),
 						border, 
 						500, 500, 500);
 		
 		// Add the prey
+		List<Prey> preyList = new ArrayList<Prey>();
 		for(int i=0; i<initialNumPrey; i++){
-			context.add(new Prey());
+			preyList.add(new Prey());
 		}
+		context.addAll(preyList);
 
 		// Add the predators
 		for(int i=0; i<initialNumPred; i++){            	
 			context.add(new Predator());
 		}
-
+		
+		// If the model is running in multi-threaded mode, the Prey will 
+		//   be updated in batches on each available CPU thread.
+		String threadType = param.getValueAsString("threadType");
+		if ("Multi-thread".equals(threadType)){
+			context.add(new FlockUpdater(preyList));
+		}
+		// Otherwise, schedule all the Prey to update in the single simulation thread.
+		else { 
+			ISchedule schedule = RunEnvironment.getInstance().getCurrentSchedule();
+			for (Prey prey : preyList){
+				ScheduleParameters sp1 = ScheduleParameters.createRepeating(1, 1); 
+				schedule.schedule(sp1, prey, "update");
+			}
+		}
 		return context;
 	}
 }

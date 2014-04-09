@@ -21,14 +21,26 @@ import repast.simphony.util.ContextUtils;
  */
 public class Predator extends Boid {
 	
-	public Prey target;         // The current target
-	public Vector3d attackVector = new Vector3d();    // Vector to the prey
-
+	private Prey target;         // The current target
+	private Vector3d attackVector = new Vector3d();    // Vector to the prey
+  private ContinuousSpace space;
+	
+	/**
+	 * Predator initialization.
+	 */
+	@ScheduledMethod(start=0)
+	public void init(){
+		Context context = ContextUtils.getContext(this);
+		space = (ContinuousSpace)context.getProjection("Space");
+	
+		NdPoint q = space.getLocation(this);
+		lastPosition = new Vector3d(q.getX(), q.getY(), q.getZ());
+	}
+	
 	@ScheduledMethod(start=1, interval=1)
 	public void update(){
 		Parameters param = RunEnvironment.getInstance().getParameters();
 		Context context = ContextUtils.getContext(this);
-		ContinuousSpace space = (ContinuousSpace)context.getProjection("Space");
 		
 		// A smaller time scale results in smoother movement, but over a shorter
 		//  distance.  Reduce to speed up simluation speed.
@@ -45,15 +57,9 @@ public class Predator extends Boid {
 		if( target == null || attackVector.lengthSquared() < killRadius * killRadius){
 			target = (Prey)context.getRandomObjects(Prey.class, 1).iterator().next();
 		}
-
-		NdPoint p = space.getLocation(target);
-		NdPoint q = space.getLocation(this);
-		
-		Vector3d targetPosition = new Vector3d(p.getX(), p.getY(), p.getZ());
-		Vector3d position = new Vector3d(q.getX(), q.getY(), q.getZ());
 		
 		if(target != null){
-			attackVector.sub(targetPosition, position);
+			attackVector.sub(target.getLastPosition(), lastPosition);
 			velocityUpdate.add(attackVector);
 		}
 
@@ -76,6 +82,7 @@ public class Predator extends Boid {
 
 		// Update the position of the boid
 		velocity.scale(timeScale);
+		lastPosition.add(velocity);
 		space.moveByDisplacement(this, velocity.x, velocity.y, velocity.z);
 	}
 }

@@ -31,7 +31,7 @@
 									
 		/>
 				<parameter name="timeScale" displayName="Time scale" type="double" 
-						defaultValue="0.05" 
+						defaultValue="0.1" 
 						isReadOnly="false" 
 						converter="repast.simphony.parameter.StringConverterFactory$DoubleConverter"
 									
@@ -55,7 +55,7 @@
 									
 		/>
 				<parameter name="initialNumPrey" displayName="Initial Number of Prey" type="int" 
-						defaultValue="3000" 
+						defaultValue="5000" 
 						isReadOnly="false" 
 						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
 									
@@ -85,7 +85,7 @@
 									
 		/>
 				<parameter name="predAcceleration" displayName="Predator Acceleration" type="double" 
-						defaultValue="5.0" 
+						defaultValue="3.0" 
 						isReadOnly="false" 
 						converter="repast.simphony.parameter.StringConverterFactory$DoubleConverter"
 									
@@ -96,10 +96,13 @@
 						converter="repast.simphony.parameter.StringConverterFactory$DoubleConverter"
 									
 		/>
-		
 				<parameter name="borderType" displayName="Space Boundary Type" type="String" 
-						defaultValue="Wrap_Around" 
+						defaultValue="Infinite" 
 						values="Bouncy Infinite Wrap_Around Sticky" 
+		/>
+				<parameter name="threadType" displayName="Simulation Threads" type="String" 
+						defaultValue="Multi-thread" 
+						values="Multi-thread Single-thread" 
 		/>
 		
 		</parameters>

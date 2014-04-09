@@ -12,6 +12,10 @@ import javax.vecmath.Vector3d;
  * 
  */
 public abstract class Boid{
-	public Vector3d velocity = new Vector3d();   
+	protected Vector3d velocity = new Vector3d();
+	protected Vector3d lastPosition = new Vector3d();
+	
+	public Vector3d getLastPosition() {
+		return lastPosition;
+	}
 }
-

@@ -1,5 +1,5 @@
 <context id="Predator Prey">
 	<projection id="Simple Grid" type="grid" />
 	<projection id="Continuous Space" type="continuous space" />
-  <projection id="Grass Value" type="value layer" />
+  <projection id="Grass Field" type="value layer" />
 </context>

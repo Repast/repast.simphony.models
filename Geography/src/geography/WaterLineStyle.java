@@ -1,6 +1,5 @@
-package Geography;
+package geography;
 
-import gov.nasa.worldwind.render.SurfacePolygon;
 import gov.nasa.worldwind.render.SurfacePolyline;
 import gov.nasa.worldwind.render.SurfaceShape;
 
@@ -9,8 +8,9 @@ import java.awt.Color;
 import repast.simphony.visualization.gis3D.style.SurfaceShapeStyle;
 
 /**
+ * Style for WaterLines.
  * 
- * @author tatara
+ * @author Eric Tatara
  *
  */
 public class WaterLineStyle implements SurfaceShapeStyle<WaterLine>{

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns="http://repast.sf.net/statecharts" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation">
-  <StateMachine xmi:id="_DJwmYOpmEeK_pvf5APxfpw" agentType="jzombies.Human" package="jzombies.chart" className="DiseaseStatechart" nextID="45" id="Disease Statechart" uuid="_DJvYQOpmEeK_pvf5APxfpw">
+  <StateMachine xmi:id="_DJwmYOpmEeK_pvf5APxfpw" agentType="jzombies.Human" package="jzombies.chart" className="DiseaseStatechart" nextID="62" id="Disease Statechart" uuid="_DJvYQOpmEeK_pvf5APxfpw">
     <states xmi:type="PseudoState" xmi:id="_EGgigOpmEeK_pvf5APxfpw" id="Entry State Pointer" type="entry"/>
     <states xmi:type="State" xmi:id="_Eomi8OpmEeK_pvf5APxfpw" id="Uninfected" onEnter="" uuid="_EonKAOpmEeK_pvf5APxfpw"/>
     <states xmi:type="State" xmi:id="_Fu4OgOpmEeK_pvf5APxfpw" id="Infected" uuid="_Fu4OgepmEeK_pvf5APxfpw"/>
@@ -11,7 +11,7 @@
     <transitions xmi:type="Transition" xmi:id="_IMTTMOpmEeK_pvf5APxfpw" from="_Fu4OgOpmEeK_pvf5APxfpw" to="_1CHg0OpmEeK_pvf5APxfpw" triggerType="timed" messageCheckerClass="Object" id="Transition 5" triggerTimedCode="5" uuid="_IMTTMepmEeK_pvf5APxfpw"/>
     <transitions xmi:type="Transition" xmi:id="_KhawcOpmEeK_pvf5APxfpw" from="_Eomi8OpmEeK_pvf5APxfpw" to="_Eomi8OpmEeK_pvf5APxfpw" onTransition="agent.move()" messageCheckerClass="Object" id="Transition 6" uuid="_KhawcepmEeK_pvf5APxfpw" selfTransition="true"/>
     <transitions xmi:type="Transition" xmi:id="_rKvzEOpmEeK_pvf5APxfpw" from="_Fu4OgOpmEeK_pvf5APxfpw" to="_Fu4OgOpmEeK_pvf5APxfpw" onTransition="agent.run()" messageCheckerClass="Object" id="Transition 7" uuid="_rKwaIOpmEeK_pvf5APxfpw" selfTransition="true"/>
-    <transitions xmi:type="Transition" xmi:id="_wBVukOpmEeK_pvf5APxfpw" from="_1CHg0OpmEeK_pvf5APxfpw" to="_Eomi8OpmEeK_pvf5APxfpw" outOfBranch="true" triggerType="condition" triggerConditionCode="import repast.simphony.random.RandomHelper&#xA;&#xA;RandomHelper.nextDouble() &lt; params.getDouble(&quot;immunity&quot;)" messageCheckerClass="Object" id="Transition 8" uuid="_wBWVoOpmEeK_pvf5APxfpw"/>
+    <transitions xmi:type="Transition" xmi:id="_wBVukOpmEeK_pvf5APxfpw" from="_1CHg0OpmEeK_pvf5APxfpw" to="_Eomi8OpmEeK_pvf5APxfpw" outOfBranch="true" triggerType="condition" triggerConditionCode="return nextDouble() &lt; params.getDouble(&quot;immunity&quot;);" messageCheckerClass="Object" id="Transition 8" uuid="_wBWVoOpmEeK_pvf5APxfpw"/>
     <transitions xmi:type="Transition" xmi:id="_2mIRQOpmEeK_pvf5APxfpw" from="_1CHg0OpmEeK_pvf5APxfpw" to="_Gsd4IOpmEeK_pvf5APxfpw" outOfBranch="true" defaultTransition="true" triggerType="condition" messageCheckerClass="Object" id="Transition 10" uuid="_2mI4UOpmEeK_pvf5APxfpw"/>
   </StateMachine>
   <notation:Diagram xmi:id="_DKkesOpmEeK_pvf5APxfpw" type="Statechart" element="_DJwmYOpmEeK_pvf5APxfpw" name="statechart.rsc" measurementUnit="Pixel">
@@ -27,7 +27,7 @@
       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Fu5coepmEeK_pvf5APxfpw" x="312" y="120"/>
     </children>
     <children xmi:type="notation:Shape" xmi:id="_GsftUOpmEeK_pvf5APxfpw" type="2008" element="_Gsd4IOpmEeK_pvf5APxfpw" fontName="Lucida Grande">
-      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_GsftUepmEeK_pvf5APxfpw" x="468" y="132"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_GsftUepmEeK_pvf5APxfpw" x="480" y="130"/>
     </children>
     <children xmi:type="notation:Shape" xmi:id="_1CJWAOpmEeK_pvf5APxfpw" type="2006" element="_1CHg0OpmEeK_pvf5APxfpw" fontName="Lucida Grande">
       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_1CJWAepmEeK_pvf5APxfpw" x="384" y="128"/>

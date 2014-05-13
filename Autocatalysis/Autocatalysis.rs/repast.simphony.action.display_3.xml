@@ -1,6 +1,6 @@
-<repast.simphony.visualization.engine.DefaultDisplayDescriptor>
+<repast.simphony.visualization.engine.CartesianDisplayDescriptor>
   <name>Resource 3D</name>
-  <type>THREE_D</type>
+  <type>3D</type>
   <styles/>
   <editedStyles/>
   <netStyles/>
@@ -12,10 +12,9 @@
     <priority>-Infinity</priority>
     <duration>-1.0</duration>
     <frequency>REPEAT</frequency>
+    <hashCode>0</hashCode>
   </schedParams>
   <layoutClassName>foo.bar.baz</layoutClassName>
-  <valueLayerStyleName>repast.simphony.visualization.editedStyle.EditedValueLayerStyle3D</valueLayerStyleName>
-  <valueLayerEditedStyleName>Resource.style_1.xml</valueLayerEditedStyleName>
   <layoutProjection>Grid</layoutProjection>
   <layoutInterval>0</layoutInterval>
   <layerOrder/>
@@ -23,12 +22,9 @@
     <repast.simphony.scenario.data.ProjectionData>
       <id>Grid</id>
       <attributes/>
-      <type>GRID</type>
+      <type>grid</type>
     </repast.simphony.scenario.data.ProjectionData>
   </projections>
-  <valueLayers>
-    <string>Resource</string>
-  </valueLayers>
   <visualizationProperties class="repast.simphony.visualization.UnitSizeLayoutProperties">
     <unitSize>0.06</unitSize>
   </visualizationProperties>
@@ -60,4 +56,9 @@
     </entry>
   </projectionDescriptors>
   <props/>
-</repast.simphony.visualization.engine.DefaultDisplayDescriptor>
+  <valueLayerStyleName>repast.simphony.visualization.editedStyle.EditedValueLayerStyle3D</valueLayerStyleName>
+  <valueLayerEditedStyleName>Resource.style_1.xml</valueLayerEditedStyleName>
+  <valueLayers>
+    <string>Resource</string>
+  </valueLayers>
+</repast.simphony.visualization.engine.CartesianDisplayDescriptor>

@@ -18,19 +18,8 @@
     <alpha>255</alpha>
   </gridLineColor>
   <showGrid>true</showGrid>
+  <showLegend>true</showLegend>
   <seriesIds>
-    <entry>
-      <string>AvgSpecies</string>
-      <SeriesData>
-        <label>Avg Species</label>
-        <color>
-          <red>255</red>
-          <green>0</green>
-          <blue>0</blue>
-          <alpha>255</alpha>
-        </color>
-      </SeriesData>
-    </entry>
     <entry>
       <string>AvgResource</string>
       <SeriesData>
@@ -43,6 +32,19 @@
         </color>
       </SeriesData>
     </entry>
+    <entry>
+      <string>AvgSpecies</string>
+      <SeriesData>
+        <label>Avg Species</label>
+        <color>
+          <red>255</red>
+          <green>0</green>
+          <blue>0</blue>
+          <alpha>255</alpha>
+        </color>
+      </SeriesData>
+    </entry>
   </seriesIds>
+  <dataValueIds/>
   <plotRangeLength>-1</plotRangeLength>
 </repast.simphony.chart2.engine.TimeSeriesChartDescriptor>

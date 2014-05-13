@@ -1,6 +1,6 @@
-<repast.simphony.visualization.engine.DefaultDisplayDescriptor>
+<repast.simphony.visualization.engine.CartesianDisplayDescriptor>
   <name>Space Display</name>
-  <type>TWO_D</type>
+  <type>2D</type>
   <styles>
     <entry>
       <string>jzombies.Human</string>
@@ -41,7 +41,7 @@
     <pType>LAST</pType>
     <duration>-1.0</duration>
     <frequency>REPEAT</frequency>
-    <hashCode>-228089881</hashCode>
+    <hashCode>234111100</hashCode>
   </schedParams>
   <layoutClassName>foo.bar.baz</layoutClassName>
   <layoutProjection>space</layoutProjection>
@@ -60,15 +60,14 @@
     <repast.simphony.scenario.data.ProjectionData>
       <id>space</id>
       <attributes/>
-      <type>CONTINUOUS_SPACE</type>
+      <type>continuous space</type>
     </repast.simphony.scenario.data.ProjectionData>
     <repast.simphony.scenario.data.ProjectionData>
       <id>infection network</id>
       <attributes/>
-      <type>NETWORK</type>
+      <type>network</type>
     </repast.simphony.scenario.data.ProjectionData>
   </projections>
-  <valueLayers/>
   <visualizationProperties class="repast.simphony.visualization.UnitSizeLayoutProperties">
     <unitSize>15.0</unitSize>
   </visualizationProperties>
@@ -113,4 +112,5 @@
     <blue>255</blue>
     <alpha>255</alpha>
   </backgroundColor>
-</repast.simphony.visualization.engine.DefaultDisplayDescriptor>
+  <valueLayers/>
+</repast.simphony.visualization.engine.CartesianDisplayDescriptor>

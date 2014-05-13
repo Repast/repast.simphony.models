@@ -1,11 +1,16 @@
-<repast.simphony.visualization.engine.DefaultDisplayDescriptor>
-  <type>THREE_D</type>
+<repast.simphony.visualization.engine.CartesianDisplayDescriptor>
+  <name>A Display</name>
+  <type>3D</type>
   <styles>
     <entry>
       <string>SolarSystem.Starfield</string>
       <string>SolarSystem.StarFieldStyle3D</string>
     </entry>
-		<entry>
+    <entry>
+      <string>SolarSystem.Moon</string>
+      <string>SolarSystem.MoonStyle3D</string>
+    </entry>
+    <entry>
       <string>SolarSystem.Star</string>
       <string>SolarSystem.StarStyle3D</string>
     </entry>
@@ -13,12 +18,10 @@
       <string>SolarSystem.Planet</string>
       <string>SolarSystem.GlobeStyle3D</string>
     </entry>
-		<entry>
-      <string>SolarSystem.Moon</string>
-      <string>SolarSystem.MoonStyle3D</string>
-    </entry>
   </styles>
+  <editedStyles/>
   <netStyles/>
+  <editedNetStyles/>
   <frequency>ON_MOVE</frequency>
   <schedParams>
     <start>1.0</start>
@@ -26,18 +29,19 @@
     <priority>-Infinity</priority>
     <duration>-1.0</duration>
     <frequency>REPEAT</frequency>
+    <hashCode>0</hashCode>
   </schedParams>
   <layoutClassName>foo.bar.baz</layoutClassName>
   <layoutProjection>Universe</layoutProjection>
   <layoutInterval>0</layoutInterval>
+  <layerOrder/>
   <projections>
     <repast.simphony.scenario.data.ProjectionData>
       <id>Universe</id>
       <attributes/>
-      <type>CONTINUOUS_SPACE</type>
+      <type>continuous space</type>
     </repast.simphony.scenario.data.ProjectionData>
   </projections>
-  <valueLayers/>
   <visualizationProperties class="repast.simphony.visualization.UnitSizeLayoutProperties">
     <unitSize>0.06</unitSize>
   </visualizationProperties>
@@ -51,12 +55,12 @@
             <string>repast.simphony.visualization.continuous.ContinuousDecorator</string>
             <map>
               <entry>
-                <string>SHOW</string>
-                <boolean>false</boolean>
-              </entry>
-              <entry>
                 <string>UNIT_SIZE</string>
                 <float>0.06</float>
+              </entry>
+              <entry>
+                <string>SHOW</string>
+                <boolean>false</boolean>
               </entry>
               <entry>
                 <string>COLOR</string>
@@ -68,6 +72,6 @@
       </repast.simphony.visualization.continuous.ContinuousProjectionDescriptor>
     </entry>
   </projectionDescriptors>
-	<props/>
-  <name>A Display</name>
-</repast.simphony.visualization.engine.DefaultDisplayDescriptor>
+  <props/>
+  <valueLayers/>
+</repast.simphony.visualization.engine.CartesianDisplayDescriptor>

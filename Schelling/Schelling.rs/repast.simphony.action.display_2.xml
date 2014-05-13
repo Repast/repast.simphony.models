@@ -1,12 +1,15 @@
-<repast.simphony.visualization.engine.DefaultDisplayDescriptor>
-  <type>THREE_D</type>
+<repast.simphony.visualization.engine.CartesianDisplayDescriptor>
+  <name>3D Display</name>
+  <type>3D</type>
   <styles>
     <entry>
       <string>Schelling.Agent</string>
       <string>Schelling.AgentStyle</string>
     </entry>
   </styles>
+  <editedStyles/>
   <netStyles/>
+  <editedNetStyles/>
   <frequency>ON_MOVE</frequency>
   <schedParams>
     <start>1.0</start>
@@ -14,24 +17,19 @@
     <priority>-Infinity</priority>
     <duration>-1.0</duration>
     <frequency>REPEAT</frequency>
+    <hashCode>0</hashCode>
   </schedParams>
   <layoutClassName>foo.bar.baz</layoutClassName>
   <layoutProjection>Grid</layoutProjection>
   <layoutInterval>0</layoutInterval>
-  <layerOrder>
-    <entry>
-      <string>Schelling.Agent</string>
-      <int>0</int>
-    </entry>
-  </layerOrder>
+  <layerOrder/>
   <projections>
     <repast.simphony.scenario.data.ProjectionData>
       <id>Grid</id>
       <attributes/>
-      <type>GRID</type>
+      <type>grid</type>
     </repast.simphony.scenario.data.ProjectionData>
   </projections>
-  <valueLayers/>
   <visualizationProperties class="repast.simphony.visualization.UnitSizeLayoutProperties">
     <unitSize>0.06</unitSize>
   </visualizationProperties>
@@ -45,12 +43,12 @@
             <string>repast.simphony.visualization.grid.GridDecorator</string>
             <map>
               <entry>
-                <string>SHOW</string>
-                <boolean>false</boolean>
-              </entry>
-              <entry>
                 <string>UNIT_SIZE</string>
                 <float>0.06</float>
+              </entry>
+              <entry>
+                <string>SHOW</string>
+                <boolean>false</boolean>
               </entry>
               <entry>
                 <string>COLOR</string>
@@ -62,6 +60,6 @@
       </repast.simphony.visualization.grid.GridProjectionDescriptor>
     </entry>
   </projectionDescriptors>
-	<props/>
-  <name>3D Display</name>
-</repast.simphony.visualization.engine.DefaultDisplayDescriptor>
+  <props/>
+  <valueLayers/>
+</repast.simphony.visualization.engine.CartesianDisplayDescriptor>

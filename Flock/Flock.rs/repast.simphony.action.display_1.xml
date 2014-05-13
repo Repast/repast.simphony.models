@@ -1,6 +1,6 @@
-<repast.simphony.visualization.engine.DefaultDisplayDescriptor>
+<repast.simphony.visualization.engine.CartesianDisplayDescriptor>
   <name>A Display</name>
-  <type>THREE_D</type>
+  <type>3D</type>
   <styles>
     <entry>
       <string>flock.Predator</string>
@@ -31,29 +31,19 @@
     <pType>LAST</pType>
     <duration>-1.0</duration>
     <frequency>REPEAT</frequency>
-    <hashCode>760462669</hashCode>
+    <hashCode>-1970632004</hashCode>
   </schedParams>
   <layoutClassName>foo.bar.baz</layoutClassName>
   <layoutProjection>Space</layoutProjection>
   <layoutInterval>0</layoutInterval>
-  <layerOrder>
-    <entry>
-      <string>flock.Predator</string>
-      <int>1</int>
-    </entry>
-    <entry>
-      <string>flock.Prey</string>
-      <int>0</int>
-    </entry>
-  </layerOrder>
+  <layerOrder/>
   <projections>
     <repast.simphony.scenario.data.ProjectionData>
       <id>Space</id>
       <attributes/>
-      <type>CONTINUOUS_SPACE</type>
+      <type>continuous space</type>
     </repast.simphony.scenario.data.ProjectionData>
   </projections>
-  <valueLayers/>
   <visualizationProperties class="repast.simphony.visualization.UnitSizeLayoutProperties">
     <unitSize>0.01</unitSize>
   </visualizationProperties>
@@ -91,4 +81,5 @@
     <blue>0</blue>
     <alpha>255</alpha>
   </backgroundColor>
-</repast.simphony.visualization.engine.DefaultDisplayDescriptor>
+  <valueLayers/>
+</repast.simphony.visualization.engine.CartesianDisplayDescriptor>

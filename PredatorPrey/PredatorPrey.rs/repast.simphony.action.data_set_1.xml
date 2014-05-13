@@ -10,7 +10,9 @@
     <priority>-Infinity</priority>
     <duration>-1.0</duration>
     <frequency>REPEAT</frequency>
+    <hashCode>0</hashCode>
   </scheduleParams>
+  <atEnd>false</atEnd>
   <methodDataSources class="linked-hash-map"/>
   <countSources class="linked-hash-map">
     <entry>

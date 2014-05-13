@@ -1,6 +1,6 @@
-<repast.simphony.visualization.engine.DefaultDisplayDescriptor>
+<repast.simphony.visualization.engine.CartesianDisplayDescriptor>
   <name>ReLogo Default Display</name>
-  <type>TWO_D</type>
+  <type>2D</type>
   <styles>
     <entry>
       <string>repast.simphony.relogo.BaseTurtle</string>
@@ -78,6 +78,7 @@
     <start>1.0</start>
     <interval>1.0</interval>
     <priority>-Infinity</priority>
+    <pType>LAST</pType>
     <duration>-1.0</duration>
     <frequency>REPEAT</frequency>
     <hashCode>0</hashCode>
@@ -103,50 +104,49 @@
     <repast.simphony.scenario.data.ProjectionData>
       <id>Space2d</id>
       <attributes/>
-      <type>CONTINUOUS_SPACE</type>
+      <type>continuous space</type>
     </repast.simphony.scenario.data.ProjectionData>
     <repast.simphony.scenario.data.ProjectionData>
       <id>DirectedLinks</id>
       <attributes/>
-      <type>NETWORK</type>
+      <type>network</type>
     </repast.simphony.scenario.data.ProjectionData>
     <repast.simphony.scenario.data.ProjectionData>
       <id>UndirectedLinks</id>
       <attributes/>
-      <type>NETWORK</type>
+      <type>network</type>
     </repast.simphony.scenario.data.ProjectionData>
     <repast.simphony.scenario.data.ProjectionData>
       <id>Tracking Network</id>
       <attributes/>
-      <type>NETWORK</type>
+      <type>network</type>
     </repast.simphony.scenario.data.ProjectionData>
     <repast.simphony.scenario.data.ProjectionData>
       <id>UserLink</id>
       <attributes/>
-      <type>NETWORK</type>
+      <type>network</type>
     </repast.simphony.scenario.data.ProjectionData>
     <repast.simphony.scenario.data.ProjectionData>
       <id>Infection</id>
       <attributes/>
-      <type>NETWORK</type>
+      <type>network</type>
     </repast.simphony.scenario.data.ProjectionData>
   </projections>
-  <valueLayers/>
   <visualizationProperties class="repast.simphony.visualization.UnitSizeLayoutProperties">
     <unitSize>15.0</unitSize>
   </visualizationProperties>
   <projectionDescriptors>
     <entry>
-      <string>DirectedLinks</string>
+      <string>UserLink</string>
       <repast.simphony.visualization.engine.DefaultProjectionDescriptor>
-        <proj reference="../../../../projections/repast.simphony.scenario.data.ProjectionData[2]"/>
+        <proj reference="../../../../projections/repast.simphony.scenario.data.ProjectionData[5]"/>
         <props/>
       </repast.simphony.visualization.engine.DefaultProjectionDescriptor>
     </entry>
     <entry>
-      <string>UserLink</string>
+      <string>DirectedLinks</string>
       <repast.simphony.visualization.engine.DefaultProjectionDescriptor>
-        <proj reference="../../../../projections/repast.simphony.scenario.data.ProjectionData[5]"/>
+        <proj reference="../../../../projections/repast.simphony.scenario.data.ProjectionData[2]"/>
         <props/>
       </repast.simphony.visualization.engine.DefaultProjectionDescriptor>
     </entry>
@@ -204,4 +204,5 @@
     <blue>255</blue>
     <alpha>255</alpha>
   </backgroundColor>
-</repast.simphony.visualization.engine.DefaultDisplayDescriptor>
+  <valueLayers/>
+</repast.simphony.visualization.engine.CartesianDisplayDescriptor>

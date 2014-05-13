@@ -1,6 +1,6 @@
-<repast.simphony.visualization.engine.DefaultDisplayDescriptor>
+<repast.simphony.visualization.engine.CartesianDisplayDescriptor>
   <name>3D World</name>
-  <type>THREE_D</type>
+  <type>3D</type>
   <styles>
     <entry>
       <string>PredatorPrey.Sheep</string>
@@ -15,7 +15,9 @@
       <string>PredatorPrey.GrassNodeStyle</string>
     </entry>
   </styles>
+  <editedStyles/>
   <netStyles/>
+  <editedNetStyles/>
   <frequency>ON_MOVE</frequency>
   <schedParams>
     <start>1.0</start>
@@ -23,18 +25,19 @@
     <priority>-Infinity</priority>
     <duration>-1.0</duration>
     <frequency>REPEAT</frequency>
+    <hashCode>0</hashCode>
   </schedParams>
   <layoutClassName>foo.bar.baz</layoutClassName>
   <layoutProjection>Continuous Space</layoutProjection>
   <layoutInterval>0</layoutInterval>
+  <layerOrder/>
   <projections>
     <repast.simphony.scenario.data.ProjectionData>
       <id>Continuous Space</id>
       <attributes/>
-      <type>CONTINUOUS_SPACE</type>
+      <type>continuous space</type>
     </repast.simphony.scenario.data.ProjectionData>
   </projections>
-  <valueLayers/>
   <visualizationProperties class="repast.simphony.visualization.UnitSizeLayoutProperties">
     <unitSize>0.06</unitSize>
   </visualizationProperties>
@@ -66,4 +69,5 @@
     </entry>
   </projectionDescriptors>
   <props/>
-</repast.simphony.visualization.engine.DefaultDisplayDescriptor>
+  <valueLayers/>
+</repast.simphony.visualization.engine.CartesianDisplayDescriptor>

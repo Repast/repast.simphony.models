@@ -1,6 +1,6 @@
-<repast.simphony.visualization.engine.DefaultDisplayDescriptor>
+<repast.simphony.visualization.engine.CartesianDisplayDescriptor>
   <name>HeatBug Display</name>
-  <type>TWO_D</type>
+  <type>2D</type>
   <styles>
     <entry>
       <string>repast.model.heatbugs.Heatbug</string>
@@ -20,11 +20,12 @@
     <start>1.0</start>
     <interval>1.0</interval>
     <priority>-Infinity</priority>
+    <pType>LAST</pType>
     <duration>-1.0</duration>
     <frequency>REPEAT</frequency>
+    <hashCode>0</hashCode>
   </schedParams>
   <layoutClassName>foo.bar.baz</layoutClassName>
-  <valueLayerStyleName>repast.model.heatbugs.HeatStyle</valueLayerStyleName>
   <layoutProjection>Bug Grid</layoutProjection>
   <layoutInterval>0</layoutInterval>
   <layerOrder>
@@ -37,12 +38,9 @@
     <repast.simphony.scenario.data.ProjectionData>
       <id>Bug Grid</id>
       <attributes/>
-      <type>GRID</type>
+      <type>grid</type>
     </repast.simphony.scenario.data.ProjectionData>
   </projections>
-  <valueLayers>
-    <string>Heat Layer</string>
-  </valueLayers>
   <visualizationProperties class="repast.simphony.visualization.UnitSizeLayoutProperties">
     <unitSize>10.0</unitSize>
   </visualizationProperties>
@@ -80,4 +78,8 @@
     <blue>255</blue>
     <alpha>255</alpha>
   </backgroundColor>
-</repast.simphony.visualization.engine.DefaultDisplayDescriptor>
+  <valueLayerStyleName>repast.model.heatbugs.HeatStyle</valueLayerStyleName>
+  <valueLayers>
+    <string>Heat Layer</string>
+  </valueLayers>
+</repast.simphony.visualization.engine.CartesianDisplayDescriptor>

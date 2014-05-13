@@ -1,12 +1,15 @@
-<repast.simphony.visualization.engine.DefaultDisplayDescriptor>
-  <type>TWO_D</type>
+<repast.simphony.visualization.engine.CartesianDisplayDescriptor>
+  <name>2D Display</name>
+  <type>2D</type>
   <styles>
     <entry>
       <string>Schelling.Agent</string>
       <string>Schelling.AgentStyle2D</string>
     </entry>
   </styles>
+  <editedStyles/>
   <netStyles/>
+  <editedNetStyles/>
   <frequency>ON_MOVE</frequency>
   <schedParams>
     <start>1.0</start>
@@ -14,6 +17,7 @@
     <priority>-Infinity</priority>
     <duration>-1.0</duration>
     <frequency>REPEAT</frequency>
+    <hashCode>0</hashCode>
   </schedParams>
   <layoutClassName>foo.bar.baz</layoutClassName>
   <layoutProjection>Grid</layoutProjection>
@@ -22,11 +26,10 @@
   <projections>
     <repast.simphony.scenario.data.ProjectionData>
       <id>Grid</id>
-			 <attributes/>
-      <type>GRID</type>
+      <attributes/>
+      <type>grid</type>
     </repast.simphony.scenario.data.ProjectionData>
   </projections>
-  <valueLayers/>
   <visualizationProperties class="repast.simphony.visualization.UnitSizeLayoutProperties">
     <unitSize>10.0</unitSize>
   </visualizationProperties>
@@ -34,18 +37,18 @@
     <entry>
       <string>Grid</string>
       <repast.simphony.visualization.grid.GridProjectionDescriptor>
-       <proj reference="../../../../projections/repast.simphony.scenario.data.ProjectionData"/>
+        <proj reference="../../../../projections/repast.simphony.scenario.data.ProjectionData"/>
         <props>
           <entry>
             <string>repast.simphony.visualization.grid.GridDecorator</string>
             <map>
               <entry>
-                <string>SHOW</string>
-                <boolean>false</boolean>
-              </entry>
-              <entry>
                 <string>UNIT_SIZE</string>
                 <float>10.0</float>
+              </entry>
+              <entry>
+                <string>SHOW</string>
+                <boolean>false</boolean>
               </entry>
               <entry>
                 <string>COLOR</string>
@@ -57,6 +60,6 @@
       </repast.simphony.visualization.grid.GridProjectionDescriptor>
     </entry>
   </projectionDescriptors>
-	<props/>
-  <name>2D Display</name>
-</repast.simphony.visualization.engine.DefaultDisplayDescriptor>
+  <props/>
+  <valueLayers/>
+</repast.simphony.visualization.engine.CartesianDisplayDescriptor>

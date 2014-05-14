@@ -20,7 +20,7 @@ this(name, null);
 }
 
 public Epidemic(String name, String[] args) {
-super(name, args);
+super(name,true, args);
 
 sdFunctions = new SDFunctionsWithXLSColt(this);
 message = new MessageJava();
@@ -29,6 +29,7 @@ memory = new MemoryEpidemic();
 
 
 timeSeriesData.setNativeDataTypes(true);
+oneTime();
 }
 
 public MemoryEpidemic getMemory() {
@@ -174,20 +175,6 @@ logit("memory.SAVEPER", getINITIALTIME(), (Double) params.getValue("SAVEPER"),me
 }
 {
 /*
-	Equation: Healthy= INTEG(-getting sick,initial susceptible)
-
-	Units:people
-
-	Comment: None Provided
-
-*/
-double _t0 = 0.0;
-_t0 = sdFunctions.INTEG("Healthy",memory.Healthy,time,timeStep,(- (memory.getting_sick)),(memory.initial_susceptible));
-memory.Healthy = _t0;
-/* log6 */logit("memory.Healthy",time,_t0,memory.get_SAVEPER());
-}
-{
-/*
 	Equation: Infected= INTEG(getting sick,initial infected)
 
 	Units:people
@@ -196,9 +183,23 @@ memory.Healthy = _t0;
 
 */
 double _t0 = 0.0;
-_t0 = sdFunctions.INTEG("Infected",memory.Infected,time,timeStep,(memory.getting_sick),(memory.initial_infected));
+_t0 = sdFunctions.INTEG("Infected",memory.Infected,time,timeStep,(time == 0.0 ? 0.0 : (memory.getting_sick) ),(memory.initial_infected));
 memory.Infected = _t0;
 /* log6 */logit("memory.Infected",time,_t0,memory.get_SAVEPER());
+}
+{
+/*
+	Equation: Healthy= INTEG(-getting sick,initial susceptible)
+
+	Units:people
+
+	Comment: None Provided
+
+*/
+double _t0 = 0.0;
+_t0 = sdFunctions.INTEG("Healthy",memory.Healthy,time,timeStep,(time == 0.0 ? 0.0 : (- (memory.getting_sick)) ),(memory.initial_susceptible));
+memory.Healthy = _t0;
+/* log6 */logit("memory.Healthy",time,_t0,memory.get_SAVEPER());
 }
 }
 
@@ -226,20 +227,6 @@ protected void repeated0(double time, double timeStep) {
 
 {
 /*
-	Equation: Healthy= INTEG(-getting sick,initial susceptible)
-
-	Units:people
-
-	Comment: None Provided
-
-*/
-double _t0 = 0.0;
-_t0 = sdFunctions.INTEG("Healthy",memory.Healthy,time,timeStep,(- (memory.getting_sick)),(memory.initial_susceptible));
-memory.Healthy = _t0;
-/* log6 */logit("memory.Healthy",time,_t0,memory.get_SAVEPER());
-}
-{
-/*
 	Equation: Infected= INTEG(getting sick,initial infected)
 
 	Units:people
@@ -248,9 +235,23 @@ memory.Healthy = _t0;
 
 */
 double _t0 = 0.0;
-_t0 = sdFunctions.INTEG("Infected",memory.Infected,time,timeStep,(memory.getting_sick),(memory.initial_infected));
+_t0 = sdFunctions.INTEG("Infected",memory.Infected,time,timeStep,(time == 0.0 ? 0.0 : (memory.getting_sick) ),(memory.initial_infected));
 memory.Infected = _t0;
 /* log6 */logit("memory.Infected",time,_t0,memory.get_SAVEPER());
+}
+{
+/*
+	Equation: Healthy= INTEG(-getting sick,initial susceptible)
+
+	Units:people
+
+	Comment: None Provided
+
+*/
+double _t0 = 0.0;
+_t0 = sdFunctions.INTEG("Healthy",memory.Healthy,time,timeStep,(time == 0.0 ? 0.0 : (- (memory.getting_sick)) ),(memory.initial_susceptible));
+memory.Healthy = _t0;
+/* log6 */logit("memory.Healthy",time,_t0,memory.get_SAVEPER());
 }
 {
 /*
@@ -326,7 +327,6 @@ memory.getting_sick = _t0;
 
 protected void repeated(double time, double timeStep) {
 
-  message.println("repeated: "+time+" "+timeStep);
   data.setCurrentTime(time);
   setValue("Time", time);
   timeSeriesData.advanceTime(data, time);
@@ -334,6 +334,40 @@ protected void repeated(double time, double timeStep) {
    repeated0(time, timeStep);
 }
 
+public double getContacts_between_infected_and_unaffected() {return memory.Contacts_between_infected_and_unaffected;}
+public void   setContacts_between_infected_and_unaffected(double value) {memory.Contacts_between_infected_and_unaffected = value;}
+public double getFINAL_TIME() {return memory.FINAL_TIME;}
+public void   setFINAL_TIME(double value) {memory.FINAL_TIME = value;}
+public double getFraction_of_population_infected() {return memory.Fraction_of_population_infected;}
+public void   setFraction_of_population_infected(double value) {memory.Fraction_of_population_infected = value;}
+public double getHealthy() {return memory.Healthy;}
+public void   setHealthy(double value) {memory.Healthy = value;}
+public double getINITIAL_TIME() {return memory.INITIAL_TIME;}
+public void   setINITIAL_TIME(double value) {memory.INITIAL_TIME = value;}
+public double getInfected() {return memory.Infected;}
+public void   setInfected(double value) {memory.Infected = value;}
+public double getNAREPLACEMENT() {return memory.NAREPLACEMENT;}
+public void   setNAREPLACEMENT(double value) {memory.NAREPLACEMENT = value;}
+public double getSAVEPER() {return memory.SAVEPER;}
+public void   setSAVEPER(double value) {memory.SAVEPER = value;}
+public double getTIME_STEP() {return memory.TIME_STEP;}
+public void   setTIME_STEP(double value) {memory.TIME_STEP = value;}
+public double getTime() {return memory.Time;}
+public void   setTime(double value) {memory.Time = value;}
+public double getFraction_infected_from_contact() {return memory.fraction_infected_from_contact;}
+public void   setFraction_infected_from_contact(double value) {memory.fraction_infected_from_contact = value;}
+public double getGetting_sick() {return memory.getting_sick;}
+public void   setGetting_sick(double value) {memory.getting_sick = value;}
+public double getInitial_infected() {return memory.initial_infected;}
+public void   setInitial_infected(double value) {memory.initial_infected = value;}
+public double getInitial_susceptible() {return memory.initial_susceptible;}
+public void   setInitial_susceptible(double value) {memory.initial_susceptible = value;}
+public double getRate_of_potential_infectious_contacts() {return memory.rate_of_potential_infectious_contacts;}
+public void   setRate_of_potential_infectious_contacts(double value) {memory.rate_of_potential_infectious_contacts = value;}
+public double getRate_that_people_contact_other_people() {return memory.rate_that_people_contact_other_people;}
+public void   setRate_that_people_contact_other_people(double value) {memory.rate_that_people_contact_other_people = value;}
+public double getTotal_population() {return memory.total_population;}
+public void   setTotal_population(double value) {memory.total_population = value;}
 protected void updateTimeSeriesReferences(double time) {
 
 }

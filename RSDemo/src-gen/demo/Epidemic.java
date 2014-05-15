@@ -78,7 +78,7 @@ logit("memory.NAREPLACEMENT", getINITIALTIME(), 0.0000001,memory.get_SAVEPER());
 logit("memory.FINAL_TIME", getINITIALTIME(), (Double) params.getValue("FINAL_TIME"),memory.get_SAVEPER());
 }
 /*
-	Equation: rate that people contact other people=5
+	Equation: rate that people contact other people=2
 
 	Units:1/day
 

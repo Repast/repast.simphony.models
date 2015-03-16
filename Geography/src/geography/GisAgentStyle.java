@@ -186,4 +186,10 @@ public class GisAgentStyle implements MarkStyle<GisAgent>{
 		
 		return lineMaterial;
 	}
+
+	@Override
+	public Offset getIconOffset(GisAgent obj) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

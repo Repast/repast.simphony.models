@@ -4,10 +4,10 @@
 
   <skipIfNotSupported/>
   
-  <programGroup defaultName="Demo" location="StartMenu"/>
+  <programGroup defaultName="RSDemo" location="StartMenu"/>
   
   <shortcut
-     name="Demo"
+     name="RSDemo"
      programGroup="yes"
      desktop="no"
      applications="no"
@@ -17,7 +17,7 @@
      commandLine=""
      workingDirectory="$INSTALL_PATH"
      description="Model"
-     iconFile="$INSTALL_PATH\Demo\icons\model.bmp"
+     iconFile="$INSTALL_PATH\RSDemo\icons\model.bmp"
      iconIndex="0"
      initialState="noShow">
      <createForPack name="Model"/>
@@ -30,7 +30,7 @@
      applications="no"
      startMenu="no"
      startup="no"
-     target="$INSTALL_PATH\Demo\docs\index.html"
+     target="$INSTALL_PATH\RSDemo\docs\index.html"
      commandLine=""
 	 iconFile="%SystemRoot%\system32\SHELL32.dll"
      iconIndex="23" 
@@ -40,7 +40,7 @@
   </shortcut>
   
   <shortcut
-     name="Demo Uninstaller"
+     name="RSDemo Uninstaller"
      programGroup="yes"
      desktop="no"
      applications="no"

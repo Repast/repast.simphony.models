@@ -1,6 +1,3 @@
-/**
- * 
- */
 package jzombies;
 
 import java.util.List;
@@ -31,13 +28,17 @@ public class Human {
 	private Grid<Object> grid;
 	private int energy, startingEnergy;
 	
-	@ProbedProperty(displayName="Disease Statechart")
+	@ProbedProperty(displayName="Biter")
+	private Zombie biter;	// the zombie, if any, that bites this human
 	
-	
-	// the zombie, if any, that bites this human
-	private Zombie biter;
 	@ProbedProperty(displayName="DiseaseStatechart")
 	DiseaseStatechart diseaseStatechart = DiseaseStatechart.createStateChart(this, 0);
+	
+	public String getDiseaseStatechartState(){
+		if (diseaseStatechart == null) return "";
+		Object result = diseaseStatechart.getCurrentSimpleState();
+		return result == null ? "" : result.toString();
+	}
 
 	public Human(ContinuousSpace<Object> space, Grid<Object> grid, int energy) {
 		this.space = space;

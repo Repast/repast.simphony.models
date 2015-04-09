@@ -1,4 +1,4 @@
-<context id="Heatbugs" class="repast.model.heatbugs.HeatbugContext">
+<context id="Heatbugs" class="repast.model.heatbugs.HeatbugContext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://repast.org/scenario/context">
 
 	<attribute id="maxIdealTemp" display_name="Maximum Ideal Temp" value="17000" type="int" />
 	<attribute id="initialNumAgents" display_name="Number of Agents" value="100" type="int" />

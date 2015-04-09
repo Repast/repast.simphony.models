@@ -1,4 +1,4 @@
-<context id="All Traps">
+<context id="All Traps" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://repast.org/scenario/context">
 	<attribute id="width" type="int" display_name="Grid Width" value="20" />
 	<attribute id="height" type="int" display_name="Grid Height" value="20" />
 	

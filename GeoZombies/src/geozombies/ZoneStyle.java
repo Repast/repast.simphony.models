@@ -22,6 +22,10 @@ public class ZoneStyle implements SurfaceShapeStyle<ZoneAgent>{
 
 	@Override
 	public Color getFillColor(ZoneAgent zone) {
+		
+		if (zone.isActive()) 
+			return Color.RED;
+		
 		return Color.CYAN;
 	}
 
@@ -35,10 +39,9 @@ public class ZoneStyle implements SurfaceShapeStyle<ZoneAgent>{
 	 */
 	@Override
 	public Color getLineColor(ZoneAgent zone) {
-		if (zone.getWaterFlowRate() > 0)
+		
 			return Color.blue;
-		else
-			return Color.black;
+		
 	}
 
 	@Override

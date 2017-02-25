@@ -4,7 +4,7 @@
 
 <installation version="1.0">
     <info>
-      <appname>Geography</appname>
+      <appname>GeoZombies</appname>
 			<appversion>1.0</appversion>
       <summarylogfilepath>$INSTALL_PATH/installinfo/Summary.htm</summarylogfilepath>
     </info>
@@ -21,6 +21,7 @@
 		<modifier key="filler3XGap" value="10"/>
     </guiprefs>
     <native type="izpack" name="ShellLink.dll"/>
+    <native type="izpack" name="ShellLink_x64.dll" /> 
     <variables>
     	<variable name="DesktopShortcutCheckboxEnabled" value="true"/>
     	<variable name="REPAST_VERSION" value="$REPAST_VERSION"/>
@@ -106,6 +107,7 @@
         
         		<!-- Repast comppnents  -->
             <file src="$EclipsePluginsDirectory/libs.bsf_$REPAST_VERSION" targetdir="$INSTALL_PATH/repast.simphony"/>
+            <file src="$EclipsePluginsDirectory/libs.ext_$REPAST_VERSION" targetdir="$INSTALL_PATH/repast.simphony"/>
             <file src="$EclipsePluginsDirectory/libs.piccolo_$REPAST_VERSION" targetdir="$INSTALL_PATH/repast.simphony"/>
             <file src="$EclipsePluginsDirectory/repast.simphony.batch_$REPAST_VERSION" targetdir="$INSTALL_PATH/repast.simphony"/>
             <file src="$EclipsePluginsDirectory/repast.simphony.chart_$REPAST_VERSION" targetdir="$INSTALL_PATH/repast.simphony"/>
@@ -114,39 +116,37 @@
             <file src="$EclipsePluginsDirectory/repast.simphony.data.ui_$REPAST_VERSION" targetdir="$INSTALL_PATH/repast.simphony"/>
             <file src="$EclipsePluginsDirectory/repast.simphony.dataLoader_$REPAST_VERSION" targetdir="$INSTALL_PATH/repast.simphony"/>
             <file src="$EclipsePluginsDirectory/repast.simphony.dataLoader.ui_$REPAST_VERSION" targetdir="$INSTALL_PATH/repast.simphony"/>
-            <file src="$EclipsePluginsDirectory/repast.simphony.distributedBatch_$REPAST_VERSION" targetdir="$INSTALL_PATH/repast.simphony"/>
+            <file src="$EclipsePluginsDirectory/repast.simphony.distributed.batch_$REPAST_VERSION" targetdir="$INSTALL_PATH/repast.simphony"/>
+            <file src="$EclipsePluginsDirectory/repast.simphony.distributed.batch.ui_$REPAST_VERSION" targetdir="$INSTALL_PATH/repast.simphony"/>
+            
+            <!-- Need ?? -->
+            <file src="$EclipsePluginsDirectory/repast.simphony.eclipse_$REPAST_VERSION" targetdir="$INSTALL_PATH/repast.simphony"/>
+            
             <file src="$EclipsePluginsDirectory/repast.simphony.essentials_$REPAST_VERSION" targetdir="$INSTALL_PATH/repast.simphony"/>
             <file src="$EclipsePluginsDirectory/repast.simphony.freezedry_$REPAST_VERSION" targetdir="$INSTALL_PATH/repast.simphony"/>
             <file src="$EclipsePluginsDirectory/repast.simphony.gis_$REPAST_VERSION" targetdir="$INSTALL_PATH/repast.simphony"/>
-            <file src="$EclipsePluginsDirectory/repast.simphony.grass_$REPAST_VERSION" targetdir="$INSTALL_PATH/repast.simphony"/>
+            <file src="$EclipsePluginsDirectory/repast.simphony.gis.visualization_$REPAST_VERSION" targetdir="$INSTALL_PATH/repast.simphony"/>
             <file src="$EclipsePluginsDirectory/repast.simphony.groovy_$REPAST_VERSION" targetdir="$INSTALL_PATH/repast.simphony"/>
             <file src="$EclipsePluginsDirectory/repast.simphony.gui_$REPAST_VERSION" targetdir="$INSTALL_PATH/repast.simphony"/>
             <file src="$EclipsePluginsDirectory/repast.simphony.integration_$REPAST_VERSION" targetdir="$INSTALL_PATH/repast.simphony"/>
-            <file src="$EclipsePluginsDirectory/repast.simphony.iReport_$REPAST_VERSION" targetdir="$INSTALL_PATH/repast.simphony"/>
             <file src="$EclipsePluginsDirectory/repast.simphony.jasperreports_$REPAST_VERSION" targetdir="$INSTALL_PATH/repast.simphony"/>
             <file src="$EclipsePluginsDirectory/repast.simphony.jdbcfreezedryer_$REPAST_VERSION" targetdir="$INSTALL_PATH/repast.simphony"/>
             <file src="$EclipsePluginsDirectory/repast.simphony.jung_$REPAST_VERSION" targetdir="$INSTALL_PATH/repast.simphony"/>
-            <file src="$EclipsePluginsDirectory/repast.simphony.matlab_$REPAST_VERSION" targetdir="$INSTALL_PATH/repast.simphony"/>
-            <file src="$EclipsePluginsDirectory/repast.simphony.ora_$REPAST_VERSION" targetdir="$INSTALL_PATH/repast.simphony"/>
             <file src="$EclipsePluginsDirectory/repast.simphony.pajek_$REPAST_VERSION" targetdir="$INSTALL_PATH/repast.simphony"/>
             <file src="$EclipsePluginsDirectory/repast.simphony.plugin.util_$REPAST_VERSION" targetdir="$INSTALL_PATH/repast.simphony"/>
             <file src="$EclipsePluginsDirectory/repast.simphony.R_$REPAST_VERSION" targetdir="$INSTALL_PATH/repast.simphony"/>
             <file src="$EclipsePluginsDirectory/repast.simphony.relogo.runtime_$REPAST_VERSION" targetdir="$INSTALL_PATH/repast.simphony"/>
-            <file src="$EclipsePluginsDirectory/repast.simphony.relogo.ide_$REPAST_VERSION" targetdir="$INSTALL_PATH/repast.simphony"/>
             <file src="$EclipsePluginsDirectory/repast.simphony.runtime_$REPAST_VERSION" targetdir="$INSTALL_PATH/repast.simphony"/>
-            <file src="$EclipsePluginsDirectory/repast.simphony.eclipse_$REPAST_VERSION" targetdir="$INSTALL_PATH/repast.simphony"/>
             <file src="$EclipsePluginsDirectory/repast.simphony.scenario_$REPAST_VERSION" targetdir="$INSTALL_PATH/repast.simphony"/>
             <file src="$EclipsePluginsDirectory/repast.simphony.spreadsheet_$REPAST_VERSION" targetdir="$INSTALL_PATH/repast.simphony"/>
-            <file src="$EclipsePluginsDirectory/repast.simphony.distributedBatch_$REPAST_VERSION" targetdir="$INSTALL_PATH/repast.simphony"/>
-    		<!-- NOTE! -->
-            <file src="$EclipsePluginsDirectory/repast.simphony.sql_$REPAST_VERSION.jar" targetdir="$INSTALL_PATH/repast.simphony"/>
+            <file src="$EclipsePluginsDirectory/repast.simphony.sql_$REPAST_VERSION" targetdir="$INSTALL_PATH/repast.simphony"/>
+            <file src="$EclipsePluginsDirectory/repast.simphony.statecharts_$REPAST_VERSION" targetdir="$INSTALL_PATH/repast.simphony"/>
+            <file src="$EclipsePluginsDirectory/repast.simphony.statecharts.visualization_$REPAST_VERSION" targetdir="$INSTALL_PATH/repast.simphony"/>
             <file src="$EclipsePluginsDirectory/repast.simphony.systemdynamics_$REPAST_VERSION" targetdir="$INSTALL_PATH/repast.simphony"/>
-            <file src="$EclipsePluginsDirectory/repast.simphony.terracotta_$REPAST_VERSION" targetdir="$INSTALL_PATH/repast.simphony"/>
+            <file src="$EclipsePluginsDirectory/repast.simphony.systemdynamics.generator_$REPAST_VERSION" targetdir="$INSTALL_PATH/repast.simphony"/>
             
-            <!-- NOTE -->
-            <file src="$EclipsePluginsDirectory/repast.simphony.userpanel.ui_$REPAST_VERSION.jar" targetdir="$INSTALL_PATH/repast.simphony"/>
-            
-            <file src="$EclipsePluginsDirectory/repast.simphony.visad_$REPAST_VERSION" targetdir="$INSTALL_PATH/repast.simphony"/>
+            <file src="$EclipsePluginsDirectory/repast.simphony.userpanel.ui_$REPAST_VERSION" targetdir="$INSTALL_PATH/repast.simphony"/>
+           
             <file src="$EclipsePluginsDirectory/repast.simphony.visualization_$REPAST_VERSION" targetdir="$INSTALL_PATH/repast.simphony"/>
             <file src="$EclipsePluginsDirectory/repast.simphony.weka_$REPAST_VERSION" targetdir="$INSTALL_PATH/repast.simphony"/>
             <file src="$EclipsePluginsDirectory/saf.core.ui_$REPAST_VERSION" targetdir="$INSTALL_PATH/repast.simphony"/>
@@ -155,17 +155,17 @@
 
 		<pack name="Sources" required="no">
            	<description>The model source code</description>
-           	<file src="$StagingOptionalArea/src" targetdir="$INSTALL_PATH/Geography"/>
+           	<file src="$StagingOptionalArea/src" targetdir="$INSTALL_PATH/GeoZombies"/>
         </pack>
 
         <pack name="Documentation" required="no">
            	<description>The model documentation</description>
-           	<file src="$StagingOptionalArea/docs" targetdir="$INSTALL_PATH/Geography"/>
+           	<file src="$StagingOptionalArea/docs" targetdir="$INSTALL_PATH/GeoZombies"/>
         </pack>
 
 <!--        <pack name="Data" required="no">-->
 <!--            <description>The user data</description>-->
-<!--            <file src="repast.simphony.bin_and_src_$REPAST_VERSION/temp/freezedried_data" targetdir="$INSTALL_PATH/Geography"/>-->
+<!--            <file src="repast.simphony.bin_and_src_$REPAST_VERSION/temp/freezedried_data" targetdir="$INSTALL_PATH/GeoZombies"/>-->
 <!--        </pack>-->
     </packs>
 

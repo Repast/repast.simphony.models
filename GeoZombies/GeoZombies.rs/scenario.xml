@@ -2,5 +2,4 @@
 <Scenario>
 <repast.simphony.dataLoader.engine.ClassNameDataLoaderAction context="GeoZombies" file="repast.simphony.dataLoader.engine.ClassNameDataLoaderAction_0.xml" />
 <repast.simphony.action.display context="GeoZombies" file="repast.simphony.action.display_1.xml" />
-<repast.simphony.action.display context="GeoZombies" file="repast.simphony.action.display_2.xml" />
 </Scenario>

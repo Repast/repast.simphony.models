@@ -1,33 +1,18 @@
 package geozombies;
 
-import java.io.File;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-
-import org.geotools.data.shapefile.ShapefileDataStore;
-import org.geotools.data.simple.SimpleFeatureIterator;
-import org.opengis.feature.simple.SimpleFeature;
-import org.opengis.referencing.crs.CoordinateReferenceSystem;
+import com.vividsolutions.jts.geom.Coordinate;
+import com.vividsolutions.jts.geom.GeometryFactory;
+import com.vividsolutions.jts.geom.Point;
 
 import repast.simphony.context.Context;
 import repast.simphony.context.space.gis.GeographyFactoryFinder;
+import repast.simphony.context.space.graph.NetworkBuilder;
 import repast.simphony.dataLoader.ContextBuilder;
 import repast.simphony.engine.environment.RunEnvironment;
 import repast.simphony.parameter.Parameters;
+import repast.simphony.random.RandomHelper;
 import repast.simphony.space.gis.Geography;
 import repast.simphony.space.gis.GeographyParameters;
-import repast.simphony.visualization.gis3D.WWUtils;
-
-import com.vividsolutions.jts.geom.Geometry;
-import com.vividsolutions.jts.geom.GeometryFactory;
-import com.vividsolutions.jts.geom.LineString;
-import com.vividsolutions.jts.geom.MultiLineString;
-import com.vividsolutions.jts.geom.MultiPolygon;
-import com.vividsolutions.jts.geom.Point;
-import com.vividsolutions.jts.geom.Polygon;
 
 /**
  * ContextBuilder for the GIS demo.  In this model, mobile GisAgents move around
@@ -55,140 +40,51 @@ public class ContextCreator implements ContextBuilder {
 	int numAgents;
 	double zoneDistance;
 	
-	public Context build(Context context) {
-
-		System.out.println("GeoZombies Demo ContextBuilder.build()");
-		
+	public Context build(Context context) {		
 		Parameters parm = RunEnvironment.getInstance().getParameters();
-		numAgents = (Integer)parm.getValue("numAgents");
-		zoneDistance = (Double)parm.getValue("zoneDistance");
-
+		
 		GeographyParameters geoParams = new GeographyParameters();
 		Geography geography = GeographyFactoryFinder.createGeographyFactory(null)
 				.createGeography("Geography", context, geoParams);
 
 		GeometryFactory fac = new GeometryFactory();
 
-		// Generate some points
-//		for (int i = 0; i < numAgents; i++) {
-//			GisAgent agent = new GisAgent("Site " + i);
-//			context.add(agent);
-//
-//			Coordinate coord = new Coordinate(-88 + 0.5* Math.random(), 41.5 + 0.5 * Math.random());
-//			Point geom = fac.createPoint(coord);
-//			geography.move(agent, geom);
-//		}
-
-		// TODO GIS: use an example of ShapefileLoader
+		NetworkBuilder<Object> netBuilder = new NetworkBuilder<Object>(
+				"infection network", context, true);
+		netBuilder.buildNetwork();
 		
-		// Load Features from shapefiles
-		loadFeatures( "data/cpd_beats.shp", context, geography);
-//		loadFeatures( "data/Agents2.shp", context, geography);
-//		loadFeatures( "data/WaterLines.shp", context, geography);
+		Parameters params = RunEnvironment.getInstance().getParameters();
+		int zombieCount = (Integer) params.getValue("zombie_count");
+		for (int i = 0; i < zombieCount; i++) {
+			Zombie zombie = new Zombie();
+			context.add(zombie);
+			
+			// TODO set the boundaries in which to create agents
+			Coordinate coord = new Coordinate(-88 + 0.5* Math.random(), 41.5 + 0.5 * Math.random());
+			Point geom = fac.createPoint(coord);
+			
+			geography.move(zombie, geom);
+		}
+
+		int humanCount = (Integer) params.getValue("human_count");
+		for (int i = 0; i < humanCount; i++) {
+			int energy = RandomHelper.nextIntFromTo(4, 10);
+			
+			Human human = new Human(energy);
+			
+			context.add(human);
+			
+			// TODO set the boundaries in which to create agents
+			Coordinate coord = new Coordinate(-88 + 0.5* Math.random(), 41.5 + 0.5 * Math.random());
+			Point geom = fac.createPoint(coord);
+			
+			geography.move(human, geom);
+		}
+		
+		if (RunEnvironment.getInstance().isBatch()) {
+			RunEnvironment.getInstance().endAt(20);
+		}
 		
 		return context;
-	}
-
-	/**
-	 * Loads features from the specified shapefile.  The appropriate type of agents
-	 * will be created depending on the geometry type in the shapefile (point, 
-	 * line, polygon).
-	 * 
-	 * @param filename the name of the shapefile from which to load agents
-	 * @param context the context
-	 * @param geography the geography
-	 */
-	private void loadFeatures (String filename, Context context, Geography geography){
-		URL url = null;
-		try {
-			url = new File(filename).toURL();
-		} catch (MalformedURLException e1) {
-			e1.printStackTrace();
-		}
-
-		List<SimpleFeature> features = new ArrayList<SimpleFeature>();
-		
-		// Try to load the shapefile
-		SimpleFeatureIterator fiter = null;
-		ShapefileDataStore store = null;
-		store = new ShapefileDataStore(url);
-
-		CoordinateReferenceSystem crs = null;
-		
-		try {
-			fiter = store.getFeatureSource().getFeatures().features();
-			crs = store.getSchema().getCoordinateReferenceSystem();
-			
-			while(fiter.hasNext()){
-				features.add(fiter.next());
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		finally{
-			fiter.close();
-			store.dispose();
-		}
-		
-		// For each feature in the file
-		for (SimpleFeature feature : features){
-			Geometry geom = (Geometry)feature.getDefaultGeometry();
-			Object agent = null;
-
-			if (!geom.isValid()){
-				System.out.println("Invalid geometry: " + feature.getID());
-			}
-			
-			// For Polygons, create ZoneAgents
-			if (geom instanceof MultiPolygon){
-				MultiPolygon mp = (MultiPolygon)feature.getDefaultGeometry();
-				geom = (Polygon)mp.getGeometryN(0);
-				
-				geom = WWUtils.projectGeometryToWGS84(geom, crs);
-
-				// Read the feature attributes and assign to the ZoneAgent
-//				String name = (String)feature.getAttribute("name");
-//				double taxRate = (double)feature.getAttribute("Tax_Rate");
-//				String name = String.valueOf((Long)feature.getAttribute("OBJECTID"));
-//				double taxRate = (double)feature.getAttribute("ProbEggs");
-
-				agent = new ZoneAgent(feature.getID(),0.0);
-
-				// Create a BufferZoneAgent around the zone, just for visualization
-//				Geometry buffer = GeometryUtils.generateBuffer(geography, geom, zoneDistance);
-//				BufferZoneAgent bufferZone = new BufferZoneAgent("Buffer: " + name, 
-//						zoneDistance, (ZoneAgent)agent);
-//				context.add(bufferZone);
-//				geography.move(bufferZone, buffer);
-			}
-
-			// For Points, create RadioTower agents
-			else if (geom instanceof Point){
-				geom = (Point)feature.getDefaultGeometry();				
-
-				// Read the feature attributes and assign to the ZoneAgent
-				String name = (String)feature.getAttribute("Name");
-				agent = new RadioTower(name);
-			}
-
-			// For Lines, create WaterLines
-			else if (geom instanceof MultiLineString){
-				MultiLineString line = (MultiLineString)feature.getDefaultGeometry();
-				geom = (LineString)line.getGeometryN(0);
-
-				// Read the feature attributes and assign to the ZoneAgent
-				String name = (String)feature.getAttribute("Name");
-				double flowRate = (Long)feature.getAttribute("Flow_Rate");
-				agent = new WaterLine(name, flowRate);
-			}
-
-			if (agent != null){
-				context.add(agent);
-				geography.move(agent, geom);
-			}
-			else{
-				System.out.println("Error creating agent for  " + geom);
-			}
-		}				
 	}
 }

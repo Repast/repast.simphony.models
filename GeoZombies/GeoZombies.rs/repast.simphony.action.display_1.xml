@@ -1,47 +1,31 @@
 <repast.simphony.gis.visualization.engine.GISDisplayDescriptor>
-  <name>GIS 3D Display</name>
+  <name>New Display</name>
   <type>GIS 3D</type>
   <styles>
+    <entry>
+      <string>geozombies.Human</string>
+      <string>geozombies.HumanStyle</string>
+    </entry>
+    <entry>
+      <string>geozombies.Zombie</string>
+      <string>geozombies.ZombieStyle</string>
+    </entry>
     <entry>
       <string>geozombies.ZoneAgent</string>
       <string>geozombies.ZoneStyle</string>
     </entry>
-    <entry>
-      <string>geozombies.BufferZoneAgent</string>
-      <string>geozombies.BufferZoneStyle</string>
-    </entry>
-    <entry>
-      <string>geozombies.GisAgent</string>
-      <string>geozombies.GisAgentStyle</string>
-    </entry>
-    <entry>
-      <string>geozombies.WaterLine</string>
-      <string>geozombies.WaterLineStyle</string>
-    </entry>
-    <entry>
-      <string>geozombies.RadioTower</string>
-      <string>geozombies.TowerAgentStyle</string>
-    </entry>
   </styles>
   <editedStyles>
     <entry>
+      <string>geozombies.Human</string>
+      <null/>
+    </entry>
+    <entry>
+      <string>geozombies.Zombie</string>
+      <null/>
+    </entry>
+    <entry>
       <string>geozombies.ZoneAgent</string>
-      <null/>
-    </entry>
-    <entry>
-      <string>geozombies.BufferZoneAgent</string>
-      <null/>
-    </entry>
-    <entry>
-      <string>geozombies.GisAgent</string>
-      <null/>
-    </entry>
-    <entry>
-      <string>geozombies.WaterLine</string>
-      <null/>
-    </entry>
-    <entry>
-      <string>geozombies.RadioTower</string>
       <null/>
     </entry>
   </editedStyles>
@@ -55,29 +39,21 @@
     <pType>LAST</pType>
     <duration>-1.0</duration>
     <frequency>REPEAT</frequency>
-    <hashCode>1670480429</hashCode>
+    <hashCode>-1166365404</hashCode>
   </schedParams>
   <layoutInterval>0</layoutInterval>
   <layerOrder>
     <entry>
-      <string>geozombies.ZoneAgent</string>
+      <string>geozombies.Human</string>
       <int>0</int>
     </entry>
     <entry>
-      <string>geozombies.BufferZoneAgent</string>
-      <int>4</int>
-    </entry>
-    <entry>
-      <string>geozombies.GisAgent</string>
-      <int>3</int>
-    </entry>
-    <entry>
-      <string>geozombies.WaterLine</string>
-      <int>1</int>
-    </entry>
-    <entry>
-      <string>geozombies.RadioTower</string>
+      <string>geozombies.Zombie</string>
       <int>2</int>
+    </entry>
+    <entry>
+      <string>geozombies.ZoneAgent</string>
+      <int>1</int>
     </entry>
   </layerOrder>
   <projections>
@@ -89,12 +65,14 @@
   </projections>
   <projectionDescriptors>
     <entry>
-      <string>GeoZombies</string>
-      <repast.simphony.visualization.gis.GisProjectionDescriptor>
+      <string>Geography</string>
+      <repast.simphony.visualization.engine.DefaultProjectionDescriptor>
         <proj reference="../../../../projections/repast.simphony.scenario.data.ProjectionData"/>
         <props/>
-      </repast.simphony.visualization.gis.GisProjectionDescriptor>
+      </repast.simphony.visualization.engine.DefaultProjectionDescriptor>
     </entry>
   </projectionDescriptors>
   <props/>
+  <viewType>FLAT</viewType>
+  <trackAgents>false</trackAgents>
 </repast.simphony.gis.visualization.engine.GISDisplayDescriptor>

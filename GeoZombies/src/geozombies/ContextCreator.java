@@ -13,6 +13,7 @@ import repast.simphony.parameter.Parameters;
 import repast.simphony.random.RandomHelper;
 import repast.simphony.space.gis.Geography;
 import repast.simphony.space.gis.GeographyParameters;
+import repast.simphony.space.graph.Network;
 
 /**
  * ContextBuilder for the GIS demo.  In this model, mobile GisAgents move around
@@ -51,7 +52,11 @@ public class ContextCreator implements ContextBuilder {
 
 		NetworkBuilder<Object> netBuilder = new NetworkBuilder<Object>(
 				"infection network", context, true);
-		netBuilder.buildNetwork();
+		
+		Network net = netBuilder.buildNetwork();
+		
+		// Bind the geography and network events to create edge geometries for visualization
+		new GISNetworkListener(context, geography, net);
 		
 		Parameters params = RunEnvironment.getInstance().getParameters();
 		int zombieCount = (Integer) params.getValue("zombie_count");

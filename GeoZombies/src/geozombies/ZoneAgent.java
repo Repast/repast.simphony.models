@@ -3,6 +3,8 @@ package geozombies;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.vividsolutions.jts.geom.Geometry;
+
 import repast.simphony.context.Context;
 import repast.simphony.query.space.gis.IntersectsQuery;
 import repast.simphony.space.gis.Geography;
@@ -26,7 +28,6 @@ public class ZoneAgent {
 		IntersectsQuery query = new IntersectsQuery(geography, this);	
 
 		for (Object obj : query.query()) {
-			// If the zone finds a water line, then set the zone water rate from the line
 			if (obj instanceof Human){
 				humanList.add((Human)obj);
 			}
@@ -34,6 +35,25 @@ public class ZoneAgent {
 		return humanList;
 	}
 
+	public List<Human> lookForHumans(List<Human> nearHumans){
+		List<Human> humanList = new ArrayList<Human>();
+		Context context = ContextUtils.getContext(this);
+
+		Geography geography = (Geography)context.getProjection("Geography");
+		
+		// Find all features that intersect the zone feature
+			
+		Geometry thisGeom = geography.getGeometry(this);
+		
+		for (Human human : nearHumans){
+			if (thisGeom.intersects(geography.getGeometry(human))){
+				humanList.add(human);
+			}
+		}
+		
+		return humanList;
+	}
+	
 	public boolean isActive() {
 		return active;
 	}

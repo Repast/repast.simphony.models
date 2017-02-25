@@ -3,6 +3,10 @@
   <type>GIS 3D</type>
   <styles>
     <entry>
+      <string>geozombies.MyNetworkEdge</string>
+      <string>geozombies.MyNetworkStyle</string>
+    </entry>
+    <entry>
       <string>geozombies.Human</string>
       <string>geozombies.HumanStyle</string>
     </entry>
@@ -16,6 +20,10 @@
     </entry>
   </styles>
   <editedStyles>
+    <entry>
+      <string>geozombies.MyNetworkEdge</string>
+      <null/>
+    </entry>
     <entry>
       <string>geozombies.Human</string>
       <null/>
@@ -39,21 +47,25 @@
     <pType>LAST</pType>
     <duration>-1.0</duration>
     <frequency>REPEAT</frequency>
-    <hashCode>-1166365404</hashCode>
+    <hashCode>749322030</hashCode>
   </schedParams>
   <layoutInterval>0</layoutInterval>
   <layerOrder>
     <entry>
-      <string>geozombies.Human</string>
+      <string>geozombies.MyNetworkEdge</string>
       <int>0</int>
     </entry>
     <entry>
+      <string>geozombies.Human</string>
+      <int>1</int>
+    </entry>
+    <entry>
       <string>geozombies.Zombie</string>
-      <int>2</int>
+      <int>3</int>
     </entry>
     <entry>
       <string>geozombies.ZoneAgent</string>
-      <int>1</int>
+      <int>2</int>
     </entry>
   </layerOrder>
   <projections>

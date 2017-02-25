@@ -40,7 +40,7 @@ public class ZoneStyle implements SurfaceShapeStyle<ZoneAgent>{
 	@Override
 	public Color getLineColor(ZoneAgent zone) {
 		
-			return Color.blue;
+			return Color.GREEN;
 		
 	}
 

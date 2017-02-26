@@ -1,6 +1,3 @@
-/**
- * 
- */
 package geozombies;
 
 import java.util.ArrayList;
@@ -12,7 +9,6 @@ import com.vividsolutions.jts.geom.Geometry;
 import com.vividsolutions.jts.geom.GeometryFactory;
 import com.vividsolutions.jts.geom.LineString;
 import com.vividsolutions.jts.geom.Point;
-import com.vividsolutions.jts.geom.Polygon;
 import com.vividsolutions.jts.util.GeometricShapeFactory;
 
 import repast.simphony.context.Context;
@@ -40,55 +36,6 @@ public class Zombie {
 	
 	GeometryFactory fac = new GeometryFactory();
 	
-	public Zombie() {
-	}
-	
-	/**
-	 * Generates a list of polygon geometries that defines the search area around
-	 * a Zombie.  This implementation creates a set of "pie slices" within a 
-	 * circle around the Zombie. 
-	 * 
-	 * @param center the current Zombie location coordinate
-	 * @return a list of polygon geometries
-	 */
-	protected List<Geometry> generateSearchZones(Geography geography, Coordinate center){
-		List<Geometry> geomList = new ArrayList<Geometry>();
-		
-		// Radius of the search circle area
-		double radius = 0.1;  // in degree lat/lon
-		
-		// Number of search circle area divisions (pie slices)
-		double numDivisions = 6;
-		
-		// The radian interval used to divide the search circle area
-		double interval = 2 * Math.PI / numDivisions;
-		
-		GeometricShapeFactory gsf = new GeometricShapeFactory();
-		
-		int numArcPoints = 10; // Num points in the arc (precision)
-		
-		gsf.setCentre(center);
-		gsf.setSize(radius); 
-		gsf.setNumPoints(numArcPoints); 
-
-		// Generate a polygon geometry for each circle pie slice
-		for (int i=0; i < numDivisions; i++){
-			LineString arc = gsf.createArc(i*interval, interval);
-			
-			Coordinate[] coords = new Coordinate[numArcPoints + 2];
-			
-			coords[0] = center;
-			coords [numArcPoints + 2 - 1] = center;
-			
-			for (int j=0; j<numArcPoints; j++){
-				coords[j+1] = arc.getCoordinateN(j);
-			}
-	
-			geomList.add(fac.createPolygon(coords));
-		}
-		return geomList;
-	}
-
 		
 	@ScheduledMethod(start = 0)
 	public void init(){
@@ -97,35 +44,16 @@ public class Zombie {
 		
 		// Generate a list of search zone agents
 		Coordinate center = geography.getGeometry(this).getCoordinate();
-		List<Geometry> searchZones = generateSearchZones(geography, center);
+		List<Geometry> searchZones = ZombieUtils.generateSearchZones(geography, center, 6);
 		searchZoneAgents = new ArrayList<ZoneAgent>();
 		
 		for (Geometry geom : searchZones){
 			ZoneAgent zoneAgent = new ZoneAgent();
+			zoneAgent.setVisible(true);
 			searchZoneAgents.add(zoneAgent);
 			context.add(zoneAgent);
 			geography.move(zoneAgent, geom);
 		}
-	}
-
-	public List<Human> getHumansWithinDistance(double searchDistance){
-		Context context = ContextUtils.getContext(this);
-		Geography geography = (Geography)context.getProjection("Geography");
-		
-		Geometry searchArea =  GeometryUtils.generateBuffer(geography, 
-				geography.getGeometry(this), searchDistance);
-		
-		Envelope searchEnvelope = searchArea.getEnvelopeInternal();
-		
-		Iterable<Human> nearHumans = geography.getObjectsWithin(searchEnvelope, Human.class);
-		
-		List<Human> nearHumanList = new ArrayList<Human>();
-		
-		for (Human human : nearHumans){
-			nearHumanList.add(human);
-		}
-		
-		return nearHumanList;
 	}
 	
 	@ScheduledMethod(start = 1, interval = 1)
@@ -134,7 +62,8 @@ public class Zombie {
 		Geography geography = (Geography)context.getProjection("Geography");
 		
 		double searchDistance = 5000; // meters
-		List<Human> nearHumanList = getHumansWithinDistance(searchDistance);
+		List nearHumanList = ZombieUtils.getObjectsWithinDistance(this, 
+				Human.class, searchDistance);
 		
 		ZoneAgent zoneWithMostHumans = null;
 		int maxCount = -1;
@@ -218,13 +147,15 @@ public class Zombie {
 		
 		Coordinate currentPosisition = geography.getGeometry(this).getCoordinate();
 		
-	  double infectRadius = 500;  // meters	
+		// The infection radius is smaller than the search radius
+	  double infectRadius = 1500;  // meters	
 	  
-	  List<Human> humans = getHumansWithinDistance(infectRadius);
+	  List humans = ZombieUtils.getObjectsWithinDistance(this, Human.class, 
+	  		infectRadius);
 			  
 		if (humans.size() > 0) {
 			int index = RandomHelper.nextIntFromTo(0, humans.size() - 1);
-			Human human = humans.get(index);
+			Human human = (Human)humans.get(index);
 
 			context.remove(human);
 			Zombie childZombie = new Zombie();

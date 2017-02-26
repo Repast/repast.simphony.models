@@ -17,7 +17,8 @@ import repast.simphony.util.ContextUtils;
  */
 public class ZoneAgent {
 
-	protected boolean active;
+	protected boolean visible = false;
+	protected boolean active = false;
 	
 	public List<Human> lookForHumans(){
 		List<Human> humanList = new ArrayList<Human>();
@@ -54,6 +55,26 @@ public class ZoneAgent {
 		return humanList;
 	}
 	
+	public List<?> lookForObjects(List<?> nearObjects){
+		List<Object> objectList = new ArrayList<Object>();
+		Context context = ContextUtils.getContext(this);
+
+		Geography geography = (Geography)context.getProjection("Geography");
+		
+		// Find all features that intersect the zone feature
+			
+		Geometry thisGeom = geography.getGeometry(this);
+		
+		for (Object o : nearObjects){
+			if (thisGeom.intersects(geography.getGeometry(o))){
+				objectList.add(o);
+			}
+		}
+		
+		return objectList;
+	}
+	
+	
 	public boolean isActive() {
 		return active;
 	}
@@ -62,5 +83,12 @@ public class ZoneAgent {
 		this.active = active;
 	}
 	
+	public boolean isVisible() {
+		return visible;
+	}
+
+	public void setVisible(boolean visible) {
+		this.visible = visible;
+	}
 	
 }

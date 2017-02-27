@@ -7,6 +7,7 @@ import gov.nasa.worldwind.avlist.AVKey;
 import gov.nasa.worldwind.render.BasicWWTexture;
 import gov.nasa.worldwind.render.Offset;
 import gov.nasa.worldwind.render.WWTexture;
+import repast.simphony.random.RandomHelper;
 import repast.simphony.visualization.gis3D.PlaceMark;
 import repast.simphony.visualization.gis3D.style.DefaultMarkStyle;
 
@@ -66,8 +67,13 @@ public class HumanStyle extends DefaultMarkStyle<Human>{
 		if (texture != null)
 			return texture;
 		
+		String fileName = "icons/female_avatar2.png";
+		if (RandomHelper.nextIntFromTo(0, 1) == 0){
+			fileName = "icons/male_avatar2.png";
+		}
+		
 		// BasicWWTexture is useful when the texture is a non-changing image.
-		URL localUrl = WorldWind.getDataFileStore().requestFile("icons/person.png");
+		URL localUrl = WorldWind.getDataFileStore().requestFile(fileName);
 		if (localUrl != null)	{
 			return new BasicWWTexture(localUrl, false);
 		}

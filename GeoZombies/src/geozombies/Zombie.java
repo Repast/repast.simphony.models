@@ -157,18 +157,18 @@ public class Zombie {
 			int index = RandomHelper.nextIntFromTo(0, humans.size() - 1);
 			Human human = (Human)humans.get(index);
 
+			// Get the human geometry to re-use it as the spawned zombie location
+			Geometry humanloc = geography.getGeometry(human);
+			
 			context.remove(human);
 			Zombie childZombie = new Zombie();
 			context.add(childZombie);
-			
-			Point geom = fac.createPoint(currentPosisition);
-			
-			geography.move(childZombie, geom);
+		
+			geography.move(childZombie, humanloc);
 			childZombie.init();
-			childZombie.randomWalk();
 			
 			Network net = (Network)context.getProjection("infection network");
-			net.addEdge(new MyNetworkEdge(this, childZombie));
+			net.addEdge(new InfectionNetworkEdge(this, childZombie));
 		}
 	}
 }

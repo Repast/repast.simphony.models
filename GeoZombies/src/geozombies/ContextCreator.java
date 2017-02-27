@@ -4,6 +4,8 @@ import com.vividsolutions.jts.geom.Coordinate;
 import com.vividsolutions.jts.geom.GeometryFactory;
 import com.vividsolutions.jts.geom.Point;
 
+import gov.nasa.worldwind.Configuration;
+import gov.nasa.worldwind.avlist.AVKey;
 import repast.simphony.context.Context;
 import repast.simphony.context.space.gis.GeographyFactoryFinder;
 import repast.simphony.context.space.graph.NetworkBuilder;
@@ -43,6 +45,10 @@ public class ContextCreator implements ContextBuilder {
 	
 	public Context build(Context context) {		
 		Parameters parm = RunEnvironment.getInstance().getParameters();
+		
+		System.setProperty("gov.nasa.worldwind.config.document", "worldwind.xml");
+		
+//		 System.setProperty("gov.nasa.worldwind.config.file", "geoZombiesMap.properties");
 		
 		GeographyParameters geoParams = new GeographyParameters();
 		Geography geography = GeographyFactoryFinder.createGeographyFactory(null)

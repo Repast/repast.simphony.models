@@ -67,7 +67,7 @@ public class ZombieStyle extends DefaultMarkStyle<Zombie>{
 			return texture;
 		
 		// BasicWWTexture is useful when the texture is a non-changing image.
-		URL localUrl = WorldWind.getDataFileStore().requestFile("icons/zombie.png");
+		URL localUrl = WorldWind.getDataFileStore().requestFile("icons/zombie2.png");
 		if (localUrl != null)	{
 			return new BasicWWTexture(localUrl, false);
 		}

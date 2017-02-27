@@ -8,7 +8,7 @@ import java.awt.Color;
 import repast.simphony.visualization.gis3D.style.SurfaceShapeStyle;
 
 /**
- * Style for MyNetworkEdges.
+ * Style for InfectionNetworkEdges.
  * 
  * @author Eric Tatara
  *

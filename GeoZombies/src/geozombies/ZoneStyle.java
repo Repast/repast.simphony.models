@@ -35,9 +35,6 @@ public class ZoneStyle implements SurfaceShapeStyle<ZoneAgent>{
 		return 0.15;
 	}
 
-	/**
-	 * If the zone has water then indicate with a BLUE outline.
-	 */
 	@Override
 	public Color getLineColor(ZoneAgent zone) {
 		return Color.GREEN;

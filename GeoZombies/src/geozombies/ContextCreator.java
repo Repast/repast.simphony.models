@@ -4,8 +4,6 @@ import com.vividsolutions.jts.geom.Coordinate;
 import com.vividsolutions.jts.geom.GeometryFactory;
 import com.vividsolutions.jts.geom.Point;
 
-import gov.nasa.worldwind.Configuration;
-import gov.nasa.worldwind.avlist.AVKey;
 import repast.simphony.context.Context;
 import repast.simphony.context.space.gis.GeographyFactoryFinder;
 import repast.simphony.context.space.graph.NetworkBuilder;
@@ -18,24 +16,13 @@ import repast.simphony.space.gis.GeographyParameters;
 import repast.simphony.space.graph.Network;
 
 /**
- * ContextBuilder for the GIS demo.  In this model, mobile GisAgents move around
- * the Geography with a random motion and are represented by point locations.  
- * ZoneAgents are polygons that represent certain geographic areas.  WaterLine
- * agents represent water supply lines from Lake Michigan that supply the 
- * Chicago area.  When a ZoneAgent intersects a WaterLine, the ZoneAgent will 
- * have access to fresh drinking water.  GisAgents that are within a certain 
- * distance from the ZoneAgent boundary will also have access to water.  Agents
- * that are not in proximity to a Zone with a water supply will not have access
- * to water (they will be thirsty).  BufferZoneAgents are for visualization 
- * to illustrate the extend of the boundary around a ZoneAgent.  
- * 
- * GisAgents may be generated programmatically depending on the value for 
- * number of agents.  GisAgents, ZoneAgents, and WaterLine agents are also
- * loaded from ESRI shapefiles.
+ * ContextBuilder for the GeoZombies model.
  * 
  * @author Eric Tatara
+ * @author Nick Collier
+ * @author Jonathan Ozik
  *
- * TODO Change project dependencies to standard Repast model 
+ * 
  *
  */
 public class ContextCreator implements ContextBuilder {
@@ -46,37 +33,43 @@ public class ContextCreator implements ContextBuilder {
 	public Context build(Context context) {		
 		Parameters parm = RunEnvironment.getInstance().getParameters();
 		
+		// Override the default WorldWind configuration file so that we can specify
+		// a custom set of map layers in the worldwind.layers.xml file.
 		System.setProperty("gov.nasa.worldwind.config.document", "worldwind.xml");
 		
-//		 System.setProperty("gov.nasa.worldwind.config.file", "geoZombiesMap.properties");
-		
+		// Create the Geography projection that is used to store geographic locations
+		// of agents in the model.
 		GeographyParameters geoParams = new GeographyParameters();
 		Geography geography = GeographyFactoryFinder.createGeographyFactory(null)
 				.createGeography("Geography", context, geoParams);
 
-		GeometryFactory fac = new GeometryFactory();
-
+		// Create the Network projection that is used to create the infection network.
 		NetworkBuilder<Object> netBuilder = new NetworkBuilder<Object>(
 				"infection network", context, true);
-		
 		Network net = netBuilder.buildNetwork();
 		
 		// Bind the geography and network events to create edge geometries for visualization
+		// TODO Repast 2.5 handle network projections automatically in the displays.
 		new GISNetworkListener(context, geography, net);
 		
+		// Geometry factory is used to create geometries
+		GeometryFactory fac = new GeometryFactory();
+		
+		// Create Zombie agents
 		Parameters params = RunEnvironment.getInstance().getParameters();
 		int zombieCount = (Integer) params.getValue("zombie_count");
 		for (int i = 0; i < zombieCount; i++) {
 			Zombie zombie = new Zombie();
 			context.add(zombie);
 			
-			// TODO set the boundaries in which to create agents
+			// Create coordinates in the Chicago area
 			Coordinate coord = new Coordinate(-88 + 0.5* Math.random(), 41.5 + 0.5 * Math.random());
 			Point geom = fac.createPoint(coord);
 			
 			geography.move(zombie, geom);
 		}
 
+		// Create Human agents
 		int humanCount = (Integer) params.getValue("human_count");
 		for (int i = 0; i < humanCount; i++) {
 			int energy = RandomHelper.nextIntFromTo(4, 10);
@@ -85,7 +78,7 @@ public class ContextCreator implements ContextBuilder {
 			
 			context.add(human);
 			
-			// TODO set the boundaries in which to create agents
+			// Create coordinates in the Chicago area
 			Coordinate coord = new Coordinate(-88 + 0.5* Math.random(), 41.5 + 0.5 * Math.random());
 			Point geom = fac.createPoint(coord);
 			
@@ -93,7 +86,7 @@ public class ContextCreator implements ContextBuilder {
 		}
 		
 		if (RunEnvironment.getInstance().isBatch()) {
-			RunEnvironment.getInstance().endAt(20);
+			RunEnvironment.getInstance().endAt(100);
 		}
 		
 		return context;

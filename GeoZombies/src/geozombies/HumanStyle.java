@@ -53,7 +53,6 @@ public class HumanStyle extends DefaultMarkStyle<Human>{
 		return mark;
 	}
 	
-	
 	/**
 	 * Here we set the appearance of the TowerAgent using a non-changing icon.
 	 */
@@ -67,6 +66,7 @@ public class HumanStyle extends DefaultMarkStyle<Human>{
 		if (texture != null)
 			return texture;
 		
+		// Randomly assign a male or female human avatar
 		String fileName = "icons/female_avatar2.png";
 		if (RandomHelper.nextIntFromTo(0, 1) == 0){
 			fileName = "icons/male_avatar2.png";

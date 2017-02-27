@@ -1,7 +1,12 @@
 package geozombies;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 
 import com.vividsolutions.jts.geom.Coordinate;
 import com.vividsolutions.jts.geom.Envelope;
@@ -15,6 +20,12 @@ import repast.simphony.space.gis.Geography;
 import repast.simphony.space.gis.GeometryUtils;
 import repast.simphony.util.ContextUtils;
 
+/**
+ * Utilities for the GeoZombies model.
+ * 
+ * @author Eric Tatara
+ *
+ */
 public class ZombieUtils {
 
 	public static GeometryFactory fac = new GeometryFactory();
@@ -63,6 +74,26 @@ public class ZombieUtils {
 		return geomList;
 	}
 
+	/**
+	 * Returns a list of objects in the geography based on the source object, class
+	 * type of objects to search for, and distance.  This approach is faster than
+	 * using the Repast GeograpyWithin query since it uses the geography's internal
+	 * spatial index to limit search results based on distance.  The GeoraphyWithin
+	 * query in contrast compares the distance of all objects in the geography which
+	 * will be slow when there are lots of objects.
+	 * 
+	 * This approach uses the reference envelope around a distance buffer around
+	 * the source object's geometry, which for a single agent should be a point
+	 * source with a circular buffer.  The envelope around the buffer is 
+	 * rectangular so this should be used as a rough within distance result and
+	 * refined further to check if the list of return objects fall within a more
+	 * specific region contained within the reference envelope.
+	 * 
+	 * @param source the agent performing the search
+	 * @param clazz the class of objects the agent is searching for
+	 * @param searchDistance the search distance around the agent
+	 * @return
+	 */
 	public static List<?> getObjectsWithinDistance(Object source, Class clazz,
 			double searchDistance){
 		Context context = ContextUtils.getContext(source);
@@ -81,4 +112,63 @@ public class ZombieUtils {
 		return nearObjectList;
 	}
 	
+	public static String SCREAM_FILE = "data/scream.wav";
+	public static Clip screamClip;
+	public static String ZOMBIE_MOAN_FILE = "data/zombiemoan.wav";
+	public static Clip zombieMoanClip;
+	public static String ENRAGED_ZOMBIES_FILE = "data/enragedzombies.wav";
+	public static Clip enragedZombiesClip;
+	
+	static{
+		try{
+			File file = new File(SCREAM_FILE);
+			screamClip = AudioSystem.getClip();
+			AudioInputStream ais = AudioSystem.getAudioInputStream(file);
+			screamClip.open(ais);
+		}
+		catch (Exception e){
+			e.printStackTrace();
+		}
+		
+		try{
+			File file = new File(ZOMBIE_MOAN_FILE);
+			zombieMoanClip = AudioSystem.getClip();
+			AudioInputStream ais = AudioSystem.getAudioInputStream(file);
+			zombieMoanClip.open(ais);
+		}
+		catch (Exception e){
+			e.printStackTrace();
+		}
+		
+		try{
+			File file = new File(ENRAGED_ZOMBIES_FILE);
+			enragedZombiesClip = AudioSystem.getClip();
+			AudioInputStream ais = AudioSystem.getAudioInputStream(file);
+			enragedZombiesClip.open(ais);
+		}
+		catch (Exception e){
+			e.printStackTrace();
+		}
+	}
+	
+	public static void playScream(){
+		if (screamClip.isActive()) return;  // don't play multiple at same time
+		
+		screamClip.setFramePosition(0); // rewind
+		screamClip.start();
+	}
+	
+	public static void playZombieMoan(){
+		if (zombieMoanClip.isActive()) return;  // don't play multiple at same time
+		
+		zombieMoanClip.setFramePosition(0); // rewind
+		zombieMoanClip.start();
+	}
+	
+	public static void playEnragedZombies(){
+		if (enragedZombiesClip.isActive()) return;  // don't play multiple at same time
+		
+		enragedZombiesClip.setFramePosition(0); // rewind
+		enragedZombiesClip.start();
+	}
 }

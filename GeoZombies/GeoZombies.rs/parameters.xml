@@ -19,19 +19,19 @@
 									
 		/>
 				<parameter name="zombieSpeed" displayName="Zombie Speed" type="int" 
-						defaultValue="10" 
+						defaultValue="6" 
 						isReadOnly="false" 
 						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
 									
 		/>
 				<parameter name="infectRadius" displayName="Infection Radius (m)" type="int" 
-						defaultValue="1500" 
+						defaultValue="1000" 
 						isReadOnly="false" 
 						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
 									
 		/>
 				<parameter name="humanSpeed" displayName="Human Speed" type="int" 
-						defaultValue="5" 
+						defaultValue="3" 
 						isReadOnly="false" 
 						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
 									

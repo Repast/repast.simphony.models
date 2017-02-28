@@ -22,11 +22,13 @@ import repast.simphony.space.graph.Network;
  * @author Nick Collier
  * @author Jonathan Ozik
  *
- * 
- *
  */
 public class ContextCreator implements ContextBuilder {
 
+  static {
+    SpecialEffects.setUIEffects();
+  }
+  
 	int numAgents;
 	double zoneDistance;
 	

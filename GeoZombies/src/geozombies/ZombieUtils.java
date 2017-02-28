@@ -1,7 +1,14 @@
 package geozombies;
 
+import java.awt.Frame;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 import com.vividsolutions.jts.geom.Coordinate;
 import com.vividsolutions.jts.geom.Envelope;
@@ -106,6 +113,5 @@ public class ZombieUtils {
 		}	
 		return nearObjectList;
 	}
-	
 	
 }

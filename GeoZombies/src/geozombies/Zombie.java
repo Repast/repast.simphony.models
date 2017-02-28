@@ -207,7 +207,7 @@ public class Zombie {
 			net.addEdge(new InfectionNetworkEdge(this, childZombie));
 			
 			// Play creepy zombie sound
-			SoundEffects.getInstance().playZombieMoan();
+			SpecialEffects.getInstance().playZombieMoan();
 		}
 	}
 	
@@ -236,6 +236,7 @@ public class Zombie {
 		// If all humans dead
 		if (!context.getAgentLayer(Human.class).iterator().hasNext()){
 			RunEnvironment.getInstance().endAt(tick + 1);
+			SpecialEffects.getInstance().surprise();
 		}
 		
 		// If humans exist but none are moving

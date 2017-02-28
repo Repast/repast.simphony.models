@@ -31,6 +31,8 @@ public class Human {
 	// The current active search zone agent
 	protected ZoneAgent activeSearchZone;
 	
+	protected boolean running = false;
+	
 	public Human(int energy) {
 	}
 	
@@ -90,7 +92,7 @@ public class Human {
 			zoneWithLeastZombies = activeSearchZone;
 		}
 		
-		boolean run = false;
+		running = false;
 		for (ZoneAgent zone : searchZoneAgents){	
 			zone.setActive(false);
 			
@@ -98,7 +100,7 @@ public class Human {
 			List foundZombies = zone.lookForObjects(nearZombieList);
 			
 			if (foundZombies.size() > 0) 
-				run = true;
+				running = true;
 			
 			if(foundZombies.size() < minCount){
 				zoneWithLeastZombies = zone;
@@ -108,8 +110,11 @@ public class Human {
 		}
 		
 		// Move to the active search zone if other zones have some zombies
-		if (run){
+		if (running){
 			moveTowards(activeSearchZone);
+		}
+		else{
+		
 		}
 	
 		activeSearchZone.setActive(true);  // Active search zone is styled in display
@@ -166,5 +171,13 @@ public class Human {
 		for (ZoneAgent zone : searchZoneAgents){
 			geography.moveByDisplacement(zone, x, y);	
 		}
+	}
+
+	public boolean isRunning() {
+		return running;
+	}
+
+	public void setRunning(boolean running) {
+		this.running = running;
 	}
 }

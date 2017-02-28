@@ -5,7 +5,6 @@ import java.util.List;
 
 import com.vividsolutions.jts.geom.Coordinate;
 import com.vividsolutions.jts.geom.Geometry;
-import com.vividsolutions.jts.geom.GeometryFactory;
 import com.vividsolutions.jts.geom.Point;
 
 import repast.simphony.context.Context;
@@ -58,8 +57,8 @@ public class Zombie {
 		for (Geometry geom : searchZones){
 			ZoneAgent zoneAgent = new ZoneAgent();
 			
-			// Show search zones in display for zombie agents
-			zoneAgent.setVisible(true);
+			// Don't initially show search zones in display for zombie agents
+			zoneAgent.setVisible(false);
 			searchZoneAgents.add(zoneAgent);
 			context.add(zoneAgent);
 			geography.move(zoneAgent, geom);
@@ -92,6 +91,7 @@ public class Zombie {
 		
 		for (ZoneAgent zone : searchZoneAgents){	
 			zone.setActive(false);
+			zone.setVisible(false);
 			
 			List foundHumans = zone.lookForObjects(nearHumanList);
 			
@@ -104,6 +104,10 @@ public class Zombie {
 		
 	  // Move to the active search zone if it has some humans
 		if (maxCount > 0){
+			// Set the zone visibility only when this Zombie is actively tracking Humans
+			for (ZoneAgent zone : searchZoneAgents){
+				zone.setVisible(true);
+			}
 			moveTowards(activeSearchZone);
 		}
 		else{
@@ -217,5 +221,33 @@ public class Zombie {
 				RandomHelper.nextDoubleFromTo(-0.0001, 0.0001));
 		
 		updateSearchZone(currentPosisition);
+	}
+	
+	/**
+	 * Use a single zombie to track whether all humans are dead or no humans are
+	 * moving to end the run.
+	 */
+	@ScheduledMethod(start=10, interval=1, pick=1)
+	public void checkHumans(){
+		Context context = ContextUtils.getContext(this);
+		
+		// If all humans dead
+		if (!context.getAgentLayer(Human.class).iterator().hasNext()){
+			RunEnvironment.getInstance().endRun();
+		}
+		
+		// If humans exist but none are moving
+		else{
+			boolean humansRunning = false;
+			for(Object o : context.getAgentLayer(Human.class)){
+				if ( ((Human)o).isRunning() ){
+					humansRunning = true;
+					break;
+				}
+			}
+			if (!humansRunning){
+				RunEnvironment.getInstance().endRun();
+			}
+		}
 	}
 }

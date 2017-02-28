@@ -1,12 +1,7 @@
 package geozombies;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
 
 import com.vividsolutions.jts.geom.Coordinate;
 import com.vividsolutions.jts.geom.Envelope;
@@ -112,63 +107,5 @@ public class ZombieUtils {
 		return nearObjectList;
 	}
 	
-	public static String SCREAM_FILE = "data/scream.wav";
-	public static Clip screamClip;
-	public static String ZOMBIE_MOAN_FILE = "data/zombiemoan.wav";
-	public static Clip zombieMoanClip;
-	public static String ENRAGED_ZOMBIES_FILE = "data/enragedzombies.wav";
-	public static Clip enragedZombiesClip;
 	
-	static{
-		try{
-			File file = new File(SCREAM_FILE);
-			screamClip = AudioSystem.getClip();
-			AudioInputStream ais = AudioSystem.getAudioInputStream(file);
-			screamClip.open(ais);
-		}
-		catch (Exception e){
-			e.printStackTrace();
-		}
-		
-		try{
-			File file = new File(ZOMBIE_MOAN_FILE);
-			zombieMoanClip = AudioSystem.getClip();
-			AudioInputStream ais = AudioSystem.getAudioInputStream(file);
-			zombieMoanClip.open(ais);
-		}
-		catch (Exception e){
-			e.printStackTrace();
-		}
-		
-		try{
-			File file = new File(ENRAGED_ZOMBIES_FILE);
-			enragedZombiesClip = AudioSystem.getClip();
-			AudioInputStream ais = AudioSystem.getAudioInputStream(file);
-			enragedZombiesClip.open(ais);
-		}
-		catch (Exception e){
-			e.printStackTrace();
-		}
-	}
-	
-	public static void playScream(){
-		if (screamClip.isActive()) return;  // don't play multiple at same time
-		
-		screamClip.setFramePosition(0); // rewind
-		screamClip.start();
-	}
-	
-	public static void playZombieMoan(){
-		if (zombieMoanClip.isActive()) return;  // don't play multiple at same time
-		
-		zombieMoanClip.setFramePosition(0); // rewind
-		zombieMoanClip.start();
-	}
-	
-	public static void playEnragedZombies(){
-		if (enragedZombiesClip.isActive()) return;  // don't play multiple at same time
-		
-		enragedZombiesClip.setFramePosition(0); // rewind
-		enragedZombiesClip.start();
-	}
 }

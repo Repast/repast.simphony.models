@@ -207,7 +207,7 @@ public class Zombie {
 			net.addEdge(new InfectionNetworkEdge(this, childZombie));
 			
 			// Play creepy zombie sound
-			ZombieUtils.playZombieMoan();
+			SoundEffects.getInstance().playZombieMoan();
 		}
 	}
 	
@@ -231,9 +231,11 @@ public class Zombie {
 	public void checkHumans(){
 		Context context = ContextUtils.getContext(this);
 		
+		double tick = RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
+		
 		// If all humans dead
 		if (!context.getAgentLayer(Human.class).iterator().hasNext()){
-			RunEnvironment.getInstance().endRun();
+			RunEnvironment.getInstance().endAt(tick + 1);
 		}
 		
 		// If humans exist but none are moving
@@ -246,7 +248,7 @@ public class Zombie {
 				}
 			}
 			if (!humansRunning){
-				RunEnvironment.getInstance().endRun();
+				RunEnvironment.getInstance().endAt(tick + 1);
 			}
 		}
 	}

@@ -150,7 +150,7 @@ public class Human {
 		
 		// Play some terrifying sound effects of people screaming
 //		ZombieUtils.playScream();
-		ZombieUtils.playEnragedZombies();
+		SoundEffects.getInstance().playEnragedZombies();
 	}
 
 	/**

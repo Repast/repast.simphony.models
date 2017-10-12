@@ -1,5 +1,6 @@
 package geography;
 
+import java.awt.Color;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -7,27 +8,39 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.geotools.coverage.Category;
 import org.geotools.data.shapefile.ShapefileDataStore;
 import org.geotools.data.simple.SimpleFeatureIterator;
+import org.geotools.geometry.jts.ReferencedEnvelope;
+import org.geotools.referencing.crs.DefaultGeographicCRS;
+import org.geotools.util.NumberRange;
 import org.opengis.feature.simple.SimpleFeature;
-
-import repast.simphony.context.Context;
-import repast.simphony.context.space.gis.GeographyFactoryFinder;
-import repast.simphony.dataLoader.ContextBuilder;
-import repast.simphony.engine.environment.RunEnvironment;
-import repast.simphony.parameter.Parameters;
-import repast.simphony.space.gis.Geography;
-import repast.simphony.space.gis.GeographyParameters;
-import repast.simphony.space.gis.GeometryUtils;
 
 import com.vividsolutions.jts.geom.Coordinate;
 import com.vividsolutions.jts.geom.Geometry;
 import com.vividsolutions.jts.geom.GeometryFactory;
 import com.vividsolutions.jts.geom.LineString;
 import com.vividsolutions.jts.geom.MultiLineString;
+import com.vividsolutions.jts.geom.MultiPoint;
 import com.vividsolutions.jts.geom.MultiPolygon;
 import com.vividsolutions.jts.geom.Point;
 import com.vividsolutions.jts.geom.Polygon;
+import com.vividsolutions.jts.shape.random.RandomPointsBuilder;
+
+import repast.simphony.context.Context;
+import repast.simphony.context.space.gis.GeographyFactoryFinder;
+import repast.simphony.context.space.graph.NetworkBuilder;
+import repast.simphony.dataLoader.ContextBuilder;
+import repast.simphony.engine.environment.RunEnvironment;
+import repast.simphony.engine.schedule.ISchedule;
+import repast.simphony.engine.schedule.ScheduleParameters;
+import repast.simphony.parameter.Parameters;
+import repast.simphony.space.gis.Geography;
+import repast.simphony.space.gis.GeographyParameters;
+import repast.simphony.space.gis.GeometryUtils;
+import repast.simphony.space.gis.RepastCoverageFactory;
+import repast.simphony.space.gis.WritableGridCoverage2D;
+import repast.simphony.space.graph.Network;
 
 /**
  * ContextBuilder for the GIS demo.  In this model, mobile GisAgents move around
@@ -52,10 +65,11 @@ public class ContextCreator implements ContextBuilder {
 
 	int numAgents;
 	double zoneDistance;
-	
+		
 	public Context build(Context context) {
-
-		System.out.println("Geography Demo ContextBuilder.build()");
+		
+		System.out.println("Geography ContextCreator.build()");
+					
 		
 		Parameters parm = RunEnvironment.getInstance().getParameters();
 		numAgents = (Integer)parm.getValue("numAgents");
@@ -67,6 +81,24 @@ public class ContextCreator implements ContextBuilder {
 
 		GeometryFactory fac = new GeometryFactory();
 
+		NetworkBuilder<?> netBuilder = new NetworkBuilder<Object>("Network", context, true);
+		Network net = netBuilder.buildNetwork();
+		
+//		Geometry polygon = null;
+//		int numPoints = 100;
+//		RandomPointsBuilder shapeBuilder = new RandomPointsBuilder();
+//    shapeBuilder.setExtent(polygon);
+//    shapeBuilder.setNumPoints(numPoints);
+//           
+//     MultiPoint mtPoint = (MultiPoint)shapeBuilder.getGeometry();
+//    
+//  
+//    for (Coordinate coord : mtPoint.getCoordinates()){
+//    
+//    
+//    }
+    	
+		
 		// Generate some points
 		for (int i = 0; i < numAgents; i++) {
 			GisAgent agent = new GisAgent("Site " + i);
@@ -75,14 +107,87 @@ public class ContextCreator implements ContextBuilder {
 			Coordinate coord = new Coordinate(-88 + 0.5* Math.random(), 41.5 + 0.5 * Math.random());
 			Point geom = fac.createPoint(coord);
 			geography.move(agent, geom);
+			
+			Object o = context.getRandomObject();
+		
+			if (o != null && o instanceof GisAgent) {
+				net.addEdge(agent, o, 1.0);
+			}
 		}
 
 		// TODO GIS: use an example of ShapefileLoader
 		
+		// TODO GIS Coverage layer
+		// envelope around Midway airport
+		ReferencedEnvelope env = new ReferencedEnvelope(-87.761278, -87.742395, 
+				41.778022, 41.791462, DefaultGeographicCRS.WGS84);
+		
+		WritableGridCoverage2D coverage = RepastCoverageFactory.createWritableCoverageFloat(
+				"Eric's data", 10, 10, env, null, -1, 0, 10, -1);
+		
+		geography.addCoverage("My coverage", coverage);
+		
+		// envelope south west Chicago
+		env = new ReferencedEnvelope(-87.9220, -87.7236, 41.50, 41.7313, DefaultGeographicCRS.WGS84);
+		
+		// Simple 3-category coverage with no-data
+		 Category[] categories	= new Category[] {	
+	        new Category("No data", Color.BLACK, 0),
+	        new Category("Level 1", Color.GREEN, 1),
+	        new Category("Level 2", Color.BLUE, 2),
+	        new Category("Level 3", Color.RED, 3)
+	    };
+		WritableGridCoverage2D coverage2 = RepastCoverageFactory.createWritableByteIndexedCoverage(
+				"Eric's data indexed", 100, 200, env, categories, null, 0);
+		
+		geography.addCoverage("My indexed coverage", coverage2);
+		
+		// envelope south east Chicago
+		env = new ReferencedEnvelope(-87.7236, -87.5252, 41.50, 41.7313, DefaultGeographicCRS.WGS84);
+
+		int maxColorIndex = 10; //RepastCoverageFactory.MAX_BYTE_COLOR_INDEX;
+		Color[] whiteRedColorScale = new Color[maxColorIndex];
+		
+		// white to red color scale
+		for (int i=0; i<whiteRedColorScale.length; i++) {
+			int blueGreen = (255/maxColorIndex*(maxColorIndex-i));			
+			whiteRedColorScale[i] = new Color(255, blueGreen, blueGreen); 
+		}
+			
+		// Color scale coverage with no-data
+		 categories	= new Category[] {	
+	        new Category("No data", Color.WHITE, 0),
+	        new Category("Level", whiteRedColorScale, NumberRange.create(1, 10))
+	    };
+		WritableGridCoverage2D coverage3 = RepastCoverageFactory.createWritableByteIndexedCoverage(
+				"Eric's data indexed", 100, 200, env, categories, null, 0);
+		
+		geography.addCoverage("My indexed coverage 2", coverage3);
+	
+		
 		// Load Features from shapefiles
+//		loadFeatures( "data/TestShapefile2latlon.shp", context, geography);
 		loadFeatures( "data/Zones2.shp", context, geography);
 		loadFeatures( "data/Agents2.shp", context, geography);
 		loadFeatures( "data/WaterLines.shp", context, geography);
+		
+		ISchedule schedule = RunEnvironment.getInstance().getCurrentSchedule();
+		ScheduleParameters params = ScheduleParameters.createAtEnd(ScheduleParameters.LAST_PRIORITY);
+
+//		schedule.schedule(params, new IAction(){
+//			File shpFile = new File("output/testShapeFile.shp");
+//			
+//			@Override
+//			public void execute() {
+//				ShapefileWriter shpWriter = new ShapefileWriter(geography);
+//				
+//				try {
+//					shpWriter.write("geography.GisAgent.FeatureType", shpFile.toURI().toURL());
+//				} catch (MalformedURLException e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
 		
 		return context;
 	}
@@ -130,6 +235,10 @@ public class ContextCreator implements ContextBuilder {
 			Geometry geom = (Geometry)feature.getDefaultGeometry();
 			Object agent = null;
 
+			if (!geom.isValid()){
+				System.out.println("Invalid geometry: " + feature.getID());
+			}
+			
 			// For Polygons, create ZoneAgents
 			if (geom instanceof MultiPolygon){
 				MultiPolygon mp = (MultiPolygon)feature.getDefaultGeometry();
@@ -138,6 +247,8 @@ public class ContextCreator implements ContextBuilder {
 				// Read the feature attributes and assign to the ZoneAgent
 				String name = (String)feature.getAttribute("name");
 				double taxRate = (double)feature.getAttribute("Tax_Rate");
+//				String name = String.valueOf((Long)feature.getAttribute("OBJECTID"));
+//				double taxRate = (double)feature.getAttribute("ProbEggs");
 
 				agent = new ZoneAgent(name,taxRate);
 

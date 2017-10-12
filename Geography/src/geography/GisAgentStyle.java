@@ -1,18 +1,19 @@
 package geography;
 
-import gov.nasa.worldwind.WorldWind;
-import gov.nasa.worldwind.avlist.AVKey;
-import gov.nasa.worldwind.render.Material;
-import gov.nasa.worldwind.render.Offset;
-import gov.nasa.worldwind.render.PatternFactory;
-import gov.nasa.worldwind.render.WWTexture;
-
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.image.BufferedImage;
+import java.util.HashMap;
+import java.util.Map;
 
-import repast.simphony.visualization.gis3D.BufferedImageTexture;
+import gov.nasa.worldwind.WorldWind;
+import gov.nasa.worldwind.avlist.AVKey;
+import gov.nasa.worldwind.render.BasicWWTexture;
+import gov.nasa.worldwind.render.Material;
+import gov.nasa.worldwind.render.Offset;
+import gov.nasa.worldwind.render.PatternFactory;
+import gov.nasa.worldwind.render.WWTexture;
 import repast.simphony.visualization.gis3D.PlaceMark;
 import repast.simphony.visualization.gis3D.style.MarkStyle;
 
@@ -27,6 +28,8 @@ public class GisAgentStyle implements MarkStyle<GisAgent>{
 	
 	private Offset labelOffset;
 	
+	private Map<String, WWTexture> textureMap;
+	
 	public GisAgentStyle(){
 		
 		/**
@@ -38,6 +41,23 @@ public class GisAgentStyle implements MarkStyle<GisAgent>{
 		 *   width/height.  AVKey.PIXELS can be used to specify the offset in pixels. 
 		 */
 		labelOffset = new Offset(1.2d, 0.6d, AVKey.FRACTION, AVKey.FRACTION);
+		
+		/**
+		 * Use of a map to store textures significantly reduces CPU and memory use
+		 * since the same texture can be reused.  Textures can be created for different
+		 * agent states and re-used when needed.
+		 */
+		textureMap = new HashMap<String, WWTexture>();
+		
+		BufferedImage image = PatternFactory.createPattern(PatternFactory.PATTERN_CIRCLE, 
+				new Dimension(50, 50), 0.7f,  Color.BLUE);
+		
+		textureMap.put("blue circle", new BasicWWTexture(image));
+		
+		image = PatternFactory.createPattern(PatternFactory.PATTERN_CIRCLE, 
+				new Dimension(50, 50), 0.7f,  Color.YELLOW);
+		
+		textureMap.put("yellow circle", new BasicWWTexture(image));
 	}
 	
 	/**
@@ -96,20 +116,13 @@ public class GisAgentStyle implements MarkStyle<GisAgent>{
 	public WWTexture getTexture(GisAgent agent, WWTexture texture) {
 	
 		// WWTexture is null on first call.
-		
-		Color color = null;
 	
 		if (agent.isWater()){
-			color = Color.BLUE;
+			return textureMap.get("blue circle");
 		}
 		else{
-			color = Color.YELLOW;
+			return textureMap.get("yellow circle");
 		}
-		
-		BufferedImage image = PatternFactory.createPattern(PatternFactory.PATTERN_CIRCLE, 
-				new Dimension(10, 10), 0.7f,  color);
-
-		return new BufferedImageTexture(image);	
 	}
 	
 	/**
@@ -118,10 +131,10 @@ public class GisAgentStyle implements MarkStyle<GisAgent>{
 	@Override
 	public double getScale(GisAgent agent) {
 		if (agent.isWater()){
-			return 2;
+			return 0.4;
 		}
 		else{
-			return 1;
+			return 0.2;
 		}
 	}
 
@@ -136,7 +149,8 @@ public class GisAgentStyle implements MarkStyle<GisAgent>{
 	 */
 	@Override
 	public String getLabel(GisAgent agent) {
-		return "" + agent.getWaterRate();
+//		return "" + agent.getWaterRate();
+		return null;
 	}
 
 	@Override
@@ -189,7 +203,6 @@ public class GisAgentStyle implements MarkStyle<GisAgent>{
 
 	@Override
 	public Offset getIconOffset(GisAgent obj) {
-		// TODO Auto-generated method stub
-		return null;
+		return Offset.CENTER;
 	}
 }

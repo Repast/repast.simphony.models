@@ -1,55 +1,62 @@
-<repast.simphony.gis.visualization.engine.GISDisplayDescriptor>
-  <name>A Display</name>
-  <type>GIS</type>
+<repast.simphony.gis.visualization.engine.GISDisplayDescriptor simphonyVersion="2.5.0">
+  <name>GIS (3D)</name>
+  <type>GIS 3D</type>
   <styles>
     <entry>
+      <string>geography.ZoneAgent</string>
       <string>geography.ZoneStyle</string>
-      <string>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;sld:UserStyle xmlns=&quot;http://www.opengis.net/sld&quot; xmlns:sld=&quot;http://www.opengis.net/sld&quot; xmlns:ogc=&quot;http://www.opengis.net/ogc&quot; xmlns:gml=&quot;http://www.opengis.net/gml&quot;&gt;&lt;sld:Name&gt;Default Styler&lt;/sld:Name&gt;&lt;sld:Title/&gt;&lt;sld:FeatureTypeStyle&gt;&lt;sld:Name&gt;name&lt;/sld:Name&gt;&lt;sld:Rule&gt;&lt;sld:PolygonSymbolizer&gt;&lt;sld:Fill&gt;&lt;sld:CssParameter name=&quot;fill&quot;&gt;#00FF00&lt;/sld:CssParameter&gt;&lt;/sld:Fill&gt;&lt;sld:Stroke/&gt;&lt;/sld:PolygonSymbolizer&gt;&lt;/sld:Rule&gt;&lt;/sld:FeatureTypeStyle&gt;&lt;/sld:UserStyle&gt;</string>
-    </entry>
-    <entry>
-      <string>geography.RadioTower</string>
-      <string>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;sld:UserStyle xmlns=&quot;http://www.opengis.net/sld&quot; xmlns:sld=&quot;http://www.opengis.net/sld&quot; xmlns:ogc=&quot;http://www.opengis.net/ogc&quot; xmlns:gml=&quot;http://www.opengis.net/gml&quot;&gt;&lt;sld:Name&gt;Default Styler&lt;/sld:Name&gt;&lt;sld:Title&gt;geography.RadioTower.FeatureType&lt;/sld:Title&gt;&lt;sld:FeatureTypeStyle&gt;&lt;sld:Name&gt;name&lt;/sld:Name&gt;&lt;sld:Title&gt;geography.RadioTower.FeatureType&lt;/sld:Title&gt;&lt;sld:FeatureTypeName&gt;geography.RadioTower.FeatureType&lt;/sld:FeatureTypeName&gt;&lt;sld:Rule&gt;&lt;sld:Title&gt; &lt;/sld:Title&gt;&lt;sld:PointSymbolizer&gt;&lt;sld:Graphic&gt;&lt;sld:Mark&gt;&lt;sld:WellKnownName&gt;triangle&lt;/sld:WellKnownName&gt;&lt;sld:Fill&gt;&lt;sld:CssParameter name=&quot;fill&quot;&gt;#FF0033&lt;/sld:CssParameter&gt;&lt;/sld:Fill&gt;&lt;sld:Stroke/&gt;&lt;/sld:Mark&gt;&lt;sld:Size&gt;20&lt;/sld:Size&gt;&lt;/sld:Graphic&gt;&lt;/sld:PointSymbolizer&gt;&lt;/sld:Rule&gt;&lt;/sld:FeatureTypeStyle&gt;&lt;/sld:UserStyle&gt;</string>
     </entry>
     <entry>
       <string>geography.BufferZoneAgent</string>
-      <string>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;sld:UserStyle xmlns=&quot;http://www.opengis.net/sld&quot; xmlns:sld=&quot;http://www.opengis.net/sld&quot; xmlns:ogc=&quot;http://www.opengis.net/ogc&quot; xmlns:gml=&quot;http://www.opengis.net/gml&quot;&gt;&lt;sld:Name&gt;Default Styler&lt;/sld:Name&gt;&lt;sld:Title&gt;geography.BufferZoneAgent.FeatureType&lt;/sld:Title&gt;&lt;sld:FeatureTypeStyle&gt;&lt;sld:Name&gt;name&lt;/sld:Name&gt;&lt;sld:Title&gt;geography.BufferZoneAgent.FeatureType&lt;/sld:Title&gt;&lt;sld:FeatureTypeName&gt;geography.BufferZoneAgent.FeatureType&lt;/sld:FeatureTypeName&gt;&lt;sld:Rule&gt;&lt;sld:Title&gt; &lt;/sld:Title&gt;&lt;sld:PolygonSymbolizer&gt;&lt;sld:Fill&gt;&lt;sld:CssParameter name=&quot;fill&quot;&gt;#FF99FF&lt;/sld:CssParameter&gt;&lt;sld:CssParameter name=&quot;fill-opacity&quot;&gt;0.52&lt;/sld:CssParameter&gt;&lt;/sld:Fill&gt;&lt;sld:Stroke/&gt;&lt;/sld:PolygonSymbolizer&gt;&lt;/sld:Rule&gt;&lt;/sld:FeatureTypeStyle&gt;&lt;/sld:UserStyle&gt;</string>
+      <string>geography.BufferZoneStyle</string>
     </entry>
     <entry>
       <string>geography.GisAgent</string>
-      <string>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;sld:UserStyle xmlns=&quot;http://www.opengis.net/sld&quot; xmlns:sld=&quot;http://www.opengis.net/sld&quot; xmlns:ogc=&quot;http://www.opengis.net/ogc&quot; xmlns:gml=&quot;http://www.opengis.net/gml&quot;&gt;&lt;sld:Name&gt;Default Styler&lt;/sld:Name&gt;&lt;sld:Title&gt;geography.GisAgent.FeatureType&lt;/sld:Title&gt;&lt;sld:FeatureTypeStyle&gt;&lt;sld:Name&gt;name&lt;/sld:Name&gt;&lt;sld:Title&gt;geography.GisAgent.FeatureType&lt;/sld:Title&gt;&lt;sld:FeatureTypeName&gt;geography.GisAgent.FeatureType&lt;/sld:FeatureTypeName&gt;&lt;sld:Rule&gt;&lt;sld:Title&gt; &lt;/sld:Title&gt;&lt;sld:PointSymbolizer&gt;&lt;sld:Graphic&gt;&lt;sld:Mark&gt;&lt;sld:WellKnownName&gt;star&lt;/sld:WellKnownName&gt;&lt;sld:Fill&gt;&lt;sld:CssParameter name=&quot;fill&quot;&gt;#CCFF33&lt;/sld:CssParameter&gt;&lt;/sld:Fill&gt;&lt;sld:Stroke/&gt;&lt;/sld:Mark&gt;&lt;sld:Size&gt;34&lt;/sld:Size&gt;&lt;/sld:Graphic&gt;&lt;/sld:PointSymbolizer&gt;&lt;/sld:Rule&gt;&lt;/sld:FeatureTypeStyle&gt;&lt;/sld:UserStyle&gt;</string>
-    </entry>
-    <entry>
-      <string>geography.TowerAgentStyle</string>
-      <string>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;sld:UserStyle xmlns=&quot;http://www.opengis.net/sld&quot; xmlns:sld=&quot;http://www.opengis.net/sld&quot; xmlns:ogc=&quot;http://www.opengis.net/ogc&quot; xmlns:gml=&quot;http://www.opengis.net/gml&quot;&gt;&lt;sld:Name&gt;Default Styler&lt;/sld:Name&gt;&lt;sld:Title/&gt;&lt;sld:FeatureTypeStyle&gt;&lt;sld:Name&gt;name&lt;/sld:Name&gt;&lt;sld:Rule&gt;&lt;sld:PolygonSymbolizer&gt;&lt;sld:Fill&gt;&lt;sld:CssParameter name=&quot;fill&quot;&gt;#00FF00&lt;/sld:CssParameter&gt;&lt;/sld:Fill&gt;&lt;sld:Stroke/&gt;&lt;/sld:PolygonSymbolizer&gt;&lt;/sld:Rule&gt;&lt;/sld:FeatureTypeStyle&gt;&lt;/sld:UserStyle&gt;</string>
+      <string>geography.GisAgentStyle</string>
     </entry>
     <entry>
       <string>geography.WaterLine</string>
-      <string>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;sld:UserStyle xmlns=&quot;http://www.opengis.net/sld&quot; xmlns:sld=&quot;http://www.opengis.net/sld&quot; xmlns:ogc=&quot;http://www.opengis.net/ogc&quot; xmlns:gml=&quot;http://www.opengis.net/gml&quot;&gt;&lt;sld:Name&gt;Default Styler&lt;/sld:Name&gt;&lt;sld:Title&gt;geography.WaterLine.FeatureType&lt;/sld:Title&gt;&lt;sld:FeatureTypeStyle&gt;&lt;sld:Name&gt;name&lt;/sld:Name&gt;&lt;sld:Title&gt;geography.WaterLine.FeatureType&lt;/sld:Title&gt;&lt;sld:FeatureTypeName&gt;geography.WaterLine.FeatureType&lt;/sld:FeatureTypeName&gt;&lt;sld:Rule&gt;&lt;sld:Title&gt; &lt;/sld:Title&gt;&lt;sld:LineSymbolizer&gt;&lt;sld:Stroke&gt;&lt;sld:CssParameter name=&quot;stroke&quot;&gt;#3333FF&lt;/sld:CssParameter&gt;&lt;/sld:Stroke&gt;&lt;/sld:LineSymbolizer&gt;&lt;/sld:Rule&gt;&lt;/sld:FeatureTypeStyle&gt;&lt;/sld:UserStyle&gt;</string>
-    </entry>
-    <entry>
-      <string>geography.GisAgentStyle</string>
-      <string>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;sld:UserStyle xmlns=&quot;http://www.opengis.net/sld&quot; xmlns:sld=&quot;http://www.opengis.net/sld&quot; xmlns:ogc=&quot;http://www.opengis.net/ogc&quot; xmlns:gml=&quot;http://www.opengis.net/gml&quot;&gt;&lt;sld:Name&gt;Default Styler&lt;/sld:Name&gt;&lt;sld:Title/&gt;&lt;sld:FeatureTypeStyle&gt;&lt;sld:Name&gt;name&lt;/sld:Name&gt;&lt;sld:Rule&gt;&lt;sld:PolygonSymbolizer&gt;&lt;sld:Fill&gt;&lt;sld:CssParameter name=&quot;fill&quot;&gt;#00FF00&lt;/sld:CssParameter&gt;&lt;/sld:Fill&gt;&lt;sld:Stroke/&gt;&lt;/sld:PolygonSymbolizer&gt;&lt;/sld:Rule&gt;&lt;/sld:FeatureTypeStyle&gt;&lt;/sld:UserStyle&gt;</string>
-    </entry>
-    <entry>
       <string>geography.WaterLineStyle</string>
-      <string>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;sld:UserStyle xmlns=&quot;http://www.opengis.net/sld&quot; xmlns:sld=&quot;http://www.opengis.net/sld&quot; xmlns:ogc=&quot;http://www.opengis.net/ogc&quot; xmlns:gml=&quot;http://www.opengis.net/gml&quot;&gt;&lt;sld:Name&gt;Default Styler&lt;/sld:Name&gt;&lt;sld:Title/&gt;&lt;sld:FeatureTypeStyle&gt;&lt;sld:Name&gt;name&lt;/sld:Name&gt;&lt;sld:Rule&gt;&lt;sld:PolygonSymbolizer&gt;&lt;sld:Fill&gt;&lt;sld:CssParameter name=&quot;fill&quot;&gt;#00FF00&lt;/sld:CssParameter&gt;&lt;/sld:Fill&gt;&lt;sld:Stroke/&gt;&lt;/sld:PolygonSymbolizer&gt;&lt;/sld:Rule&gt;&lt;/sld:FeatureTypeStyle&gt;&lt;/sld:UserStyle&gt;</string>
     </entry>
     <entry>
-      <string>geography.BufferZoneStyle</string>
-      <string>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;sld:UserStyle xmlns=&quot;http://www.opengis.net/sld&quot; xmlns:sld=&quot;http://www.opengis.net/sld&quot; xmlns:ogc=&quot;http://www.opengis.net/ogc&quot; xmlns:gml=&quot;http://www.opengis.net/gml&quot;&gt;&lt;sld:Name&gt;Default Styler&lt;/sld:Name&gt;&lt;sld:Title/&gt;&lt;sld:FeatureTypeStyle&gt;&lt;sld:Name&gt;name&lt;/sld:Name&gt;&lt;sld:Rule&gt;&lt;sld:PolygonSymbolizer&gt;&lt;sld:Fill&gt;&lt;sld:CssParameter name=&quot;fill&quot;&gt;#00FF00&lt;/sld:CssParameter&gt;&lt;/sld:Fill&gt;&lt;sld:Stroke/&gt;&lt;/sld:PolygonSymbolizer&gt;&lt;/sld:Rule&gt;&lt;/sld:FeatureTypeStyle&gt;&lt;/sld:UserStyle&gt;</string>
-    </entry>
-    <entry>
-      <string>geography.ContextCreator</string>
-      <string>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;sld:UserStyle xmlns=&quot;http://www.opengis.net/sld&quot; xmlns:sld=&quot;http://www.opengis.net/sld&quot; xmlns:ogc=&quot;http://www.opengis.net/ogc&quot; xmlns:gml=&quot;http://www.opengis.net/gml&quot;&gt;&lt;sld:Name&gt;Default Styler&lt;/sld:Name&gt;&lt;sld:Title/&gt;&lt;sld:FeatureTypeStyle&gt;&lt;sld:Name&gt;name&lt;/sld:Name&gt;&lt;sld:Rule&gt;&lt;sld:PolygonSymbolizer&gt;&lt;sld:Fill&gt;&lt;sld:CssParameter name=&quot;fill&quot;&gt;#00FF00&lt;/sld:CssParameter&gt;&lt;/sld:Fill&gt;&lt;sld:Stroke/&gt;&lt;/sld:PolygonSymbolizer&gt;&lt;/sld:Rule&gt;&lt;/sld:FeatureTypeStyle&gt;&lt;/sld:UserStyle&gt;</string>
-    </entry>
-    <entry>
-      <string>geography.ZoneAgent</string>
-      <string>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;sld:UserStyle xmlns=&quot;http://www.opengis.net/sld&quot; xmlns:sld=&quot;http://www.opengis.net/sld&quot; xmlns:ogc=&quot;http://www.opengis.net/ogc&quot; xmlns:gml=&quot;http://www.opengis.net/gml&quot;&gt;&lt;sld:Name&gt;Default Styler&lt;/sld:Name&gt;&lt;sld:Title&gt;geography.ZoneAgent.FeatureType&lt;/sld:Title&gt;&lt;sld:FeatureTypeStyle&gt;&lt;sld:Name&gt;name&lt;/sld:Name&gt;&lt;sld:Title&gt;geography.ZoneAgent.FeatureType&lt;/sld:Title&gt;&lt;sld:FeatureTypeName&gt;geography.ZoneAgent.FeatureType&lt;/sld:FeatureTypeName&gt;&lt;sld:Rule&gt;&lt;sld:Title&gt; &lt;/sld:Title&gt;&lt;sld:PolygonSymbolizer&gt;&lt;sld:Fill&gt;&lt;sld:CssParameter name=&quot;fill&quot;&gt;#00FF00&lt;/sld:CssParameter&gt;&lt;sld:CssParameter name=&quot;fill-opacity&quot;&gt;0.51&lt;/sld:CssParameter&gt;&lt;/sld:Fill&gt;&lt;sld:Stroke/&gt;&lt;/sld:PolygonSymbolizer&gt;&lt;/sld:Rule&gt;&lt;/sld:FeatureTypeStyle&gt;&lt;/sld:UserStyle&gt;</string>
+      <string>geography.RadioTower</string>
+      <string>geography.TowerAgentStyle</string>
     </entry>
   </styles>
-  <editedStyles/>
-  <netStyles/>
-  <editedNetStyles/>
+  <editedStyles>
+    <entry>
+      <string>geography.ZoneAgent</string>
+      <null/>
+    </entry>
+    <entry>
+      <string>geography.BufferZoneAgent</string>
+      <null/>
+    </entry>
+    <entry>
+      <string>geography.GisAgent</string>
+      <null/>
+    </entry>
+    <entry>
+      <string>geography.WaterLine</string>
+      <null/>
+    </entry>
+    <entry>
+      <string>geography.RadioTower</string>
+      <null/>
+    </entry>
+  </editedStyles>
+  <netStyles>
+    <entry>
+      <string>Network</string>
+      <string>geography.MyNetworkStyle</string>
+    </entry>
+  </netStyles>
+  <editedNetStyles>
+    <entry>
+      <string>Network</string>
+      <null/>
+    </entry>
+  </editedNetStyles>
   <frequency>ON_NEW</frequency>
   <schedParams>
     <start>1.0</start>
@@ -58,53 +65,69 @@
     <pType>LAST</pType>
     <duration>-1.0</duration>
     <frequency>REPEAT</frequency>
-    <hashCode>1670480429</hashCode>
+    <hashCode>-462505264</hashCode>
   </schedParams>
   <layoutInterval>0</layoutInterval>
   <layerOrder>
     <entry>
-      <string>geography.ZoneStyle</string>
-      <int>9</int>
-    </entry>
-    <entry>
-      <string>geography.RadioTower</string>
+      <string>Blue Marble May 2004</string>
       <int>1</int>
     </entry>
     <entry>
-      <string>geography.BufferZoneAgent</string>
+      <string>Bing Imagery</string>
+      <int>3</int>
+    </entry>
+    <entry>
+      <string>./data/RGBTestPattern.tif</string>
       <int>4</int>
     </entry>
     <entry>
-      <string>geography.GisAgent</string>
-      <int>0</int>
-    </entry>
-    <entry>
-      <string>geography.TowerAgentStyle</string>
-      <int>5</int>
-    </entry>
-    <entry>
-      <string>geography.WaterLine</string>
-      <int>2</int>
-    </entry>
-    <entry>
-      <string>geography.GisAgentStyle</string>
-      <int>6</int>
-    </entry>
-    <entry>
-      <string>geography.WaterLineStyle</string>
+      <string>My coverage</string>
       <int>8</int>
     </entry>
     <entry>
-      <string>geography.BufferZoneStyle</string>
+      <string>geography.GisAgent</string>
+      <int>14</int>
+    </entry>
+    <entry>
+      <string>My indexed coverage 2</string>
       <int>7</int>
     </entry>
     <entry>
-      <string>geography.ContextCreator</string>
-      <int>10</int>
+      <string>My indexed coverage</string>
+      <int>6</int>
+    </entry>
+    <entry>
+      <string>geography.RadioTower</string>
+      <int>13</int>
     </entry>
     <entry>
       <string>geography.ZoneAgent</string>
-      <int>3</int>
+      <int>11</int>
+    </entry>
+    <entry>
+      <string>./data/UTM2GTIF.TIF</string>
+      <int>5</int>
+    </entry>
+    <entry>
+      <string>Scale bar</string>
+      <int>0</int>
+    </entry>
+    <entry>
+      <string>geography.BufferZoneAgent</string>
+      <int>10</int>
+    </entry>
+    <entry>
+      <string>Network</string>
+      <int>9</int>
+    </entry>
+    <entry>
+      <string>geography.WaterLine</string>
+      <int>12</int>
+    </entry>
+    <entry>
+      <string>i-cubed Landsat</string>
+      <int>2</int>
     </entry>
   </layerOrder>
   <projections>
@@ -112,6 +135,11 @@
       <id>Geography</id>
       <attributes/>
       <type>geography</type>
+    </repast.simphony.scenario.data.ProjectionData>
+    <repast.simphony.scenario.data.ProjectionData>
+      <id>Network</id>
+      <attributes/>
+      <type>network</type>
     </repast.simphony.scenario.data.ProjectionData>
   </projections>
   <projectionDescriptors>
@@ -122,11 +150,64 @@
         <props/>
       </repast.simphony.visualization.gis.GisProjectionDescriptor>
     </entry>
-  </projectionDescriptors>
-  <props>
     <entry>
-      <string>class repast.simphony.visualization.gis.DisplayGIS.SHP_FILE_STYLE_PROP</string>
-      <map/>
+      <string>Network</string>
+      <repast.simphony.visualization.engine.DefaultProjectionDescriptor>
+        <proj reference="../../../../projections/repast.simphony.scenario.data.ProjectionData[2]"/>
+        <props/>
+      </repast.simphony.visualization.engine.DefaultProjectionDescriptor>
     </entry>
-  </props>
+  </projectionDescriptors>
+  <props/>
+  <backgroundColor>
+    <red>255</red>
+    <green>255</green>
+    <blue>255</blue>
+    <alpha>255</alpha>
+  </backgroundColor>
+  <renderQuality>MEDIUM</renderQuality>
+  <viewType>FLAT</viewType>
+  <trackAgents>false</trackAgents>
+  <globeLayers>
+    <entry>
+      <string>Blue Marble May 2004</string>
+      <boolean>true</boolean>
+    </entry>
+    <entry>
+      <string>Scale bar</string>
+      <boolean>true</boolean>
+    </entry>
+    <entry>
+      <string>Bing Imagery</string>
+      <boolean>false</boolean>
+    </entry>
+    <entry>
+      <string>i-cubed Landsat</string>
+      <boolean>true</boolean>
+    </entry>
+  </globeLayers>
+  <staticCoverages>
+    <entry>
+      <string>./data/UTM2GTIF.TIF</string>
+      <string>repast.simphony.visualization.gis3D.style.DefaultCoverageStyle</string>
+    </entry>
+    <entry>
+      <string>./data/RGBTestPattern.tif</string>
+      <string>repast.simphony.visualization.gis3D.style.DefaultCoverageStyle</string>
+    </entry>
+  </staticCoverages>
+  <coverageLayers>
+    <entry>
+      <string>My coverage</string>
+      <string>geography.BlueCoverageStyle</string>
+    </entry>
+    <entry>
+      <string>My indexed coverage 2</string>
+      <string>repast.simphony.visualization.gis3D.style.DefaultCoverageStyle</string>
+    </entry>
+    <entry>
+      <string>My indexed coverage</string>
+      <string>repast.simphony.visualization.gis3D.style.DefaultCoverageStyle</string>
+    </entry>
+  </coverageLayers>
 </repast.simphony.gis.visualization.engine.GISDisplayDescriptor>

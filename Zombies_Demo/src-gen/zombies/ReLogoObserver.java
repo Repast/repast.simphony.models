@@ -15,178 +15,178 @@ import repast.simphony.relogo.builder.ReLogoBuilderGeneratedFor;
 public class ReLogoObserver extends BaseObserver{
 
 	/**
-	 * Makes a number of randomly oriented zombies and then executes a set of commands on the
-	 * created zombies.
+	 * Makes a number of randomly oriented humans and then executes a set of commands on the
+	 * created humans.
 	 * 
 	 * @param number
 	 *            a number
 	 * @param closure
 	 *            a set of commands
-	 * @return created zombies
+	 * @return created humans
 	 */
-	@ReLogoBuilderGeneratedFor("zombies.relogo.Zombie")
-	public AgentSet<zombies.relogo.Zombie> createZombies(int number, Closure closure) {
-		AgentSet<zombies.relogo.Zombie> result = new AgentSet<>();
-		AgentSet<Turtle> createResult = this.crt(number,closure,"Zombie");
+	@ReLogoBuilderGeneratedFor("zombies.relogo.Human")
+	public AgentSet<zombies.relogo.Human> createHumans(int number, Closure closure) {
+		AgentSet<zombies.relogo.Human> result = new AgentSet<>();
+		AgentSet<Turtle> createResult = this.crt(number,closure,"Human");
 		for (Turtle t : createResult){
-			if (t instanceof zombies.relogo.Zombie){
-				result.add((zombies.relogo.Zombie)t);
+			if (t instanceof zombies.relogo.Human){
+				result.add((zombies.relogo.Human)t);
 			}
 		} 
 		return result; 
 	}
 
 	/**
-	 * Makes a number of randomly oriented zombies and then executes a set of commands on the
-	 * created zombies.
+	 * Makes a number of randomly oriented humans and then executes a set of commands on the
+	 * created humans.
 	 * 
 	 * @param number
 	 *            a number
 	 * @param closure
 	 *            a set of commands
-	 * @return created zombies
+	 * @return created humans
 	 */
-	@ReLogoBuilderGeneratedFor("zombies.relogo.Zombie")
-	public AgentSet<zombies.relogo.Zombie> createZombies(int number) {
-		return createZombies(number,null);
+	@ReLogoBuilderGeneratedFor("zombies.relogo.Human")
+	public AgentSet<zombies.relogo.Human> createHumans(int number) {
+		return createHumans(number,null);
 	}
 
 	/**
-	 * Makes a number of uniformly fanned zombies and then executes a set of commands on the
-	 * created zombies.
+	 * Makes a number of uniformly fanned humans and then executes a set of commands on the
+	 * created humans.
 	 * 
 	 * @param number
 	 *            a number
 	 * @param closure
 	 *            a set of commands
-	 * @return created zombies
+	 * @return created humans
 	 */
-	@ReLogoBuilderGeneratedFor("zombies.relogo.Zombie")
-	public AgentSet<zombies.relogo.Zombie> createOrderedZombies(int number, Closure closure) {
-		AgentSet<zombies.relogo.Zombie> result = new AgentSet<>();
-		AgentSet<Turtle> createResult = this.cro(number,closure,"Zombie");
+	@ReLogoBuilderGeneratedFor("zombies.relogo.Human")
+	public AgentSet<zombies.relogo.Human> createOrderedHumans(int number, Closure closure) {
+		AgentSet<zombies.relogo.Human> result = new AgentSet<>();
+		AgentSet<Turtle> createResult = this.cro(number,closure,"Human");
 		for (Turtle t : createResult){
-			if (t instanceof zombies.relogo.Zombie){
-				result.add((zombies.relogo.Zombie)t);
+			if (t instanceof zombies.relogo.Human){
+				result.add((zombies.relogo.Human)t);
 			}
 		} 
 		return result; 
 	}
 
 	/**
-	 * Makes a number of uniformly fanned zombies and then executes a set of commands on the
-	 * created zombies.
+	 * Makes a number of uniformly fanned humans and then executes a set of commands on the
+	 * created humans.
 	 * 
 	 * @param number
 	 *            a number
 	 * @param closure
 	 *            a set of commands
-	 * @return created zombies
+	 * @return created humans
 	 */
-	@ReLogoBuilderGeneratedFor("zombies.relogo.Zombie")
-	public AgentSet<zombies.relogo.Zombie> createOrderedZombies(int number) {
-		return createOrderedZombies(number,null);
+	@ReLogoBuilderGeneratedFor("zombies.relogo.Human")
+	public AgentSet<zombies.relogo.Human> createOrderedHumans(int number) {
+		return createOrderedHumans(number,null);
 	}
 
 	/**
-	 * Queries if object is a zombie.
+	 * Queries if object is a human.
 	 * 
 	 * @param o
 	 *            an object
-	 * @return true or false based on whether the object is a zombie
+	 * @return true or false based on whether the object is a human
 	 */
-	@ReLogoBuilderGeneratedFor("zombies.relogo.Zombie")
-	public boolean isZombieQ(Object o){
-		return (o instanceof zombies.relogo.Zombie);
+	@ReLogoBuilderGeneratedFor("zombies.relogo.Human")
+	public boolean isHumanQ(Object o){
+		return (o instanceof zombies.relogo.Human);
 	}
 
 	/**
-	 * Returns an agentset containing all zombies.
+	 * Returns an agentset containing all humans.
 	 * 
-	 * @return agentset of all zombies
+	 * @return agentset of all humans
 	 */
-	@ReLogoBuilderGeneratedFor("zombies.relogo.Zombie")
-	public AgentSet<zombies.relogo.Zombie> zombies(){
-		AgentSet<zombies.relogo.Zombie> a = new AgentSet<zombies.relogo.Zombie>();
-		for (Object e : this.getContext().getObjects(zombies.relogo.Zombie.class)) {
-			if (e instanceof zombies.relogo.Zombie){
-				a.add((zombies.relogo.Zombie)e);
+	@ReLogoBuilderGeneratedFor("zombies.relogo.Human")
+	public AgentSet<zombies.relogo.Human> humans(){
+		AgentSet<zombies.relogo.Human> a = new AgentSet<zombies.relogo.Human>();
+		for (Object e : this.getContext().getObjects(zombies.relogo.Human.class)) {
+			if (e instanceof zombies.relogo.Human){
+				a.add((zombies.relogo.Human)e);
 			}
 		}
 		return a;
 	}
 
 	/**
-	 * Returns the zombie with the given who number.
+	 * Returns the human with the given who number.
 	 * 
 	 * @param number
 	 *            a number
 	 * @return turtle number
 	 */
-	@ReLogoBuilderGeneratedFor("zombies.relogo.Zombie")
-	public zombies.relogo.Zombie zombie(Number number){
+	@ReLogoBuilderGeneratedFor("zombies.relogo.Human")
+	public zombies.relogo.Human human(Number number){
 		Turtle turtle = Utility.turtleU(number.intValue(), this);
-		if (turtle instanceof zombies.relogo.Zombie)
-			return (zombies.relogo.Zombie) turtle;
+		if (turtle instanceof zombies.relogo.Human)
+			return (zombies.relogo.Human) turtle;
 		return null;
 	}
 
 	/**
-	 * Returns an agentset of zombies on a given patch.
+	 * Returns an agentset of humans on a given patch.
 	 * 
 	 * @param p
 	 *            a patch
-	 * @return agentset of zombies on patch p
+	 * @return agentset of humans on patch p
 	 */
-	@ReLogoBuilderGeneratedFor("zombies.relogo.Zombie")
-	public AgentSet<zombies.relogo.Zombie> zombiesOn(Patch p){
-		AgentSet<zombies.relogo.Zombie> result = new AgentSet<zombies.relogo.Zombie>();						
-		for (Turtle t : Utility.getTurtlesOnGridPoint(p.getGridLocation(),this,"zombie")){
-			if (t instanceof zombies.relogo.Zombie)
-			result.add((zombies.relogo.Zombie)t);
+	@ReLogoBuilderGeneratedFor("zombies.relogo.Human")
+	public AgentSet<zombies.relogo.Human> humansOn(Patch p){
+		AgentSet<zombies.relogo.Human> result = new AgentSet<zombies.relogo.Human>();						
+		for (Turtle t : Utility.getTurtlesOnGridPoint(p.getGridLocation(),this,"human")){
+			if (t instanceof zombies.relogo.Human)
+			result.add((zombies.relogo.Human)t);
 		}
 		return result;
 	}
 
 	/**
-	 * Returns an agentset of zombies on the same patch as a turtle.
+	 * Returns an agentset of humans on the same patch as a turtle.
 	 * 
 	 * @param t
 	 *            a turtle
-	 * @return agentset of zombies on the same patch as turtle t
+	 * @return agentset of humans on the same patch as turtle t
 	 */
-	@ReLogoBuilderGeneratedFor("zombies.relogo.Zombie")
-	public AgentSet<zombies.relogo.Zombie> zombiesOn(Turtle t){
-		AgentSet<zombies.relogo.Zombie> result = new AgentSet<zombies.relogo.Zombie>();						
-		for (Turtle tt : Utility.getTurtlesOnGridPoint(Utility.ndPointToGridPoint(t.getTurtleLocation()),this,"zombie")){
-			if (tt instanceof zombies.relogo.Zombie)
-			result.add((zombies.relogo.Zombie)tt);
+	@ReLogoBuilderGeneratedFor("zombies.relogo.Human")
+	public AgentSet<zombies.relogo.Human> humansOn(Turtle t){
+		AgentSet<zombies.relogo.Human> result = new AgentSet<zombies.relogo.Human>();						
+		for (Turtle tt : Utility.getTurtlesOnGridPoint(Utility.ndPointToGridPoint(t.getTurtleLocation()),this,"human")){
+			if (tt instanceof zombies.relogo.Human)
+			result.add((zombies.relogo.Human)tt);
 		}
 		return result;
 	}
 
 	/**
-	 * Returns an agentset of zombies on the patches in a collection or on the patches
+	 * Returns an agentset of humans on the patches in a collection or on the patches
 	 * that a collection of turtles are.
 	 * 
 	 * @param a
 	 *            a collection
-	 * @return agentset of zombies on the patches in collection a or on the patches
+	 * @return agentset of humans on the patches in collection a or on the patches
 	 *         that collection a turtles are
 	 */
-	@ReLogoBuilderGeneratedFor("zombies.relogo.Zombie")
-	public AgentSet<zombies.relogo.Zombie> zombiesOn(Collection c){
+	@ReLogoBuilderGeneratedFor("zombies.relogo.Human")
+	public AgentSet<zombies.relogo.Human> humansOn(Collection c){
 
 		if (c == null || c.isEmpty()){
-			return new AgentSet<zombies.relogo.Zombie>();
+			return new AgentSet<zombies.relogo.Human>();
 		}
 
-		Set<zombies.relogo.Zombie> total = new HashSet<zombies.relogo.Zombie>();
+		Set<zombies.relogo.Human> total = new HashSet<zombies.relogo.Human>();
 		if (c.iterator().next() instanceof Turtle){
 			for (Object o : c){
 				if (o instanceof Turtle){
 					Turtle t = (Turtle) o;
-					total.addAll(zombiesOn(t));
+					total.addAll(humansOn(t));
 				}
 			}
 		}
@@ -194,11 +194,11 @@ public class ReLogoObserver extends BaseObserver{
 			for (Object o : c){
 				if (o instanceof Patch){
 					Patch p = (Patch) o;
-					total.addAll(zombiesOn(p));
+					total.addAll(humansOn(p));
 				}
 			}
 		}
-		return new AgentSet<zombies.relogo.Zombie>(total);
+		return new AgentSet<zombies.relogo.Human>(total);
 	}
 
 	/**
@@ -389,178 +389,178 @@ public class ReLogoObserver extends BaseObserver{
 	}
 
 	/**
-	 * Makes a number of randomly oriented humans and then executes a set of commands on the
-	 * created humans.
+	 * Makes a number of randomly oriented zombies and then executes a set of commands on the
+	 * created zombies.
 	 * 
 	 * @param number
 	 *            a number
 	 * @param closure
 	 *            a set of commands
-	 * @return created humans
+	 * @return created zombies
 	 */
-	@ReLogoBuilderGeneratedFor("zombies.relogo.Human")
-	public AgentSet<zombies.relogo.Human> createHumans(int number, Closure closure) {
-		AgentSet<zombies.relogo.Human> result = new AgentSet<>();
-		AgentSet<Turtle> createResult = this.crt(number,closure,"Human");
+	@ReLogoBuilderGeneratedFor("zombies.relogo.Zombie")
+	public AgentSet<zombies.relogo.Zombie> createZombies(int number, Closure closure) {
+		AgentSet<zombies.relogo.Zombie> result = new AgentSet<>();
+		AgentSet<Turtle> createResult = this.crt(number,closure,"Zombie");
 		for (Turtle t : createResult){
-			if (t instanceof zombies.relogo.Human){
-				result.add((zombies.relogo.Human)t);
+			if (t instanceof zombies.relogo.Zombie){
+				result.add((zombies.relogo.Zombie)t);
 			}
 		} 
 		return result; 
 	}
 
 	/**
-	 * Makes a number of randomly oriented humans and then executes a set of commands on the
-	 * created humans.
+	 * Makes a number of randomly oriented zombies and then executes a set of commands on the
+	 * created zombies.
 	 * 
 	 * @param number
 	 *            a number
 	 * @param closure
 	 *            a set of commands
-	 * @return created humans
+	 * @return created zombies
 	 */
-	@ReLogoBuilderGeneratedFor("zombies.relogo.Human")
-	public AgentSet<zombies.relogo.Human> createHumans(int number) {
-		return createHumans(number,null);
+	@ReLogoBuilderGeneratedFor("zombies.relogo.Zombie")
+	public AgentSet<zombies.relogo.Zombie> createZombies(int number) {
+		return createZombies(number,null);
 	}
 
 	/**
-	 * Makes a number of uniformly fanned humans and then executes a set of commands on the
-	 * created humans.
+	 * Makes a number of uniformly fanned zombies and then executes a set of commands on the
+	 * created zombies.
 	 * 
 	 * @param number
 	 *            a number
 	 * @param closure
 	 *            a set of commands
-	 * @return created humans
+	 * @return created zombies
 	 */
-	@ReLogoBuilderGeneratedFor("zombies.relogo.Human")
-	public AgentSet<zombies.relogo.Human> createOrderedHumans(int number, Closure closure) {
-		AgentSet<zombies.relogo.Human> result = new AgentSet<>();
-		AgentSet<Turtle> createResult = this.cro(number,closure,"Human");
+	@ReLogoBuilderGeneratedFor("zombies.relogo.Zombie")
+	public AgentSet<zombies.relogo.Zombie> createOrderedZombies(int number, Closure closure) {
+		AgentSet<zombies.relogo.Zombie> result = new AgentSet<>();
+		AgentSet<Turtle> createResult = this.cro(number,closure,"Zombie");
 		for (Turtle t : createResult){
-			if (t instanceof zombies.relogo.Human){
-				result.add((zombies.relogo.Human)t);
+			if (t instanceof zombies.relogo.Zombie){
+				result.add((zombies.relogo.Zombie)t);
 			}
 		} 
 		return result; 
 	}
 
 	/**
-	 * Makes a number of uniformly fanned humans and then executes a set of commands on the
-	 * created humans.
+	 * Makes a number of uniformly fanned zombies and then executes a set of commands on the
+	 * created zombies.
 	 * 
 	 * @param number
 	 *            a number
 	 * @param closure
 	 *            a set of commands
-	 * @return created humans
+	 * @return created zombies
 	 */
-	@ReLogoBuilderGeneratedFor("zombies.relogo.Human")
-	public AgentSet<zombies.relogo.Human> createOrderedHumans(int number) {
-		return createOrderedHumans(number,null);
+	@ReLogoBuilderGeneratedFor("zombies.relogo.Zombie")
+	public AgentSet<zombies.relogo.Zombie> createOrderedZombies(int number) {
+		return createOrderedZombies(number,null);
 	}
 
 	/**
-	 * Queries if object is a human.
+	 * Queries if object is a zombie.
 	 * 
 	 * @param o
 	 *            an object
-	 * @return true or false based on whether the object is a human
+	 * @return true or false based on whether the object is a zombie
 	 */
-	@ReLogoBuilderGeneratedFor("zombies.relogo.Human")
-	public boolean isHumanQ(Object o){
-		return (o instanceof zombies.relogo.Human);
+	@ReLogoBuilderGeneratedFor("zombies.relogo.Zombie")
+	public boolean isZombieQ(Object o){
+		return (o instanceof zombies.relogo.Zombie);
 	}
 
 	/**
-	 * Returns an agentset containing all humans.
+	 * Returns an agentset containing all zombies.
 	 * 
-	 * @return agentset of all humans
+	 * @return agentset of all zombies
 	 */
-	@ReLogoBuilderGeneratedFor("zombies.relogo.Human")
-	public AgentSet<zombies.relogo.Human> humans(){
-		AgentSet<zombies.relogo.Human> a = new AgentSet<zombies.relogo.Human>();
-		for (Object e : this.getContext().getObjects(zombies.relogo.Human.class)) {
-			if (e instanceof zombies.relogo.Human){
-				a.add((zombies.relogo.Human)e);
+	@ReLogoBuilderGeneratedFor("zombies.relogo.Zombie")
+	public AgentSet<zombies.relogo.Zombie> zombies(){
+		AgentSet<zombies.relogo.Zombie> a = new AgentSet<zombies.relogo.Zombie>();
+		for (Object e : this.getContext().getObjects(zombies.relogo.Zombie.class)) {
+			if (e instanceof zombies.relogo.Zombie){
+				a.add((zombies.relogo.Zombie)e);
 			}
 		}
 		return a;
 	}
 
 	/**
-	 * Returns the human with the given who number.
+	 * Returns the zombie with the given who number.
 	 * 
 	 * @param number
 	 *            a number
 	 * @return turtle number
 	 */
-	@ReLogoBuilderGeneratedFor("zombies.relogo.Human")
-	public zombies.relogo.Human human(Number number){
+	@ReLogoBuilderGeneratedFor("zombies.relogo.Zombie")
+	public zombies.relogo.Zombie zombie(Number number){
 		Turtle turtle = Utility.turtleU(number.intValue(), this);
-		if (turtle instanceof zombies.relogo.Human)
-			return (zombies.relogo.Human) turtle;
+		if (turtle instanceof zombies.relogo.Zombie)
+			return (zombies.relogo.Zombie) turtle;
 		return null;
 	}
 
 	/**
-	 * Returns an agentset of humans on a given patch.
+	 * Returns an agentset of zombies on a given patch.
 	 * 
 	 * @param p
 	 *            a patch
-	 * @return agentset of humans on patch p
+	 * @return agentset of zombies on patch p
 	 */
-	@ReLogoBuilderGeneratedFor("zombies.relogo.Human")
-	public AgentSet<zombies.relogo.Human> humansOn(Patch p){
-		AgentSet<zombies.relogo.Human> result = new AgentSet<zombies.relogo.Human>();						
-		for (Turtle t : Utility.getTurtlesOnGridPoint(p.getGridLocation(),this,"human")){
-			if (t instanceof zombies.relogo.Human)
-			result.add((zombies.relogo.Human)t);
+	@ReLogoBuilderGeneratedFor("zombies.relogo.Zombie")
+	public AgentSet<zombies.relogo.Zombie> zombiesOn(Patch p){
+		AgentSet<zombies.relogo.Zombie> result = new AgentSet<zombies.relogo.Zombie>();						
+		for (Turtle t : Utility.getTurtlesOnGridPoint(p.getGridLocation(),this,"zombie")){
+			if (t instanceof zombies.relogo.Zombie)
+			result.add((zombies.relogo.Zombie)t);
 		}
 		return result;
 	}
 
 	/**
-	 * Returns an agentset of humans on the same patch as a turtle.
+	 * Returns an agentset of zombies on the same patch as a turtle.
 	 * 
 	 * @param t
 	 *            a turtle
-	 * @return agentset of humans on the same patch as turtle t
+	 * @return agentset of zombies on the same patch as turtle t
 	 */
-	@ReLogoBuilderGeneratedFor("zombies.relogo.Human")
-	public AgentSet<zombies.relogo.Human> humansOn(Turtle t){
-		AgentSet<zombies.relogo.Human> result = new AgentSet<zombies.relogo.Human>();						
-		for (Turtle tt : Utility.getTurtlesOnGridPoint(Utility.ndPointToGridPoint(t.getTurtleLocation()),this,"human")){
-			if (tt instanceof zombies.relogo.Human)
-			result.add((zombies.relogo.Human)tt);
+	@ReLogoBuilderGeneratedFor("zombies.relogo.Zombie")
+	public AgentSet<zombies.relogo.Zombie> zombiesOn(Turtle t){
+		AgentSet<zombies.relogo.Zombie> result = new AgentSet<zombies.relogo.Zombie>();						
+		for (Turtle tt : Utility.getTurtlesOnGridPoint(Utility.ndPointToGridPoint(t.getTurtleLocation()),this,"zombie")){
+			if (tt instanceof zombies.relogo.Zombie)
+			result.add((zombies.relogo.Zombie)tt);
 		}
 		return result;
 	}
 
 	/**
-	 * Returns an agentset of humans on the patches in a collection or on the patches
+	 * Returns an agentset of zombies on the patches in a collection or on the patches
 	 * that a collection of turtles are.
 	 * 
 	 * @param a
 	 *            a collection
-	 * @return agentset of humans on the patches in collection a or on the patches
+	 * @return agentset of zombies on the patches in collection a or on the patches
 	 *         that collection a turtles are
 	 */
-	@ReLogoBuilderGeneratedFor("zombies.relogo.Human")
-	public AgentSet<zombies.relogo.Human> humansOn(Collection c){
+	@ReLogoBuilderGeneratedFor("zombies.relogo.Zombie")
+	public AgentSet<zombies.relogo.Zombie> zombiesOn(Collection c){
 
 		if (c == null || c.isEmpty()){
-			return new AgentSet<zombies.relogo.Human>();
+			return new AgentSet<zombies.relogo.Zombie>();
 		}
 
-		Set<zombies.relogo.Human> total = new HashSet<zombies.relogo.Human>();
+		Set<zombies.relogo.Zombie> total = new HashSet<zombies.relogo.Zombie>();
 		if (c.iterator().next() instanceof Turtle){
 			for (Object o : c){
 				if (o instanceof Turtle){
 					Turtle t = (Turtle) o;
-					total.addAll(humansOn(t));
+					total.addAll(zombiesOn(t));
 				}
 			}
 		}
@@ -568,67 +568,11 @@ public class ReLogoObserver extends BaseObserver{
 			for (Object o : c){
 				if (o instanceof Patch){
 					Patch p = (Patch) o;
-					total.addAll(humansOn(p));
+					total.addAll(zombiesOn(p));
 				}
 			}
 		}
-		return new AgentSet<zombies.relogo.Human>(total);
-	}
-
-	/**
-	 * Queries if object is a userLink.
-	 * 
-	 * @param o
-	 *            an object
-	 * @return true or false based on whether the object is a userLink
-	 */
-	@ReLogoBuilderGeneratedFor("zombies.relogo.UserLink")
-	public boolean isUserLinkQ(Object o){
-		return (o instanceof zombies.relogo.UserLink);
-	}
-
-	/**
-	 * Returns an agentset containing all userLinks.
-	 * 
-	 * @return agentset of all userLinks
-	 */
-	@ReLogoBuilderGeneratedFor("zombies.relogo.UserLink")
-	public AgentSet<zombies.relogo.UserLink> userLinks(){
-		AgentSet<zombies.relogo.UserLink> a = new AgentSet<zombies.relogo.UserLink>();
-		for (Object e : this.getContext().getObjects(zombies.relogo.UserLink.class)) {
-			if (e instanceof zombies.relogo.UserLink){
-				a.add((zombies.relogo.UserLink)e);
-			}
-		}
-		return a;
-	}
-
-	/**
-	 * Returns the userLink between two turtles.
-	 * 
-	 * @param oneEnd
-	 *            an integer
-	 * @param otherEnd
-	 *            an integer
-	 * @return userLink between two turtles
-	 */
-	@ReLogoBuilderGeneratedFor("zombies.relogo.UserLink")
-	public zombies.relogo.UserLink userLink(Number oneEnd, Number otherEnd) {
-		return (zombies.relogo.UserLink)(this.getNetwork("UserLink").getEdge(turtle(oneEnd),turtle(otherEnd)));
-	}
-
-	/**
-	 * Returns the userLink between two turtles.
-	 * 
-	 * @param oneEnd
-	 *            a turtle
-	 * @param otherEnd
-	 *            a turtle
-	 * @return userLink between two turtles
-	 */
-	@ReLogoBuilderGeneratedFor("zombies.relogo.UserLink")
-	public zombies.relogo.UserLink userLink(Turtle oneEnd, Turtle otherEnd) {
-		return userLink(oneEnd.getWho(), otherEnd.getWho());
+		return new AgentSet<zombies.relogo.Zombie>(total);
 	}
 
 	/**
@@ -685,6 +629,62 @@ public class ReLogoObserver extends BaseObserver{
 	@ReLogoBuilderGeneratedFor("zombies.relogo.Infection")
 	public zombies.relogo.Infection infection(Turtle oneEnd, Turtle otherEnd) {
 		return infection(oneEnd.getWho(), otherEnd.getWho());
+	}
+
+	/**
+	 * Queries if object is a userLink.
+	 * 
+	 * @param o
+	 *            an object
+	 * @return true or false based on whether the object is a userLink
+	 */
+	@ReLogoBuilderGeneratedFor("zombies.relogo.UserLink")
+	public boolean isUserLinkQ(Object o){
+		return (o instanceof zombies.relogo.UserLink);
+	}
+
+	/**
+	 * Returns an agentset containing all userLinks.
+	 * 
+	 * @return agentset of all userLinks
+	 */
+	@ReLogoBuilderGeneratedFor("zombies.relogo.UserLink")
+	public AgentSet<zombies.relogo.UserLink> userLinks(){
+		AgentSet<zombies.relogo.UserLink> a = new AgentSet<zombies.relogo.UserLink>();
+		for (Object e : this.getContext().getObjects(zombies.relogo.UserLink.class)) {
+			if (e instanceof zombies.relogo.UserLink){
+				a.add((zombies.relogo.UserLink)e);
+			}
+		}
+		return a;
+	}
+
+	/**
+	 * Returns the userLink between two turtles.
+	 * 
+	 * @param oneEnd
+	 *            an integer
+	 * @param otherEnd
+	 *            an integer
+	 * @return userLink between two turtles
+	 */
+	@ReLogoBuilderGeneratedFor("zombies.relogo.UserLink")
+	public zombies.relogo.UserLink userLink(Number oneEnd, Number otherEnd) {
+		return (zombies.relogo.UserLink)(this.getNetwork("UserLink").getEdge(turtle(oneEnd),turtle(otherEnd)));
+	}
+
+	/**
+	 * Returns the userLink between two turtles.
+	 * 
+	 * @param oneEnd
+	 *            a turtle
+	 * @param otherEnd
+	 *            a turtle
+	 * @return userLink between two turtles
+	 */
+	@ReLogoBuilderGeneratedFor("zombies.relogo.UserLink")
+	public zombies.relogo.UserLink userLink(Turtle oneEnd, Turtle otherEnd) {
+		return userLink(oneEnd.getWho(), otherEnd.getWho());
 	}
 
 	/**

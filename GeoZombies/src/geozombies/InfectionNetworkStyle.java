@@ -1,11 +1,10 @@
 package geozombies;
 
-import gov.nasa.worldwind.render.SurfacePolyline;
-import gov.nasa.worldwind.render.SurfaceShape;
-
 import java.awt.Color;
 
-import repast.simphony.visualization.gis3D.style.SurfaceShapeStyle;
+import gov.nasa.worldwind.render.SurfacePolyline;
+import repast.simphony.space.graph.RepastEdge;
+import repast.simphony.visualization.gis3D.style.NetworkStyleGIS;
 
 /**
  * Style for InfectionNetworkEdges.
@@ -13,35 +12,25 @@ import repast.simphony.visualization.gis3D.style.SurfaceShapeStyle;
  * @author Eric Tatara
  *
  */
-public class InfectionNetworkStyle implements SurfaceShapeStyle<InfectionNetworkEdge>{
+public class InfectionNetworkStyle implements NetworkStyleGIS{
 
 	@Override
-	public SurfaceShape getSurfaceShape(InfectionNetworkEdge object, SurfaceShape shape) {
-	  return new SurfacePolyline();
+	public SurfacePolyline getSurfaceShape(RepastEdge edge, SurfacePolyline shape) {
+		return new SurfacePolyline();
 	}
 
 	@Override
-	public Color getFillColor(InfectionNetworkEdge obj) {
-		return null;
-	}
-
-	@Override
-	public double getFillOpacity(InfectionNetworkEdge obj) {
-		return 0;
-	}
-
-	@Override
-	public Color getLineColor(InfectionNetworkEdge obj) {
+	public Color getLineColor(RepastEdge edge) {
 		return Color.BLUE;
 	}
 
 	@Override
-	public double getLineOpacity(InfectionNetworkEdge obj) {
+	public double getLineOpacity(RepastEdge edge) {
 		return 1.0;
 	}
 
 	@Override
-	public double getLineWidth(InfectionNetworkEdge obj) {
-		return 2;
+	public double getLineWidth(RepastEdge edge) {
+		return 2.0;
 	}
 }

@@ -50,10 +50,6 @@ public class ContextCreator implements ContextBuilder {
 				"infection network", context, true);
 		Network net = netBuilder.buildNetwork();
 		
-		// Bind the geography and network events to create edge geometries for visualization
-		// TODO Repast 2.5 handle network projections automatically in the displays.
-		new GISNetworkListener(context, geography, net);
-		
 		// Geometry factory is used to create geometries
 		GeometryFactory fac = new GeometryFactory();
 		

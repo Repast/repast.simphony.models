@@ -1,14 +1,20 @@
 package geozombies;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
 
 import gov.nasa.worldwind.WorldWind;
 import gov.nasa.worldwind.avlist.AVKey;
 import gov.nasa.worldwind.render.BasicWWTexture;
+import gov.nasa.worldwind.render.Material;
 import gov.nasa.worldwind.render.Offset;
 import gov.nasa.worldwind.render.WWTexture;
 import repast.simphony.visualization.gis3D.PlaceMark;
 import repast.simphony.visualization.gis3D.style.DefaultMarkStyle;
+import repast.simphony.visualization.gis3D.style.MarkStyle;
 
 /**
  * Style for Zombie Agents.
@@ -16,77 +22,116 @@ import repast.simphony.visualization.gis3D.style.DefaultMarkStyle;
  * @author Eric Tatara
  *
  */
-public class ZombieStyle extends DefaultMarkStyle<Zombie>{
+public class ZombieStyle implements MarkStyle<Zombie>{
 
-	/**
-	 * The gov.nasa.worldwind.render.Offset is used to position the icon from 
-	 *   the mark point location.  If no offset is provided, the lower left corner
-	 *   of the icon is located at the point (lat lon) position.  Using values of
-	 *   (0.5,0.5) will position the icon center over the lat lon location.
-	 *   The first two arguments in the Offset constructor are the x and y 
-	 *   offset values.  The third and fourth arguments are the x and y units 
-	 *   for the offset. AVKey.FRACTION represents units of the image texture 
-	 *   size, with 1.0 being one image width/height.  AVKey.PIXELS can be used 
-	 *   to specify the offset in pixels. 
-	 */
-	Offset iconOffset = new Offset(0.5d, 0.5d, AVKey.FRACTION, AVKey.FRACTION);
-
+	private Map<String, WWTexture> textureMap;
 	
-	// TODO Remove mark field and getPlaceMark() call for Repast 2.5 release.  
-	//      It is used here because getIconOffset is not called by the display.
-	PlaceMark mark;
-
-	@Override
-	public PlaceMark getPlaceMark(Zombie agent, PlaceMark mark) {
-
-		if (mark == null)
-			mark = new PlaceMark();
-
-		mark.setAltitudeMode(WorldWind.CLAMP_TO_GROUND);
-		mark.setLineEnabled(false);
-
-		mark.getAttributes().setImageOffset(getIconOffset(agent));
-
-		this.mark = mark;
-
-		return mark;
+	public ZombieStyle() {
+		/**
+		 * Use of a map to store textures significantly reduces CPU and memory use
+		 * since the same texture can be reused.  Textures can be created for different
+		 * agent states and re-used when needed.
+		 */
+		textureMap = new HashMap<String, WWTexture>();
+	
+		String fileNameZombie = "icons/zombie2.png";
+		
+		URL localUrl = WorldWind.getDataFileStore().requestFile(fileNameZombie);
+		if (localUrl != null)	{
+			textureMap.put("zombie", new BasicWWTexture(localUrl, false));
+		}
 	}
 	
+	/**
+	 * The PlaceMark is a WWJ PointPlacemark implementation with a different 
+	 *   texture handling mechanism.  All other standard WWJ PointPlacemark 
+	 *   attributes can be changed here.  PointPlacemark label attributes could be
+	 *   set here, but are also available through the MarkStyle interface.
+	 *   
+	 *   @see gov.nasa.worldwind.render.PointPlacemark for more info.
+	 */
+	@Override
+	public PlaceMark getPlaceMark(Zombie agent, PlaceMark mark) {
+		
+		// PlaceMark is null on first call.
+		if (mark == null)
+			mark = new PlaceMark();
+		
+		/**
+		 * The Altitude mode determines how the mark appears using the elevation.
+		 *   WorldWind.ABSOLUTE places the mark at elevation relative to sea level
+		 *   WorldWind.RELATIVE_TO_GROUND places the mark at elevation relative to ground elevation
+		 *   WorldWind.CLAMP_TO_GROUND places the mark at ground elevation
+		 */
+		mark.setAltitudeMode(WorldWind.RELATIVE_TO_GROUND);
+		mark.setLineEnabled(false);
+		
+		return mark;
+	}
 	
 	/**
 	 * Here we set the appearance of the TowerAgent using a non-changing icon.
 	 */
 	@Override
-	public WWTexture getTexture(Zombie agent, WWTexture texture) {
+	public WWTexture getTexture(Zombie agent, WWTexture currentTexture) {
 			
 		// If the texture is already defined, then just return the same texture since
 		//  we don't want to update the tower agent appearance.  The only time the 
 		//  below code will actually be used is on the initialization of the display
 		//  when the icons are created.
-		if (texture != null)
-			return texture;
+		if (currentTexture != null)
+			return currentTexture;
 		
-		// BasicWWTexture is useful when the texture is a non-changing image.
-		URL localUrl = WorldWind.getDataFileStore().requestFile("icons/zombie2.png");
-		if (localUrl != null)	{
-			return new BasicWWTexture(localUrl, false);
-		}
-		
-		return null;
+		return textureMap.get("zombie");
 	}
 	
 	@Override
 	public Offset getIconOffset(Zombie agent){
-		return iconOffset;
+		return Offset.CENTER;
 	}
-	
-	// TODO Remove offset call for Repast 2.5 release.  It is used here because
-	//      getIconOffset is not called by the display.
-	@Override	
-	public double getScale(Zombie agent) {
-			
-		mark.getAttributes().setImageOffset(getIconOffset(agent));
-		return 1;
-	} 
 
+	@Override
+	public double getElevation(Zombie obj) {
+		return 0;
+	}
+
+	@Override
+	public double getScale(Zombie obj) {
+		return 1;
+	}
+
+	@Override
+	public double getHeading(Zombie obj) {
+		return 0;
+	}
+
+	@Override
+	public String getLabel(Zombie obj) {
+		return null;
+	}
+
+	@Override
+	public Color getLabelColor(Zombie obj) {
+		return null;
+	}
+
+	@Override
+	public Font getLabelFont(Zombie obj) {
+		return null;
+	}
+
+	@Override
+	public Offset getLabelOffset(Zombie obj) {
+		return null;
+	}
+
+	@Override
+	public double getLineWidth(Zombie obj) {
+		return 0;
+	}
+
+	@Override
+	public Material getLineMaterial(Zombie obj, Material lineMaterial) {
+		return null;
+	}
 }

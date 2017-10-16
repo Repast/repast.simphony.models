@@ -16,7 +16,9 @@ import repast.simphony.space.gis.GeographyParameters;
 import repast.simphony.space.graph.Network;
 
 /**
- * ContextBuilder for the GeoZombies model.
+ * ContextBuilder for the GeoZombies model.  This demo model has similar
+ * behavior to the other Repast Zombies models but operates in a geospatial
+ * projection.
  * 
  * @author Eric Tatara
  * @author Nick Collier
@@ -33,11 +35,6 @@ public class ContextCreator implements ContextBuilder {
 	double zoneDistance;
 	
 	public Context build(Context context) {		
-		Parameters parm = RunEnvironment.getInstance().getParameters();
-		
-		// Override the default WorldWind configuration file so that we can specify
-		// a custom set of map layers in the worldwind.layers.xml file.
-		System.setProperty("gov.nasa.worldwind.config.document", "worldwind.xml");
 		
 		// Create the Geography projection that is used to store geographic locations
 		// of agents in the model.

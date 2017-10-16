@@ -11,8 +11,8 @@ import com.vividsolutions.jts.geom.LineString;
 import com.vividsolutions.jts.util.GeometricShapeFactory;
 
 import repast.simphony.context.Context;
+import repast.simphony.gis.util.GeometryUtil;
 import repast.simphony.space.gis.Geography;
-import repast.simphony.space.gis.GeometryUtils;
 import repast.simphony.util.ContextUtils;
 
 /**
@@ -94,7 +94,7 @@ public class ZombieUtils {
 		Context context = ContextUtils.getContext(source);
 		Geography geography = (Geography)context.getProjection("Geography");
 		
-		Geometry searchArea =  GeometryUtils.generateBuffer(geography, 
+		Geometry searchArea =  GeometryUtil.generateBuffer(geography, 
 				geography.getGeometry(source), searchDistance);
 		
 		Envelope searchEnvelope = searchArea.getEnvelopeInternal();

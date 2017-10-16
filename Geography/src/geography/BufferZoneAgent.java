@@ -5,9 +5,9 @@ import com.vividsolutions.jts.geom.Geometry;
 import repast.simphony.context.Context;
 import repast.simphony.engine.environment.RunEnvironment;
 import repast.simphony.engine.schedule.ScheduledMethod;
+import repast.simphony.gis.util.GeometryUtil;
 import repast.simphony.parameter.Parameters;
 import repast.simphony.space.gis.Geography;
-import repast.simphony.space.gis.GeometryUtils;
 import repast.simphony.util.ContextUtils;
 
 
@@ -42,7 +42,7 @@ public class BufferZoneAgent {
 			Geography geography = (Geography)context.getProjection("Geography"); 
 			
 			
-			Geometry buffer = GeometryUtils.generateBuffer(geography, 
+			Geometry buffer = GeometryUtil.generateBuffer(geography, 
 					geography.getGeometry(zone), zoneDistance);
 			
 			// Sets the new geometry for this agent in the geography

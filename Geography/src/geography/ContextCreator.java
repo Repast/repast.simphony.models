@@ -21,11 +21,9 @@ import com.vividsolutions.jts.geom.Geometry;
 import com.vividsolutions.jts.geom.GeometryFactory;
 import com.vividsolutions.jts.geom.LineString;
 import com.vividsolutions.jts.geom.MultiLineString;
-import com.vividsolutions.jts.geom.MultiPoint;
 import com.vividsolutions.jts.geom.MultiPolygon;
 import com.vividsolutions.jts.geom.Point;
 import com.vividsolutions.jts.geom.Polygon;
-import com.vividsolutions.jts.shape.random.RandomPointsBuilder;
 
 import repast.simphony.context.Context;
 import repast.simphony.context.space.gis.GeographyFactoryFinder;
@@ -34,10 +32,10 @@ import repast.simphony.dataLoader.ContextBuilder;
 import repast.simphony.engine.environment.RunEnvironment;
 import repast.simphony.engine.schedule.ISchedule;
 import repast.simphony.engine.schedule.ScheduleParameters;
+import repast.simphony.gis.util.GeometryUtil;
 import repast.simphony.parameter.Parameters;
 import repast.simphony.space.gis.Geography;
 import repast.simphony.space.gis.GeographyParameters;
-import repast.simphony.space.gis.GeometryUtils;
 import repast.simphony.space.gis.RepastCoverageFactory;
 import repast.simphony.space.gis.WritableGridCoverage2D;
 import repast.simphony.space.graph.Network;
@@ -68,9 +66,6 @@ public class ContextCreator implements ContextBuilder {
 		
 	public Context build(Context context) {
 		
-		System.out.println("Geography ContextCreator.build()");
-					
-		
 		Parameters parm = RunEnvironment.getInstance().getParameters();
 		numAgents = (Integer)parm.getValue("numAgents");
 		zoneDistance = (Double)parm.getValue("zoneDistance");
@@ -83,28 +78,22 @@ public class ContextCreator implements ContextBuilder {
 
 		NetworkBuilder<?> netBuilder = new NetworkBuilder<Object>("Network", context, true);
 		Network net = netBuilder.buildNetwork();
+				
+
+		// Create an area in which to create agents.  This border is loaded from a shapefile.
+		String boundaryFilename = "./data/CookCounty.shp";
+		List<SimpleFeature> features = loadFeaturesFromShapefile(boundaryFilename);
+		Geometry boundary = (MultiPolygon)features.iterator().next().getDefaultGeometry();
 		
-//		Geometry polygon = null;
-//		int numPoints = 100;
-//		RandomPointsBuilder shapeBuilder = new RandomPointsBuilder();
-//    shapeBuilder.setExtent(polygon);
-//    shapeBuilder.setNumPoints(numPoints);
-//           
-//     MultiPoint mtPoint = (MultiPoint)shapeBuilder.getGeometry();
-//    
-//  
-//    for (Coordinate coord : mtPoint.getCoordinates()){
-//    
-//    
-//    }
-    	
+		// Generate random points in the area to create agents.
+		List<Coordinate> agentCoords = GeometryUtil.generateRandomPointsInPolygon(boundary, numAgents);
 		
-		// Generate some points
-		for (int i = 0; i < numAgents; i++) {
-			GisAgent agent = new GisAgent("Site " + i);
+		// Create the agents from the collection of random coords.
+		int cnt=0;
+		for (Coordinate coord : agentCoords) {
+			GisAgent agent = new GisAgent("Site " + cnt);
 			context.add(agent);
 
-			Coordinate coord = new Coordinate(-88 + 0.5* Math.random(), 41.5 + 0.5 * Math.random());
 			Point geom = fac.createPoint(coord);
 			geography.move(agent, geom);
 			
@@ -113,17 +102,17 @@ public class ContextCreator implements ContextBuilder {
 			if (o != null && o instanceof GisAgent) {
 				net.addEdge(agent, o, 1.0);
 			}
+			cnt++;
 		}
 
 		// TODO GIS: use an example of ShapefileLoader
 		
-		// TODO GIS Coverage layer
 		// envelope around Midway airport
 		ReferencedEnvelope env = new ReferencedEnvelope(-87.761278, -87.742395, 
 				41.778022, 41.791462, DefaultGeographicCRS.WGS84);
 		
 		WritableGridCoverage2D coverage = RepastCoverageFactory.createWritableCoverageFloat(
-				"Eric's data", 10, 10, env, null, -1, 0, 10, -1);
+				"My data", 10, 10, env, null, -1, 0, 10, -1);
 		
 		geography.addCoverage("My coverage", coverage);
 		
@@ -138,7 +127,7 @@ public class ContextCreator implements ContextBuilder {
 	        new Category("Level 3", Color.RED, 3)
 	    };
 		WritableGridCoverage2D coverage2 = RepastCoverageFactory.createWritableByteIndexedCoverage(
-				"Eric's data indexed", 100, 200, env, categories, null, 0);
+				"My data indexed", 100, 200, env, categories, null, 0);
 		
 		geography.addCoverage("My indexed coverage", coverage2);
 		
@@ -160,7 +149,7 @@ public class ContextCreator implements ContextBuilder {
 	        new Category("Level", whiteRedColorScale, NumberRange.create(1, 10))
 	    };
 		WritableGridCoverage2D coverage3 = RepastCoverageFactory.createWritableByteIndexedCoverage(
-				"Eric's data indexed", 100, 200, env, categories, null, 0);
+				"My data indexed", 100, 200, env, categories, null, 0);
 		
 		geography.addCoverage("My indexed coverage 2", coverage3);
 	
@@ -192,16 +181,7 @@ public class ContextCreator implements ContextBuilder {
 		return context;
 	}
 
-	/**
-	 * Loads features from the specified shapefile.  The appropriate type of agents
-	 * will be created depending on the geometry type in the shapefile (point, 
-	 * line, polygon).
-	 * 
-	 * @param filename the name of the shapefile from which to load agents
-	 * @param context the context
-	 * @param geography the geography
-	 */
-	private void loadFeatures (String filename, Context context, Geography geography){
+	private List<SimpleFeature> loadFeaturesFromShapefile(String filename){
 		URL url = null;
 		try {
 			url = new File(filename).toURL();
@@ -230,6 +210,22 @@ public class ContextCreator implements ContextBuilder {
 			store.dispose();
 		}
 		
+		return features;
+	}
+	
+	/**
+	 * Loads features from the specified shapefile.  The appropriate type of agents
+	 * will be created depending on the geometry type in the shapefile (point, 
+	 * line, polygon).
+	 * 
+	 * @param filename the name of the shapefile from which to load agents
+	 * @param context the context
+	 * @param geography the geography
+	 */
+	private void loadFeatures (String filename, Context context, Geography geography){
+
+		List<SimpleFeature> features = loadFeaturesFromShapefile(filename);
+		
 		// For each feature in the file
 		for (SimpleFeature feature : features){
 			Geometry geom = (Geometry)feature.getDefaultGeometry();
@@ -253,7 +249,7 @@ public class ContextCreator implements ContextBuilder {
 				agent = new ZoneAgent(name,taxRate);
 
 				// Create a BufferZoneAgent around the zone, just for visualization
-				Geometry buffer = GeometryUtils.generateBuffer(geography, geom, zoneDistance);
+				Geometry buffer = GeometryUtil.generateBuffer(geography, geom, zoneDistance);
 				BufferZoneAgent bufferZone = new BufferZoneAgent("Buffer: " + name, 
 						zoneDistance, (ZoneAgent)agent);
 				context.add(bufferZone);

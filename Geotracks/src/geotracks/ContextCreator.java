@@ -5,6 +5,7 @@ import java.awt.Color;
 import org.geotools.coverage.Category;
 import org.geotools.geometry.jts.ReferencedEnvelope;
 import org.geotools.referencing.crs.DefaultGeographicCRS;
+import org.geotools.util.NumberRange;
 
 import com.vividsolutions.jts.geom.Coordinate;
 import com.vividsolutions.jts.geom.GeometryFactory;
@@ -61,23 +62,29 @@ public class ContextCreator implements ContextBuilder {
 		Point geom = fac.createPoint(new Coordinate(-88.8570, 41.7432));
 		geography.move(agent, geom);
 
-	
 		// envelope around northing Illinois
 		ReferencedEnvelope env = new ReferencedEnvelope(-89.4, -87.7236, 41.50, 42.1681, DefaultGeographicCRS.WGS84);
-		
-		// Six-category coverage with no-data
-		 Category[] categories	= new Category[] {	
-	        new Category("No data", new Color(0,0,0,0), 0),
-	        new Category("Level 1", Color.GREEN, 1),
-	        new Category("Level 2", Color.BLUE, 2),
-	        new Category("Level 3", Color.RED, 3),
-	        new Category("Level 3", Color.ORANGE, 4),
-	        new Category("Level 3", Color.CYAN, 5),
-	        new Category("Level 3", Color.YELLOW, 6)
-	    };
+
+		// Create a coverage to act as a heat map that becomes more intense with
+		//  the number of times the agent has visited a point.
+		int maxColorIndex = 10; //RepastCoverageFactory.MAX_BYTE_COLOR_INDEX;
+		Color[] whiteRedColorScale = new Color[maxColorIndex];
+
+		// white to red color scale
+		for (int i=0; i<whiteRedColorScale.length; i++) {
+			int blueGreen = (255/maxColorIndex*(maxColorIndex-i));			
+			whiteRedColorScale[i] = new Color(255, blueGreen, blueGreen); 
+		}
+
+		// Color scale coverage with no-data
+		Category[] categories	= new Category[] {	
+				new Category("No data", new Color(0,0,0,0), 0),  // transparent
+				new Category("Level", whiteRedColorScale, NumberRange.create(1, maxColorIndex))
+		};
+
 		WritableGridCoverage2D coverage2 = RepastCoverageFactory.createWritableByteIndexedCoverage(
 				"My data indexed", 20, 20, env, categories, null, 0);
-		
+
 		geography.addCoverage("My indexed coverage", coverage2);
 				
 		return context;

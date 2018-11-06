@@ -1,10 +1,11 @@
-﻿package flock;
+﻿package flock.agents;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import repast.simphony.context.Context;
 import repast.simphony.context.space.continuous.ContinuousSpaceFactoryFinder;
+import repast.simphony.context.space.graph.NetworkFactoryFinder;
 import repast.simphony.dataLoader.ContextBuilder;
 import repast.simphony.engine.environment.RunEnvironment;
 import repast.simphony.engine.schedule.ISchedule;
@@ -14,6 +15,7 @@ import repast.simphony.space.continuous.AbstractPointTranslator;
 import repast.simphony.space.continuous.InfiniteBorders;
 import repast.simphony.space.continuous.StickyBorders;
 import repast.simphony.space.continuous.WrapAroundBorders;
+import repast.simphony.space.graph.Network;
 
 /**
  * Flocking model that simulates a large flock of smaller prey birds
@@ -38,6 +40,7 @@ public class SwarmBuilder implements ContextBuilder {
 		String borderType = param.getValueAsString("borderType");
 		AbstractPointTranslator border = null;
 		
+		// Set space border options depending on parameter value
 		if ("Wrap_Around".equals(borderType))
 			border = new WrapAroundBorders();
 		else if ("Bouncy".equals(borderType))
@@ -52,6 +55,9 @@ public class SwarmBuilder implements ContextBuilder {
 						new Adder(4),
 						border, 
 						500, 500, 500);
+		
+		Network network = NetworkFactoryFinder.createNetworkFactory(null)
+				.createNetwork("Tracks Net", context, false);
 		
 		// Add the prey
 		List<Prey> preyList = new ArrayList<Prey>();

@@ -1,22 +1,26 @@
-package flock;
+package flock.styles;
 
 import java.awt.Color;
 import java.awt.Font;
 
-import javax.media.j3d.Appearance;
 import javax.media.j3d.PointArray;
 import javax.media.j3d.PointAttributes;
 import javax.media.j3d.Shape3D;
 import javax.vecmath.Point3f;
 
+import com.sun.j3d.utils.picking.PickTool;
+
 import repast.simphony.visualization.visualization3D.AppearanceFactory;
-import repast.simphony.visualization.visualization3D.ShapeFactory;
 import repast.simphony.visualization.visualization3D.style.Style3D;
 import repast.simphony.visualization.visualization3D.style.TaggedAppearance;
 import repast.simphony.visualization.visualization3D.style.TaggedBranchGroup;
 
-import com.sun.j3d.utils.picking.PickTool;
-
+/**
+ * Style for Prey agents.  Styled as a point.
+ * 
+ * @author Eric Tatara
+ *
+ */
 public class PreyStyle<T> implements Style3D<T> {
 
   public TaggedBranchGroup getBranchGroup(T o, TaggedBranchGroup taggedGroup) {

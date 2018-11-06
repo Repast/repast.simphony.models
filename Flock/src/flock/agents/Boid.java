@@ -1,4 +1,4 @@
-﻿package flock;
+﻿package flock.agents;
 
 import javax.vecmath.Vector3d;
 

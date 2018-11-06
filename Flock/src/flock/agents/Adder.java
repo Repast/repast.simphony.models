@@ -1,4 +1,4 @@
-package flock;
+package flock.agents;
 
 import repast.simphony.random.RandomHelper;
 import repast.simphony.space.Dimensions;

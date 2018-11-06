@@ -1,4 +1,4 @@
-package flock;
+package flock.styles;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -11,6 +11,12 @@ import repast.simphony.visualization.visualization3D.style.Style3D;
 import repast.simphony.visualization.visualization3D.style.TaggedAppearance;
 import repast.simphony.visualization.visualization3D.style.TaggedBranchGroup;
 
+/**
+ * Style for Predator agents.  Styled as a red sphere.
+ * 
+ * @author Eric Tatara
+ *
+ */
 public class PredatorStyle<T> implements Style3D<T> {
 
   public TaggedBranchGroup getBranchGroup(T o, TaggedBranchGroup taggedGroup) {

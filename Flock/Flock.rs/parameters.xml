@@ -1,31 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <parameters>
-					<parameter name="preyAcceleration" displayName="Prey Acceleration" type="double" 
-						defaultValue="1.0" 
+					<parameter name="borderType" displayName="Space Boundary Type" type="java.lang.String" 
+						defaultValue="Infinite" 
 						isReadOnly="false" 
-						converter="repast.simphony.parameter.StringConverterFactory$DoubleConverter"
-									
+						converter="repast.simphony.parameter.StringConverterFactory$StringStringConverter"
+									values="Bouncy Infinite Wrap_Around Sticky "
+						
 		/>
-				<parameter name="randomSeed" displayName="Default Random Seed" type="int" 
-						defaultValue="__NULL__"
+				<parameter name="initialNumPred" displayName="Initial Number of Predators" type="int" 
+						defaultValue="4" 
 						isReadOnly="false" 
 						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
 									
 		/>
-				<parameter name="preyFearForce" displayName="Prey Fear Force" type="double" 
-						defaultValue="-500000.0" 
-						isReadOnly="false" 
-						converter="repast.simphony.parameter.StringConverterFactory$DoubleConverter"
-									
-		/>
 				<parameter name="predMaxSpeed" displayName="Predator Max Speed" type="double" 
 						defaultValue="300.0" 
-						isReadOnly="false" 
-						converter="repast.simphony.parameter.StringConverterFactory$DoubleConverter"
-									
-		/>
-				<parameter name="preyAttractForce" displayName="Prey Attract Force" type="double" 
-						defaultValue="60.0" 
 						isReadOnly="false" 
 						converter="repast.simphony.parameter.StringConverterFactory$DoubleConverter"
 									
@@ -42,50 +31,14 @@
 						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
 									
 		/>
-				<parameter name="preyRepelForce" displayName="Prey Repel Force" type="double" 
-						defaultValue="-80.0" 
+				<parameter name="preyFearForce" displayName="Prey Fear Force" type="double" 
+						defaultValue="-500000.0" 
 						isReadOnly="false" 
 						converter="repast.simphony.parameter.StringConverterFactory$DoubleConverter"
 									
 		/>
-				<parameter name="preyFearRadius" displayName="Prey Fear Radius" type="double" 
-						defaultValue="80.0" 
-						isReadOnly="false" 
-						converter="repast.simphony.parameter.StringConverterFactory$DoubleConverter"
-									
-		/>
-				<parameter name="initialNumPrey" displayName="Initial Number of Prey" type="int" 
-						defaultValue="7000" 
-						isReadOnly="false" 
-						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
-									
-		/>
-				<parameter name="preyMaxSpeed" displayName="Prey Max Speed" type="double" 
-						defaultValue="70.0" 
-						isReadOnly="false" 
-						converter="repast.simphony.parameter.StringConverterFactory$DoubleConverter"
-									
-		/>
-				<parameter name="maxPreyNeighbors" displayName="Max prey neighbors" type="int" 
-						defaultValue="7" 
-						isReadOnly="false" 
-						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
-									
-		/>
-				<parameter name="preySpacing" displayName="Prey Spacing" type="double" 
-						defaultValue="8.0" 
-						isReadOnly="false" 
-						converter="repast.simphony.parameter.StringConverterFactory$DoubleConverter"
-									
-		/>
-				<parameter name="initialNumPred" displayName="Initial Number of Predators" type="int" 
-						defaultValue="4" 
-						isReadOnly="false" 
-						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
-									
-		/>
-				<parameter name="predAcceleration" displayName="Predator Acceleration" type="double" 
-						defaultValue="3.0" 
+				<parameter name="preyAcceleration" displayName="Prey Acceleration" type="double" 
+						defaultValue="1.0" 
 						isReadOnly="false" 
 						converter="repast.simphony.parameter.StringConverterFactory$DoubleConverter"
 									
@@ -96,15 +49,73 @@
 						converter="repast.simphony.parameter.StringConverterFactory$DoubleConverter"
 									
 		/>
-				<parameter name="borderType" displayName="Space Boundary Type" type="String" 
-						defaultValue="Infinite" 
-						values="Bouncy Infinite Wrap_Around Sticky" 
+				<parameter name="preyFearRadius" displayName="Prey Fear Radius" type="double" 
+						defaultValue="80.0" 
+						isReadOnly="false" 
+						converter="repast.simphony.parameter.StringConverterFactory$DoubleConverter"
+									
 		/>
-				<parameter name="threadType" displayName="Simulation Threads" type="String" 
+				<parameter name="trackPredators" displayName="Track Predators" type="boolean" 
+						defaultValue="true" 
+						isReadOnly="false" 
+						converter="repast.simphony.parameter.StringConverterFactory$BooleanConverter"
+									
+		/>
+				<parameter name="preyAttractForce" displayName="Prey Attract Force" type="double" 
+						defaultValue="60.0" 
+						isReadOnly="false" 
+						converter="repast.simphony.parameter.StringConverterFactory$DoubleConverter"
+									
+		/>
+				<parameter name="randomSeed" displayName="Default Random Seed" type="int" 
+						defaultValue="__NULL__"
+						isReadOnly="false" 
+						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
+									
+		/>
+				<parameter name="predAcceleration" displayName="Predator Acceleration" type="double" 
+						defaultValue="3.0" 
+						isReadOnly="false" 
+						converter="repast.simphony.parameter.StringConverterFactory$DoubleConverter"
+									
+		/>
+				<parameter name="preyRepelForce" displayName="Prey Repel Force" type="double" 
+						defaultValue="-80.0" 
+						isReadOnly="false" 
+						converter="repast.simphony.parameter.StringConverterFactory$DoubleConverter"
+									
+		/>
+				<parameter name="preySpacing" displayName="Prey Spacing" type="double" 
+						defaultValue="8.0" 
+						isReadOnly="false" 
+						converter="repast.simphony.parameter.StringConverterFactory$DoubleConverter"
+									
+		/>
+				<parameter name="initialNumPrey" displayName="Initial Number of Prey" type="int" 
+						defaultValue="7000" 
+						isReadOnly="false" 
+						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
+									
+		/>
+				<parameter name="maxPreyNeighbors" displayName="Max prey neighbors" type="int" 
+						defaultValue="7" 
+						isReadOnly="false" 
+						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
+									
+		/>
+				<parameter name="threadType" displayName="Simulation Threads" type="java.lang.String" 
 						defaultValue="Multi-thread" 
-						values="Multi-thread Single-thread" 
+						isReadOnly="false" 
+						converter="repast.simphony.parameter.StringConverterFactory$StringStringConverter"
+									values="Multi-thread Single-thread "
+						
 		/>
-		
+				<parameter name="preyMaxSpeed" displayName="Prey Max Speed" type="double" 
+						defaultValue="70.0" 
+						isReadOnly="false" 
+						converter="repast.simphony.parameter.StringConverterFactory$DoubleConverter"
+									
+		/>
 		</parameters>
 
 

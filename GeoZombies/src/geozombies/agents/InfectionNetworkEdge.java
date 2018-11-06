@@ -1,4 +1,4 @@
-package geozombies;
+package geozombies.agents;
 
 import repast.simphony.space.graph.RepastEdge;
 

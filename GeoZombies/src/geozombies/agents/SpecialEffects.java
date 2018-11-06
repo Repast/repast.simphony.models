@@ -1,11 +1,13 @@
-package geozombies;
+package geozombies.agents;
 
 import java.awt.Color;
+import java.awt.Font;
+import java.awt.FontFormatException;
 import java.awt.Frame;
-import java.awt.GraphicsEnvironment;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -40,36 +42,27 @@ public class SpecialEffects implements RunListener {
 	public static String ZOMBIE_MOAN_FILE = "data/zombiemoan.wav";
 	public static String ENRAGED_ZOMBIES_FILE = "data/enragedzombies.wav";
 	public static String ZOMBIE_GIBBERISH_FILE = "data/zombiegibberish.wav";
-	
+
 	protected Clip zombieMoanClip;
 	protected Clip screamClip;
 	protected Clip enragedZombiesClip;
 	protected Clip zombieGibberishClip;
-	
+
 	protected List<Clip> clipList;
-	
+
 	protected Frame supriseFrame;
-	
+
 	public static SpecialEffects instance;
 
-	public static void main(String[] args){
-    String fonts[] = 
-      GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
-
-    for ( int i = 0; i < fonts.length; i++ ){
-      System.out.println(fonts[i]);
-    }
-  }
-	
 	public static void init(){
 		instance = new SpecialEffects();
 	}
-	
+
 	public SpecialEffects(){
 		RunEnvironment.getInstance().addRunListener(this);
 		clipList = new ArrayList<Clip>();
 		initSurprise();
-		
+
 		// Load sound clips from files.
 		try{
 			File file = new File(SCREAM_FILE);
@@ -81,7 +74,7 @@ public class SpecialEffects implements RunListener {
 		catch (Exception e){
 			e.printStackTrace();
 		}
-		
+
 		try{
 			File file = new File(ZOMBIE_MOAN_FILE);
 			zombieMoanClip = AudioSystem.getClip();
@@ -92,7 +85,7 @@ public class SpecialEffects implements RunListener {
 		catch (Exception e){
 			e.printStackTrace();
 		}
-		
+
 		try{
 			File file = new File(ENRAGED_ZOMBIES_FILE);
 			enragedZombiesClip = AudioSystem.getClip();
@@ -103,69 +96,69 @@ public class SpecialEffects implements RunListener {
 		catch (Exception e){
 			e.printStackTrace();
 		}	
-		
+
 		try{
 			File file = new File(ZOMBIE_GIBBERISH_FILE);
 			zombieGibberishClip = AudioSystem.getClip();
 			AudioInputStream ais = AudioSystem.getAudioInputStream(file);
 			zombieGibberishClip.open(ais);
-//			clipList.add(zombieGibberishClip);
+			//			clipList.add(zombieGibberishClip);
 		}
 		catch (Exception e){
 			e.printStackTrace();
 		}	
 	}
 
-	
+
 	public  void playScream(){
 		Parameters params = RunEnvironment.getInstance().getParameters();
 		Boolean play = (Boolean)params.getBoolean("playSounds");
-		
+
 		// don't play multiple at same time or when play disabled
 		if (!play || screamClip.isActive()) return;  
-		
+
 		screamClip.setFramePosition(0); // rewind
 		screamClip.start();
 	}
-	
+
 	public  void playZombieMoan(){
 		Parameters params = RunEnvironment.getInstance().getParameters();
 		Boolean play = (Boolean)params.getBoolean("playSounds");
-		
+
 		// don't play multiple at same time or when play disabled
 		if (!play || zombieMoanClip.isActive()) return;  
-		
+
 		zombieMoanClip.setFramePosition(0); // rewind
 		zombieMoanClip.start();
 	}
-	
+
 	public  void playEnragedZombies(){
 		Parameters params = RunEnvironment.getInstance().getParameters();
 		Boolean play = (Boolean)params.getBoolean("playSounds");
-		
+
 		// don't play multiple at same time or when play disabled
 		if (!play || enragedZombiesClip.isActive()) return; 
-		
+
 		enragedZombiesClip.setFramePosition(0); // rewind
 		enragedZombiesClip.start();
 	}
-	
+
 	public  void playZombieGibberish(){
 		Parameters params = RunEnvironment.getInstance().getParameters();
 		Boolean play = (Boolean)params.getBoolean("playSounds");
-		
+
 		// don't play multiple at same time or when play disabled
 		if (!play || zombieGibberishClip.isActive()) return; 
-		
+
 		zombieGibberishClip.setFramePosition(0); // rewind
 		zombieGibberishClip.start();
 	}
-	
-	
+
+
 	/**
 	 * RunListener methods below stops any playing sounds when sim is paused or stopped.
 	 */
-	
+
 	@Override
 	public void stopped() {
 		for (Clip clip : clipList){
@@ -195,93 +188,103 @@ public class SpecialEffects implements RunListener {
 		if (instance == null){
 			init();
 		}
-		
+
 		return instance;
 	}
-	
-	static int FONT_SIZE = 12;
-  static String FONT_FAMILY1 = "Showcard Gothic";
-  
-  /**
-   * Change the UI look and feel
-   */
-  public static void setUIEffects() {
-    
-    for (Map.Entry<Object, Object> entry : javax.swing.UIManager.getDefaults().entrySet()) {
-      Object key = entry.getKey();
-      Object value = javax.swing.UIManager.get(key);
-            
-      if (value != null && value instanceof javax.swing.plaf.FontUIResource) {
 
-        FontUIResource font = new FontUIResource(FONT_FAMILY1, 2, FONT_SIZE);
-        UIManager.put(key, font);
-      }
-      
-      if ("Menu.foreground".equals(key) || 
-          "PopupMenu.foreground".equals(key) ||
-          "TextField.foreground".equals(key) ||
-          "Table.foreground".equals(key) ||
-          "Label.foreground".equals(key) ||
-          "Tree.foreground".equals(key) ||
-          "Tree.textForeground".equals(key) ||
-          "MenuItem.foreground".equals(key) ||
-          "TextPane.foreground".equals(key) ||
-          "TabbedPane.foreground".equals(key) ||
-          "TextArea.foreground".equals(key) ||
-          "List.foreground".equals(key) ||
-          "Button.foreground".equals(key)){
-        
-        ColorUIResource color = new ColorUIResource(Color.RED);
-        UIManager.put(key, color);
-        
-      }
-    }
+	/**
+	 * Change the UI look and feel
+	 */
+	public static void setUIEffects() {
 
-    JFrame frame = RSApplication.getRSApplicationInstance().getGui().getFrame();
-    SwingUtilities.updateComponentTreeUI(frame);
-  }
-  
-  public void surprise(){
-    supriseFrame.setVisible(true);
-    playZombieGibberish();
-  }
-  
-  protected void initSurprise(){
-    supriseFrame = new JFrame();
-    
-    ImageIcon icon = new ImageIcon("data/zombie_1920.jpg");
-    
-    JLabel label = new JLabel(icon);
-    label.addMouseListener(new MouseListener(){
+		Font customFont = null;
+		// Load the showcard gothic font from file
+		 try {
+			customFont = Font.createFont(Font.TRUETYPE_FONT, new File("data/SHOWG.TTF")).deriveFont(12f);
+		} catch (FontFormatException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		if (customFont == null) return;   // Exit if font not loaded.
+		 
+		for (Map.Entry<Object, Object> entry : javax.swing.UIManager.getDefaults().entrySet()) {
+			Object key = entry.getKey();
+			Object value = javax.swing.UIManager.get(key);
 
-      @Override
-      public void mouseClicked(MouseEvent arg0) {
-        supriseFrame.dispose();
-      }
+			if (value != null && value instanceof javax.swing.plaf.FontUIResource) {
 
-      @Override
-      public void mouseEntered(MouseEvent arg0) {
-      }
+				FontUIResource font = new FontUIResource(customFont);
+//				FontUIResource font = new FontUIResource("Showcard Gothic", 2, 12);
+				UIManager.put(key, font);
+			}
 
-      @Override
-      public void mouseExited(MouseEvent arg0) {
-      }
+			if ("Menu.foreground".equals(key) || 
+					"PopupMenu.foreground".equals(key) ||
+					"TextField.foreground".equals(key) ||
+					"Table.foreground".equals(key) ||
+					"Label.foreground".equals(key) ||
+					"Tree.foreground".equals(key) ||
+					"Tree.textForeground".equals(key) ||
+					"MenuItem.foreground".equals(key) ||
+					"TextPane.foreground".equals(key) ||
+					"TabbedPane.foreground".equals(key) ||
+					"TextArea.foreground".equals(key) ||
+					"List.foreground".equals(key) ||
+					"Button.foreground".equals(key)){
 
-      @Override
-      public void mousePressed(MouseEvent arg0) {
-      }
+				ColorUIResource color = new ColorUIResource(Color.RED);
+				UIManager.put(key, color);
 
-      @Override
-      public void mouseReleased(MouseEvent arg0) {
-      }
-    });
-    
-    supriseFrame.add(label);
-    
-    supriseFrame.setExtendedState(JFrame.MAXIMIZED_BOTH); 
-//    frame.setUndecorated(true);
-//    frame.setVisible(true);
-    
-//    SpecialEffects.getInstance().playZombieGibberish();
-  }
+			}
+		}
+
+		JFrame frame = RSApplication.getRSApplicationInstance().getGui().getFrame();
+		SwingUtilities.updateComponentTreeUI(frame);
+	}
+
+	public void surprise(){
+		supriseFrame.setVisible(true);
+		playZombieGibberish();
+	}
+
+	protected void initSurprise(){
+		supriseFrame = new JFrame();
+
+		ImageIcon icon = new ImageIcon("data/zombie_1920.jpg");
+
+		JLabel label = new JLabel(icon);
+		label.addMouseListener(new MouseListener(){
+
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				supriseFrame.dispose();
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent arg0) {
+			}
+
+			@Override
+			public void mouseExited(MouseEvent arg0) {
+			}
+
+			@Override
+			public void mousePressed(MouseEvent arg0) {
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent arg0) {
+			}
+		});
+
+		supriseFrame.add(label);
+
+		supriseFrame.setExtendedState(JFrame.MAXIMIZED_BOTH); 
+		//    frame.setUndecorated(true);
+		//    frame.setVisible(true);
+
+		//    SpecialEffects.getInstance().playZombieGibberish();
+	}
 }

@@ -1,4 +1,4 @@
-package geozombies;
+package geozombies.styles;
 
 import java.awt.Color;
 

@@ -1,4 +1,4 @@
-package geozombies;
+package geozombies.agents;
 
 import com.vividsolutions.jts.geom.Coordinate;
 import com.vividsolutions.jts.geom.GeometryFactory;

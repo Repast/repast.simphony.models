@@ -1,10 +1,11 @@
-package geozombies;
+package geozombies.styles;
 
 import gov.nasa.worldwind.render.SurfacePolygon;
 import gov.nasa.worldwind.render.SurfaceShape;
 
 import java.awt.Color;
 
+import geozombies.agents.ZoneAgent;
 import repast.simphony.visualization.gis3D.style.SurfaceShapeStyle;
 
 /**

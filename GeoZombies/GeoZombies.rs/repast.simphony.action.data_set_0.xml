@@ -19,14 +19,14 @@
     <entry>
       <string>Human Count</string>
       <repast.simphony.data2.engine.CountSourceDefinition>
-        <typeName>geozombies.Human</typeName>
+        <typeName>geozombies.agents.Human</typeName>
         <id>Human Count</id>
       </repast.simphony.data2.engine.CountSourceDefinition>
     </entry>
     <entry>
       <string>Zombie Count</string>
       <repast.simphony.data2.engine.CountSourceDefinition>
-        <typeName>geozombies.Zombie</typeName>
+        <typeName>geozombies.agents.Zombie</typeName>
         <id>Zombie Count</id>
       </repast.simphony.data2.engine.CountSourceDefinition>
     </entry>

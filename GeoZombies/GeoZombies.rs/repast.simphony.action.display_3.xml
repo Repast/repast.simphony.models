@@ -3,36 +3,36 @@
   <type>GIS 3D</type>
   <styles>
     <entry>
-      <string>geozombies.Human</string>
-      <string>geozombies.HumanStyle</string>
+      <string>geozombies.agents.Human</string>
+      <string>geozombies.styles.HumanStyle</string>
     </entry>
     <entry>
-      <string>geozombies.Zombie</string>
-      <string>geozombies.ZombieStyle</string>
+      <string>geozombies.agents.Zombie</string>
+      <string>geozombies.styles.ZombieStyle</string>
     </entry>
     <entry>
-      <string>geozombies.ZoneAgent</string>
-      <string>geozombies.ZoneStyle</string>
+      <string>geozombies.agents.ZoneAgent</string>
+      <string>geozombies.styles.ZoneStyle</string>
     </entry>
   </styles>
   <editedStyles>
     <entry>
-      <string>geozombies.Human</string>
+      <string>geozombies.agents.Human</string>
       <null/>
     </entry>
     <entry>
-      <string>geozombies.Zombie</string>
+      <string>geozombies.agents.Zombie</string>
       <null/>
     </entry>
     <entry>
-      <string>geozombies.ZoneAgent</string>
+      <string>geozombies.agents.ZoneAgent</string>
       <null/>
     </entry>
   </editedStyles>
   <netStyles>
     <entry>
       <string>infection network</string>
-      <string>geozombies.InfectionNetworkStyle</string>
+      <string>geozombies.styles.InfectionNetworkStyle</string>
     </entry>
   </netStyles>
   <editedNetStyles>
@@ -74,15 +74,15 @@
       <int>1</int>
     </entry>
     <entry>
-      <string>geozombies.Human</string>
+      <string>geozombies.agents.Human</string>
       <int>9</int>
     </entry>
     <entry>
-      <string>geozombies.Zombie</string>
+      <string>geozombies.agents.Zombie</string>
       <int>8</int>
     </entry>
     <entry>
-      <string>geozombies.ZoneAgent</string>
+      <string>geozombies.agents.ZoneAgent</string>
       <int>7</int>
     </entry>
     <entry>

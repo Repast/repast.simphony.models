@@ -1,5 +1,5 @@
 
-package geozombies;
+package geozombies.agents;
 
 import java.util.ArrayList;
 import java.util.List;

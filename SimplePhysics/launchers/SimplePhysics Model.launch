@@ -22,4 +22,5 @@
     <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="repast.simphony.runtime.RepastMain"/>
     <stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="&quot;${workspace_loc:SimplePhysics}/SimplePhysics.rs&quot;"/>
     <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="SimplePhysics"/>
+    <stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-XX:+IgnoreUnrecognizedVMOptions --add-modules=ALL-SYSTEM --add-exports=java.base/jdk.internal.ref=ALL-UNNAMED"/>
 </launchConfiguration>

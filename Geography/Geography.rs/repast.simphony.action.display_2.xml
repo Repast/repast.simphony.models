@@ -199,7 +199,7 @@
   <coverageLayers>
     <entry>
       <string>My coverage</string>
-      <string>geography.BlueCoverageStyle</string>
+      <string>geography.styles.BlueCoverageStyle</string>
     </entry>
     <entry>
       <string>My indexed coverage 2</string>

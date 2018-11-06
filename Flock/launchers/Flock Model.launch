@@ -18,5 +18,6 @@
     <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="repast.simphony.runtime.RepastMain"/>
     <stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="&quot;${workspace_loc:Flock}/Flock.rs&quot;"/>
     <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="Flock"/>
+    <stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-XX:+IgnoreUnrecognizedVMOptions --add-modules=ALL-SYSTEM --add-exports=java.base/jdk.internal.ref=ALL-UNNAMED"/>
     <stringAttribute key="yk-options" value="&#13;&#10;use-64-bit=false&#13;&#10;additional-options2=onexit\=snapshot&#13;&#10;"/>
 </launchConfiguration>

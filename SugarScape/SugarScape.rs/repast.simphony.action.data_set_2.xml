@@ -1,7 +1,7 @@
-<repast.simphony.data2.engine.DataSetDescriptor>
+<repast.simphony.data2.engine.DataSetDescriptor simphonyVersion="2.6.0">
   <name>Sugar Data</name>
   <type>NON_AGGREGATE</type>
-  <sourceType>SugarScape.SugarAgent</sourceType>
+  <sourceType>sugarscape.agents.SugarAgent</sourceType>
   <inclTick>true</inclTick>
   <inclBatchRun>false</inclBatchRun>
   <inclRandomSeed>false</inclRandomSeed>
@@ -9,6 +9,7 @@
     <start>1.0</start>
     <interval>1.0</interval>
     <priority>-Infinity</priority>
+    <pType>LAST</pType>
     <duration>-1.0</duration>
     <frequency>REPEAT</frequency>
     <hashCode>0</hashCode>
@@ -19,7 +20,7 @@
       <string>Sugar</string>
       <repast.simphony.data2.engine.MethodDataSourceDefinition>
         <id>Sugar</id>
-        <className>SugarScape.SugarAgent</className>
+        <className>sugarscape.agents.SugarAgent</className>
         <methodName>getSugar</methodName>
       </repast.simphony.data2.engine.MethodDataSourceDefinition>
     </entry>

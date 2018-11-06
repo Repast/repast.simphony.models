@@ -1,13 +1,1 @@
-<?xml version="1.0"?>
-<sweep runs="1">
-  <parameter name="maxMetabolism" type="constant" constant_type="number" value="4"/>
-  <parameter name="maxVision" type="constant" constant_type="number" value="6"/>
-  <parameter name="maxInitialSugar" type="constant" constant_type="number" value="25"/>
-  <parameter name="minInitialSugar" type="constant" constant_type="number" value="5"/>
-  <parameter name="minDeathAge" type="constant" constant_type="number" value="60"/>
-  <parameter name="maxDeathAge" type="constant" constant_type="number" value="100"/>
-  <parameter name="initialNumAgents" type="constant" constant_type="number" value="400"/>
-  <parameter name="sugarGrowRate" type="constant" constant_type="number" value="1"/>
-  <parameter name="worldHeight"  type="constant" constant_type="number" value="50"/>
-  <parameter name="worldWidth" type="constant" constant_type="number" value="50"/>
-</sweep>
+<?xml version="1.0" ?><sweep runs="1"><parameter name="worldWidth" type="constant" constant_type="int" value="50"></parameter><parameter name="initialNumAgents" type="constant" constant_type="int" value="400"></parameter><parameter name="maxVision" type="constant" constant_type="int" value="6"></parameter><parameter name="worldHeight" type="constant" constant_type="int" value="50"></parameter><parameter name="minDeathAge" type="constant" constant_type="int" value="60"></parameter><parameter name="maxDeathAge" type="constant" constant_type="int" value="100"></parameter><parameter name="sugarGrowRate" type="constant" constant_type="int" value="1"></parameter><parameter name="maxInitialSugar" type="constant" constant_type="int" value="25"></parameter><parameter name="endAt" type="constant" constant_type="double" value="1000.0"></parameter><parameter name="minInitialSugar" type="constant" constant_type="int" value="5"></parameter><parameter name="maxMetabolism" type="constant" constant_type="int" value="4"></parameter></sweep>

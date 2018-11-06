@@ -1,4 +1,4 @@
-<repast.simphony.chart2.engine.HistogramChartDescriptor>
+<repast.simphony.chart2.engine.HistogramChartDescriptor simphonyVersion="2.6.0">
   <name>Histogram Chart</name>
   <dataSet>Sugar Data</dataSet>
   <xAxisLabel>Wealth (Sugar)</xAxisLabel>

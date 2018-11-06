@@ -1,4 +1,4 @@
-package SugarScape;
+package sugarscape.agents;
 
 import repast.simphony.context.Context;
 import repast.simphony.dataLoader.ContextBuilder;
@@ -25,7 +25,7 @@ public class SugarScape implements ContextBuilder<Object>{
 		
 	  // The sugarFile contains the initial/max sugar values for every point
 		// on the 2D sugarspace.
-		String sugarFile = "misc/sugarspace.pgm";
+		String sugarFile = "data/sugarspace.pgm";
 		
 		Parameters p = RunEnvironment.getInstance().getParameters();
 		int numAgents = (Integer)p.getValue("initialNumAgents");
@@ -40,13 +40,16 @@ public class SugarScape implements ContextBuilder<Object>{
 		
 		  sugarSpace.add(agent);
 		}
+
+		// If running in batch mode, tell the scheduler when to end each run.
+		if (RunEnvironment.getInstance().isBatch()){
+
+			double endAt = (Double)p.getValue("endAt");     
+			RunEnvironment.getInstance().endAt(endAt);
+		}
 		
 		// If running in batch mode, schedule the sim stop time
-		double endTime = 500.0;
-		
-		if(RunEnvironment.getInstance().isBatch())
-			RunEnvironment.getInstance().endAt(endTime);
-		
+
 		return context;
 	}
 }

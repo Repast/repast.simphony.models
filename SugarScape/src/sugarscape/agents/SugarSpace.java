@@ -1,4 +1,4 @@
-package SugarScape;
+package sugarscape.agents;
 
 import repast.simphony.context.DefaultContext;
 import repast.simphony.context.space.grid.GridFactoryFinder;

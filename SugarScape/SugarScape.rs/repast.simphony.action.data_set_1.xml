@@ -1,4 +1,4 @@
-<repast.simphony.data2.engine.DataSetDescriptor>
+<repast.simphony.data2.engine.DataSetDescriptor simphonyVersion="2.6.0">
   <name>Sugar Agent Data</name>
   <type>AGGREGATE</type>
   <inclTick>true</inclTick>
@@ -8,6 +8,7 @@
     <start>1.0</start>
     <interval>1.0</interval>
     <priority>-Infinity</priority>
+    <pType>LAST</pType>
     <duration>-1.0</duration>
     <frequency>REPEAT</frequency>
     <hashCode>0</hashCode>
@@ -18,7 +19,7 @@
       <string>Mean Metabolism</string>
       <repast.simphony.data2.engine.MethodDataSourceDefinition>
         <id>Mean Metabolism</id>
-        <className>SugarScape.SugarAgent</className>
+        <className>sugarscape.agents.SugarAgent</className>
         <methodName>getMetabolism</methodName>
         <aggType>MEAN</aggType>
       </repast.simphony.data2.engine.MethodDataSourceDefinition>
@@ -27,7 +28,7 @@
       <string>Mean Vision</string>
       <repast.simphony.data2.engine.MethodDataSourceDefinition>
         <id>Mean Vision</id>
-        <className>SugarScape.SugarAgent</className>
+        <className>sugarscape.agents.SugarAgent</className>
         <methodName>getVision</methodName>
         <aggType>MEAN</aggType>
       </repast.simphony.data2.engine.MethodDataSourceDefinition>

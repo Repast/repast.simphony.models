@@ -1,4 +1,4 @@
-package SugarScape;
+package sugarscape.agents;
 
 import repast.simphony.engine.environment.RunEnvironment;
 import repast.simphony.engine.schedule.ScheduledMethod;

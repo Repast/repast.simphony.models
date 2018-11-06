@@ -1,4 +1,4 @@
-package SugarScape;
+package sugarscape.agents;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;

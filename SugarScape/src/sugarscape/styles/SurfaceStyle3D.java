@@ -1,4 +1,4 @@
-package SugarScape;
+package sugarscape.styles;
 
 import java.awt.Color;
 import java.awt.Paint;

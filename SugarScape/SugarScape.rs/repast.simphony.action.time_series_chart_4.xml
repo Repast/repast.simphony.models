@@ -1,4 +1,4 @@
-<repast.simphony.chart2.engine.TimeSeriesChartDescriptor>
+<repast.simphony.chart2.engine.TimeSeriesChartDescriptor simphonyVersion="2.6.0">
   <name>Agent Properties</name>
   <dataSet>Sugar Agent Data</dataSet>
   <xAxisLabel>Tick Count</xAxisLabel>
@@ -21,18 +21,6 @@
   <showLegend>true</showLegend>
   <seriesIds>
     <entry>
-      <string>Mean Vision</string>
-      <SeriesData>
-        <label>Mean Vision</label>
-        <color>
-          <red>255</red>
-          <green>0</green>
-          <blue>0</blue>
-          <alpha>255</alpha>
-        </color>
-      </SeriesData>
-    </entry>
-    <entry>
       <string>Mean Metabolism</string>
       <SeriesData>
         <label>Mean Metabolism</label>
@@ -40,6 +28,18 @@
           <red>0</red>
           <green>0</green>
           <blue>255</blue>
+          <alpha>255</alpha>
+        </color>
+      </SeriesData>
+    </entry>
+    <entry>
+      <string>Mean Vision</string>
+      <SeriesData>
+        <label>Mean Vision</label>
+        <color>
+          <red>255</red>
+          <green>0</green>
+          <blue>0</blue>
           <alpha>255</alpha>
         </color>
       </SeriesData>

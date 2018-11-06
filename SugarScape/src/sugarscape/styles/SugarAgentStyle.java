@@ -1,4 +1,4 @@
-package SugarScape;
+package sugarscape.styles;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -10,6 +10,7 @@ import repast.simphony.visualization.visualization3D.ShapeFactory;
 import repast.simphony.visualization.visualization3D.style.Style3D;
 import repast.simphony.visualization.visualization3D.style.TaggedAppearance;
 import repast.simphony.visualization.visualization3D.style.TaggedBranchGroup;
+import sugarscape.agents.SugarAgent;
 
 /**
  * The 3D style class for sugar agents.   

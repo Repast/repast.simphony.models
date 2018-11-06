@@ -1,4 +1,4 @@
-package geotracks;
+package geotracks.styles;
 
 import java.awt.Color;
 

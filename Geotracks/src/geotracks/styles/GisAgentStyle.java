@@ -1,4 +1,4 @@
-package geotracks;
+package geotracks.styles;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -7,6 +7,7 @@ import java.awt.image.BufferedImage;
 import java.util.HashMap;
 import java.util.Map;
 
+import geotracks.agents.GisAgent;
 import gov.nasa.worldwind.WorldWind;
 import gov.nasa.worldwind.render.BasicWWTexture;
 import gov.nasa.worldwind.render.Material;

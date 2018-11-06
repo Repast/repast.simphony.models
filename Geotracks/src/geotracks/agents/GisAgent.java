@@ -1,4 +1,4 @@
-package geotracks;
+package geotracks.agents;
 
 import org.geotools.geometry.DirectPosition2D;
 import org.opengis.geometry.DirectPosition;

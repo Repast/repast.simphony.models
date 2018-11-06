@@ -3,28 +3,28 @@
   <type>GIS 3D</type>
   <styles>
     <entry>
-      <string>geotracks.GisAgent</string>
-      <string>geotracks.GisAgentStyle</string>
+      <string>geotracks.agents.GisAgent</string>
+      <string>geotracks.styles.GisAgentStyle</string>
     </entry>
     <entry>
-      <string>geotracks.Waypoint</string>
-      <string>geotracks.WaypointStyle</string>
+      <string>geotracks.agents.Waypoint</string>
+      <string>geotracks.styles.WaypointStyle</string>
     </entry>
   </styles>
   <editedStyles>
     <entry>
-      <string>geotracks.GisAgent</string>
+      <string>geotracks.agents.GisAgent</string>
       <null/>
     </entry>
     <entry>
-      <string>geotracks.Waypoint</string>
+      <string>geotracks.agents.Waypoint</string>
       <null/>
     </entry>
   </editedStyles>
   <netStyles>
     <entry>
       <string>Network</string>
-      <string>geotracks.MyNetworkStyle</string>
+      <string>geotracks.styles.MyNetworkStyle</string>
     </entry>
   </netStyles>
   <editedNetStyles>
@@ -62,7 +62,7 @@
       <int>7</int>
     </entry>
     <entry>
-      <string>geotracks.GisAgent</string>
+      <string>geotracks.agents.GisAgent</string>
       <int>9</int>
     </entry>
     <entry>
@@ -70,7 +70,7 @@
       <int>1</int>
     </entry>
     <entry>
-      <string>geotracks.Waypoint</string>
+      <string>geotracks.agents.Waypoint</string>
       <int>8</int>
     </entry>
     <entry>

@@ -1,4 +1,4 @@
-package geotracks;
+package geotracks.agents;
 
 public class Waypoint {
 

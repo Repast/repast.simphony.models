@@ -1,6 +1,6 @@
 <model name="Predator Prey">
 	<classpath>
-		<agents path="../bin" />
+		<agents path="../bin" filter="PredatorPrey.agents.*" />
 		<entry path="../lib" />
 	</classpath>
 </model>

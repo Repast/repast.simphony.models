@@ -3,16 +3,16 @@
   <type>3D</type>
   <styles>
     <entry>
-      <string>PredatorPrey.Sheep</string>
-      <string>PredatorPrey.SimpleNodeStyle</string>
+      <string>PredatorPrey.agents.Sheep</string>
+      <string>PredatorPrey.styles.SimpleNodeStyle</string>
     </entry>
     <entry>
-      <string>PredatorPrey.Wolf</string>
-      <string>PredatorPrey.SimpleNodeStyle</string>
+      <string>PredatorPrey.agents.Wolf</string>
+      <string>PredatorPrey.styles.SimpleNodeStyle</string>
     </entry>
     <entry>
-      <string>PredatorPrey.Grass</string>
-      <string>PredatorPrey.GrassNodeStyle</string>
+      <string>PredatorPrey.agents.Grass</string>
+      <string>PredatorPrey.styles.GrassNodeStyle</string>
     </entry>
   </styles>
   <editedStyles/>

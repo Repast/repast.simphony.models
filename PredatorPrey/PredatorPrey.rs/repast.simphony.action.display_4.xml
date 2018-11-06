@@ -3,21 +3,21 @@
   <type>2D</type>
   <styles>
     <entry>
-      <string>PredatorPrey.Sheep</string>
-      <string>PredatorPrey.AgentStyle2D</string>
+      <string>PredatorPrey.agents.Sheep</string>
+      <string>PredatorPrey.styles.AgentStyle2D</string>
     </entry>
     <entry>
-      <string>PredatorPrey.Wolf</string>
-      <string>PredatorPrey.AgentStyle2D</string>
+      <string>PredatorPrey.agents.Wolf</string>
+      <string>PredatorPrey.styles.AgentStyle2D</string>
     </entry>
   </styles>
   <editedStyles>
     <entry>
-      <string>PredatorPrey.Sheep</string>
+      <string>PredatorPrey.agents.Sheep</string>
       <null/>
     </entry>
     <entry>
-      <string>PredatorPrey.Wolf</string>
+      <string>PredatorPrey.styles.Wolf</string>
       <null/>
     </entry>
   </editedStyles>
@@ -37,11 +37,11 @@
   <layoutInterval>0</layoutInterval>
   <layerOrder>
     <entry>
-      <string>PredatorPrey.Sheep</string>
+      <string>PredatorPrey.agents.Sheep</string>
       <int>0</int>
     </entry>
     <entry>
-      <string>PredatorPrey.Wolf</string>
+      <string>PredatorPrey.agents.Wolf</string>
       <int>1</int>
     </entry>
   </layerOrder>
@@ -83,7 +83,7 @@
     </entry>
   </projectionDescriptors>
   <props/>
-  <valueLayerStyleName>PredatorPrey.GrassStyle2D</valueLayerStyleName>
+  <valueLayerStyleName>PredatorPrey.styles.GrassStyle2D</valueLayerStyleName>
   <valueLayers>
     <string>Grass Field</string>
   </valueLayers>

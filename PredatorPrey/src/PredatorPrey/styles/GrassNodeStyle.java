@@ -1,4 +1,4 @@
-package PredatorPrey;
+package PredatorPrey.styles;
 
 
 import java.awt.Color;
@@ -10,6 +10,8 @@ import javax.media.j3d.TransformGroup;
 import javax.vecmath.Vector3d;
 import javax.vecmath.Vector3f;
 
+import PredatorPrey.agents.Grass;
+import PredatorPrey.agents.SimpleAgent;
 import repast.simphony.visualization.visualization3D.AppearanceFactory;
 import repast.simphony.visualization.visualization3D.ShapeFactory;
 import repast.simphony.visualization.visualization3D.style.Style3D;

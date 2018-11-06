@@ -1,4 +1,4 @@
-package PredatorPrey;
+package PredatorPrey.styles;
 
 import java.awt.Color;
 

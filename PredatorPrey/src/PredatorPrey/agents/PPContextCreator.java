@@ -1,4 +1,4 @@
-package PredatorPrey;
+package PredatorPrey.agents;
 
 import repast.simphony.context.Context;
 import repast.simphony.context.space.continuous.ContinuousSpaceFactoryFinder;

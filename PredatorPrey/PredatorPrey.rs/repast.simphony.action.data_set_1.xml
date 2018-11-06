@@ -18,14 +18,14 @@
     <entry>
       <string>Wolf Count</string>
       <repast.simphony.data2.engine.CountSourceDefinition>
-        <typeName>PredatorPrey.Sheep</typeName>
+        <typeName>PredatorPrey.agents.Sheep</typeName>
         <id>Wolf Count</id>
       </repast.simphony.data2.engine.CountSourceDefinition>
     </entry>
     <entry>
       <string>Sheep Count</string>
       <repast.simphony.data2.engine.CountSourceDefinition>
-        <typeName>PredatorPrey.Wolf</typeName>
+        <typeName>PredatorPrey.agents.Wolf</typeName>
         <id>Sheep Count</id>
       </repast.simphony.data2.engine.CountSourceDefinition>
     </entry>

@@ -1,7 +1,9 @@
-package PredatorPrey;
+package PredatorPrey.styles;
 
 import java.awt.Color;
 
+import PredatorPrey.agents.Sheep;
+import PredatorPrey.agents.Wolf;
 import repast.simphony.visualizationOGL2D.DefaultStyleOGL2D;
 
 /**

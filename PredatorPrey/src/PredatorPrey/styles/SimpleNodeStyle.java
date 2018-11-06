@@ -1,4 +1,4 @@
-package PredatorPrey;
+package PredatorPrey.styles;
 
 
 import java.awt.Color;
@@ -6,6 +6,9 @@ import java.awt.Font;
 
 import javax.media.j3d.Shape3D;
 
+import PredatorPrey.agents.Sheep;
+import PredatorPrey.agents.SimpleAgent;
+import PredatorPrey.agents.Wolf;
 import repast.simphony.visualization.visualization3D.AppearanceFactory;
 import repast.simphony.visualization.visualization3D.ShapeFactory;
 import repast.simphony.visualization.visualization3D.style.Style3D;

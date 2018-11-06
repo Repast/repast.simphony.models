@@ -1,4 +1,4 @@
-package PredatorPrey;
+package PredatorPrey.agents;
 
 import repast.simphony.annotate.AgentAnnot;
 import repast.simphony.context.Context;

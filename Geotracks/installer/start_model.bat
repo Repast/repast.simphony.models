@@ -1,5 +1,5 @@
 @ECHO OFF
-TITLE Geography
+TITLE Geotracks
 
 REM Repast Simphony Model Starter
 REM By Michael J. North
@@ -28,7 +28,7 @@ SET CP=%CP%;%REPAST_SIMPHONY_LIB%commons-cli-1.3.1.jar
 SET CP=%CP%;../groovylib/$Groovy_All_Jar
 
 REM Change to the Default Repast Simphony Directory
-CD Geography
+CD Geotracks
 
 REM Start the Model
-START javaw -Xss10M -Xmx400M -cp %CP% repast.simphony.runtime.RepastMain ./Geography.rs
+START javaw -XX:+IgnoreUnrecognizedVMOptions --add-modules=ALL-SYSTEM --add-exports=java.base/jdk.internal.ref=ALL-UNNAMED -cp %CP% repast.simphony.runtime.RepastMain ./Geotracks.rs

@@ -4,10 +4,10 @@
 
   <skipIfNotSupported/>
   
-  <programGroup defaultName="Geography" location="StartMenu"/>
+  <programGroup defaultName="Geotracks" location="StartMenu"/>
   
   <shortcut
-     name="Geography"
+     name="Geotracks"
      programGroup="yes"
      desktop="no"
      applications="no"
@@ -17,7 +17,7 @@
      commandLine=""
      workingDirectory="$INSTALL_PATH"
      description="Model"
-     iconFile="$INSTALL_PATH\Geography\icons\model.bmp"
+     iconFile="$INSTALL_PATH\Geotracks\icons\model.bmp"
      iconIndex="0"
      initialState="noShow">
      <createForPack name="Model"/>
@@ -30,7 +30,7 @@
      applications="no"
      startMenu="no"
      startup="no"
-     target="$INSTALL_PATH\Geography\docs\index.html"
+     target="$INSTALL_PATH\Geotracks\docs\index.html"
      commandLine=""
 	 iconFile="%SystemRoot%\system32\SHELL32.dll"
      iconIndex="23" 
@@ -40,7 +40,7 @@
   </shortcut>
   
   <shortcut
-     name="Geography Uninstaller"
+     name="Geotracks Uninstaller"
      programGroup="yes"
      desktop="no"
      applications="no"

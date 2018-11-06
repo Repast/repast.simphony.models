@@ -1,4 +1,4 @@
-package geography;
+package geography.agents;
 
 import org.geotools.coverage.grid.GridCoordinates2D;
 import org.geotools.geometry.DirectPosition2D;

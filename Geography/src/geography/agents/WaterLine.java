@@ -1,4 +1,4 @@
-package geography;
+package geography.agents;
 
 /**
  * WaterLines are water supply pipes and are represented by a line feature.

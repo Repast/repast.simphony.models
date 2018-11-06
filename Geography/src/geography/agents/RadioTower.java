@@ -1,4 +1,4 @@
-package geography;
+package geography.agents;
 
 /**
  * RadioTower agents are static non-moving point feature agents.

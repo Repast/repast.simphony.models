@@ -1,4 +1,4 @@
-package geography;
+package geography.agents;
 
 import java.awt.Color;
 import java.io.File;

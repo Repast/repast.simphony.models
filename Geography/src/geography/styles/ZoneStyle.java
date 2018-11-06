@@ -1,10 +1,11 @@
-package geography;
+package geography.styles;
 
 import gov.nasa.worldwind.render.SurfacePolygon;
 import gov.nasa.worldwind.render.SurfaceShape;
 
 import java.awt.Color;
 
+import geography.agents.ZoneAgent;
 import repast.simphony.visualization.gis3D.style.SurfaceShapeStyle;
 
 /**

@@ -1,4 +1,4 @@
-package geography;
+package geography.styles;
 
 import gov.nasa.worldwind.WorldWind;
 import gov.nasa.worldwind.avlist.AVKey;
@@ -8,6 +8,7 @@ import gov.nasa.worldwind.render.WWTexture;
 
 import java.net.URL;
 
+import geography.agents.RadioTower;
 import repast.simphony.visualization.gis3D.style.DefaultMarkStyle;
 
 /**

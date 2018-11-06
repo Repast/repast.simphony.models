@@ -1,4 +1,4 @@
-package geography;
+package geography.styles;
 
 import java.awt.Color;
 

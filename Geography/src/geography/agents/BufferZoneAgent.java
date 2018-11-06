@@ -1,4 +1,4 @@
-package geography;
+package geography.agents;
 
 import com.vividsolutions.jts.geom.Geometry;
 

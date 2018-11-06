@@ -1,4 +1,4 @@
-package geography;
+package geography.agents;
 
 import repast.simphony.context.Context;
 import repast.simphony.engine.environment.RunEnvironment;

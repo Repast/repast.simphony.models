@@ -1,6 +1,7 @@
 <model name="Geography" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://repast.org/scenario/user_path">
 	<classpath>
-		<agents path="../bin" />
+		<agents path="../bin" filter="geography.agents.*" />
+		<entry path="../bin" annotations="false"/>
 		<entry path="../lib" />
 	</classpath>
 </model>

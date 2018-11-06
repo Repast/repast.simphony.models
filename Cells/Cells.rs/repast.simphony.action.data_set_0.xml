@@ -21,7 +21,7 @@
       <string>Coverage Percent</string>
       <repast.simphony.data2.engine.CustomDataSourceDefinition>
         <id>Coverage Percent</id>
-        <dsClassName>Cells.CoverageDataSource</dsClassName>
+        <dsClassName>Cells.agents.CoverageDataSource</dsClassName>
       </repast.simphony.data2.engine.CustomDataSourceDefinition>
     </entry>
   </customAggDataSources>

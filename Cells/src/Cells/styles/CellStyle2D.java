@@ -1,4 +1,4 @@
-package Cells;
+package Cells.styles;
 
 import java.awt.Color;
 

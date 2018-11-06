@@ -1,7 +1,7 @@
 /**
  * 
  */
-package Cells;
+package Cells.agents;
 
 import repast.simphony.context.Context;
 import repast.simphony.data2.AggregateDataSource;

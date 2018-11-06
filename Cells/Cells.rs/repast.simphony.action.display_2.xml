@@ -3,13 +3,13 @@
   <type>2D</type>
   <styles>
     <entry>
-      <string>Cells.Cell</string>
-      <string>Cells.CellStyle2D</string>
+      <string>Cells.agents.Cell</string>
+      <string>Cells.styles.CellStyle2D</string>
     </entry>
   </styles>
   <editedStyles>
     <entry>
-      <string>Cells.Cell</string>
+      <string>Cells.agents.Cell</string>
       <null/>
     </entry>
   </editedStyles>
@@ -29,7 +29,7 @@
   <layoutInterval>0</layoutInterval>
   <layerOrder>
     <entry>
-      <string>Cells.Cell</string>
+      <string>Cells.agents.Cell</string>
       <int>0</int>
     </entry>
   </layerOrder>

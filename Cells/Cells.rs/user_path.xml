@@ -1,6 +1,6 @@
 <model name="Cells">
 	<classpath>
-		<agents path="../bin" />
+		<agents path="../bin" filter="Cells.agents.*"/>
 		<entry path="../lib" />
 	</classpath>
 </model>

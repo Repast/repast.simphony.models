@@ -1,4 +1,4 @@
-package Cells;
+package Cells.agents;
 
 import repast.simphony.context.Context;
 import repast.simphony.context.space.grid.GridFactoryFinder;

@@ -1,4 +1,4 @@
-package Cells;
+package Cells.agents;
 
 import java.util.ArrayList;
 import java.util.Collections;

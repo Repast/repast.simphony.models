@@ -1,0 +1,27 @@
+<repast.simphony.visualization.editedStyle.DefaultEditedEdgeStyleData3D>
+  <lineStyle>SOLID</lineStyle>
+  <size>1.0</size>
+  <sizeMax>1.0</sizeMax>
+  <sizeMin>0.0</sizeMin>
+  <sizeScale>1.0</sizeScale>
+  <color>
+    <float>0.0</float>
+    <float>1.0</float>
+    <float>0.0</float>
+  </color>
+  <colorMax>
+    <float>10.0</float>
+    <float>10.0</float>
+    <float>10.0</float>
+  </colorMax>
+  <colorMin>
+    <float>0.0</float>
+    <float>0.0</float>
+    <float>0.0</float>
+  </colorMin>
+  <colorScale>
+    <float>1.0</float>
+    <float>1.0</float>
+    <float>1.0</float>
+  </colorScale>
+</repast.simphony.visualization.editedStyle.DefaultEditedEdgeStyleData3D>

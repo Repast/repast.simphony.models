@@ -240,8 +240,10 @@ public class SpecialEffects implements RunListener {
 			}
 		}
 
-		JFrame frame = RSApplication.getRSApplicationInstance().getGui().getFrame();
-		SwingUtilities.updateComponentTreeUI(frame);
+		if (RSApplication.getRSApplicationInstance() != null) {
+			JFrame frame = RSApplication.getRSApplicationInstance().getGui().getFrame();
+			SwingUtilities.updateComponentTreeUI(frame);
+		}
 	}
 
 	public void surprise(){

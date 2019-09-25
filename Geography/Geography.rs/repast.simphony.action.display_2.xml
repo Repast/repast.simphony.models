@@ -1,7 +1,19 @@
-<repast.simphony.gis.visualization.engine.GISDisplayDescriptor simphonyVersion="2.5.0">
+<repast.simphony.gis.visualization.engine.GISDisplayDescriptor simphonyVersion="2.7.0">
   <name>GIS (3D)</name>
   <type>GIS 3D</type>
   <styles>
+    <entry>
+      <string>geography.agents.RadioTower</string>
+      <string>geography.styles.TowerAgentStyle</string>
+    </entry>
+    <entry>
+      <string>geography.agents.WaterLine</string>
+      <string>geography.styles.WaterLineStyle</string>
+    </entry>
+    <entry>
+      <string>geography.agents.GisAgent</string>
+      <string>geography.styles.GisAgentStyle</string>
+    </entry>
     <entry>
       <string>geography.agents.ZoneAgent</string>
       <string>geography.styles.ZoneStyle</string>
@@ -10,38 +22,26 @@
       <string>geography.agents.BufferZoneAgent</string>
       <string>geography.styles.BufferZoneStyle</string>
     </entry>
+  </styles>
+  <editedStyles>
     <entry>
-      <string>geography.agents.GisAgent</string>
-      <string>geography.styles.GisAgentStyle</string>
+      <string>geography.agents.RadioTower</string>
+      <null/>
     </entry>
     <entry>
       <string>geography.agents.WaterLine</string>
-      <string>geography.styles.WaterLineStyle</string>
+      <null/>
     </entry>
     <entry>
-      <string>geography.agents.RadioTower</string>
-      <string>geography.styles.TowerAgentStyle</string>
+      <string>geography.agents.GisAgent</string>
+      <null/>
     </entry>
-  </styles>
-  <editedStyles>
     <entry>
       <string>geography.agents.ZoneAgent</string>
       <null/>
     </entry>
     <entry>
       <string>geography.agents.BufferZoneAgent</string>
-      <null/>
-    </entry>
-    <entry>
-      <string>geography.agents.GisAgent</string>
-      <null/>
-    </entry>
-    <entry>
-      <string>geography.agents.WaterLine</string>
-      <null/>
-    </entry>
-    <entry>
-      <string>geography.agents.RadioTower</string>
       <null/>
     </entry>
   </editedStyles>
@@ -74,12 +74,20 @@
       <int>1</int>
     </entry>
     <entry>
+      <string>geography.agents.RadioTower</string>
+      <int>13</int>
+    </entry>
+    <entry>
       <string>Bing Imagery</string>
       <int>3</int>
     </entry>
     <entry>
       <string>./data/RGBTestPattern.tif</string>
       <int>4</int>
+    </entry>
+    <entry>
+      <string>geography.agents.WaterLine</string>
+      <int>12</int>
     </entry>
     <entry>
       <string>My coverage</string>
@@ -94,16 +102,16 @@
       <int>7</int>
     </entry>
     <entry>
-      <string>My indexed coverage</string>
-      <int>6</int>
-    </entry>
-    <entry>
-      <string>geography.agents.RadioTower</string>
-      <int>13</int>
-    </entry>
-    <entry>
       <string>geography.agents.ZoneAgent</string>
       <int>11</int>
+    </entry>
+    <entry>
+      <string>geography.agents.BufferZoneAgent</string>
+      <int>10</int>
+    </entry>
+    <entry>
+      <string>My indexed coverage</string>
+      <int>6</int>
     </entry>
     <entry>
       <string>./data/UTM2GTIF.TIF</string>
@@ -114,16 +122,8 @@
       <int>0</int>
     </entry>
     <entry>
-      <string>geography.agents.BufferZoneAgent</string>
-      <int>10</int>
-    </entry>
-    <entry>
       <string>Network</string>
       <int>9</int>
-    </entry>
-    <entry>
-      <string>geography.agents.WaterLine</string>
-      <int>12</int>
     </entry>
     <entry>
       <string>i-cubed Landsat</string>

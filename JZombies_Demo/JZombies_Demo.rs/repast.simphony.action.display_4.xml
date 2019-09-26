@@ -1,24 +1,24 @@
-<repast.simphony.visualization.engine.CartesianDisplayDescriptor>
+<repast.simphony.visualization.engine.CartesianDisplayDescriptor simphonyVersion="2.7.0">
   <name>Space Display</name>
   <type>2D</type>
   <styles>
     <entry>
-      <string>jzombies.Human</string>
+      <string>jzombies.Zombie</string>
       <string>repast.simphony.visualization.editedStyle.EditedStyle2D</string>
     </entry>
     <entry>
-      <string>jzombies.Zombie</string>
+      <string>jzombies.Human</string>
       <string>repast.simphony.visualization.editedStyle.EditedStyle2D</string>
     </entry>
   </styles>
   <editedStyles>
     <entry>
-      <string>jzombies.Human</string>
-      <string>jzombies.Human.style_3.xml</string>
-    </entry>
-    <entry>
       <string>jzombies.Zombie</string>
       <string>jzombies.Zombie.style_3.xml</string>
+    </entry>
+    <entry>
+      <string>jzombies.Human</string>
+      <string>jzombies.Human.style_3.xml</string>
     </entry>
   </editedStyles>
   <netStyles>
@@ -48,12 +48,12 @@
   <layoutInterval>0</layoutInterval>
   <layerOrder>
     <entry>
-      <string>jzombies.Human</string>
-      <int>0</int>
-    </entry>
-    <entry>
       <string>jzombies.Zombie</string>
       <int>1</int>
+    </entry>
+    <entry>
+      <string>jzombies.Human</string>
+      <int>0</int>
     </entry>
   </layerOrder>
   <projections>
@@ -73,6 +73,13 @@
   </visualizationProperties>
   <projectionDescriptors>
     <entry>
+      <string>infection network</string>
+      <repast.simphony.visualization.engine.DefaultProjectionDescriptor>
+        <proj reference="../../../../projections/repast.simphony.scenario.data.ProjectionData[2]"/>
+        <props/>
+      </repast.simphony.visualization.engine.DefaultProjectionDescriptor>
+    </entry>
+    <entry>
       <string>space</string>
       <repast.simphony.visualization.continuous.ContinuousProjectionDescriptor>
         <proj reference="../../../../projections/repast.simphony.scenario.data.ProjectionData"/>
@@ -81,6 +88,10 @@
             <string>repast.simphony.visualization.continuous.ContinuousDecorator</string>
             <map>
               <entry>
+                <string>COLOR</string>
+                <int>-16777216</int>
+              </entry>
+              <entry>
                 <string>UNIT_SIZE</string>
                 <float>15.0</float>
               </entry>
@@ -88,21 +99,10 @@
                 <string>SHOW</string>
                 <boolean>true</boolean>
               </entry>
-              <entry>
-                <string>COLOR</string>
-                <int>-16777216</int>
-              </entry>
             </map>
           </entry>
         </props>
       </repast.simphony.visualization.continuous.ContinuousProjectionDescriptor>
-    </entry>
-    <entry>
-      <string>infection network</string>
-      <repast.simphony.visualization.engine.DefaultProjectionDescriptor>
-        <proj reference="../../../../projections/repast.simphony.scenario.data.ProjectionData[2]"/>
-        <props/>
-      </repast.simphony.visualization.engine.DefaultProjectionDescriptor>
     </entry>
   </projectionDescriptors>
   <props/>

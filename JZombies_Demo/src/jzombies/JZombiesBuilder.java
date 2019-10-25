@@ -60,7 +60,7 @@ public class JZombiesBuilder implements ContextBuilder<Object> {
 			context.add(new Human(space, grid, energy));
 		}
 
-		for (Object obj : context) {
+		for (Object obj : context.getObjects(Object.class)) {
 			NdPoint pt = space.getLocation(obj);
 			grid.moveTo(obj, (int) pt.getX(), (int) pt.getY());
 		}

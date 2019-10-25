@@ -1,4 +1,4 @@
-<repast.simphony.chart2.engine.TimeSeriesChartDescriptor>
+<repast.simphony.chart2.engine.TimeSeriesChartDescriptor simphonyVersion="2.7.0">
   <name>Agent Counts</name>
   <dataSet>Agent Counts</dataSet>
   <xAxisLabel>Tick Count</xAxisLabel>
@@ -46,5 +46,5 @@
     </entry>
   </seriesIds>
   <dataValueIds/>
-  <plotRangeLength>-1</plotRangeLength>
+  <plotRangeLength>1000</plotRangeLength>
 </repast.simphony.chart2.engine.TimeSeriesChartDescriptor>

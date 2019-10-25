@@ -1,4 +1,4 @@
-<repast.simphony.data2.engine.DataSetDescriptor>
+<repast.simphony.data2.engine.DataSetDescriptor simphonyVersion="2.7.0">
   <name>Agent Counts</name>
   <type>AGGREGATE</type>
   <inclTick>true</inclTick>
@@ -8,6 +8,7 @@
     <start>1.0</start>
     <interval>1.0</interval>
     <priority>-Infinity</priority>
+    <pType>LAST</pType>
     <duration>-1.0</duration>
     <frequency>REPEAT</frequency>
     <hashCode>0</hashCode>

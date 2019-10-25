@@ -1,21 +1,26 @@
 <repast.simphony.visualization.engine.CartesianDisplayDescriptor simphonyVersion="2.7.0">
-  <name>3D World</name>
-  <type>3D</type>
+  <name>2D Display (edited style)</name>
+  <type>2D</type>
   <styles>
     <entry>
       <string>PredatorPrey.agents.Sheep</string>
-      <string>PredatorPrey.styles.SimpleNodeStyle</string>
+      <string>repast.simphony.visualization.editedStyle.EditedStyle2D</string>
     </entry>
     <entry>
       <string>PredatorPrey.agents.Wolf</string>
-      <string>PredatorPrey.styles.SimpleNodeStyle</string>
-    </entry>
-    <entry>
-      <string>PredatorPrey.agents.Grass</string>
-      <string>PredatorPrey.styles.GrassNodeStyle</string>
+      <string>repast.simphony.visualization.editedStyle.EditedStyle2D</string>
     </entry>
   </styles>
-  <editedStyles/>
+  <editedStyles>
+    <entry>
+      <string>PredatorPrey.agents.Sheep</string>
+      <string>PredatorPrey.agents.Sheep.style_0.xml</string>
+    </entry>
+    <entry>
+      <string>PredatorPrey.agents.Wolf</string>
+      <string>PredatorPrey.agents.Wolf.style_0.xml</string>
+    </entry>
+  </editedStyles>
   <netStyles/>
   <editedNetStyles/>
   <frequency>ON_MOVE</frequency>
@@ -26,12 +31,21 @@
     <pType>LAST</pType>
     <duration>-1.0</duration>
     <frequency>REPEAT</frequency>
-    <hashCode>0</hashCode>
+    <hashCode>894421857</hashCode>
   </schedParams>
   <layoutClassName>foo.bar.baz</layoutClassName>
   <layoutProjection>Continuous Space</layoutProjection>
   <layoutInterval>0</layoutInterval>
-  <layerOrder/>
+  <layerOrder>
+    <entry>
+      <string>PredatorPrey.agents.Sheep</string>
+      <int>1</int>
+    </entry>
+    <entry>
+      <string>PredatorPrey.agents.Wolf</string>
+      <int>0</int>
+    </entry>
+  </layerOrder>
   <projections>
     <repast.simphony.scenario.data.ProjectionData>
       <id>Continuous Space</id>
@@ -40,7 +54,7 @@
     </repast.simphony.scenario.data.ProjectionData>
   </projections>
   <visualizationProperties class="repast.simphony.visualization.UnitSizeLayoutProperties">
-    <unitSize>0.06</unitSize>
+    <unitSize>15.0</unitSize>
   </visualizationProperties>
   <projectionDescriptors>
     <entry>
@@ -53,15 +67,15 @@
             <map>
               <entry>
                 <string>COLOR</string>
-                <int>-1</int>
+                <int>-16777216</int>
               </entry>
               <entry>
                 <string>UNIT_SIZE</string>
-                <float>0.06</float>
+                <float>15.0</float>
               </entry>
               <entry>
                 <string>SHOW</string>
-                <boolean>false</boolean>
+                <boolean>true</boolean>
               </entry>
             </map>
           </entry>
@@ -70,5 +84,11 @@
     </entry>
   </projectionDescriptors>
   <props/>
+  <backgroundColor>
+    <red>255</red>
+    <green>255</green>
+    <blue>255</blue>
+    <alpha>255</alpha>
+  </backgroundColor>
   <valueLayers/>
 </repast.simphony.visualization.engine.CartesianDisplayDescriptor>

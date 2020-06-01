@@ -3,6 +3,7 @@ package PredatorPrey.agents;
 import repast.simphony.context.Context;
 import repast.simphony.engine.environment.RunEnvironment;
 import repast.simphony.parameter.Parameters;
+import repast.simphony.random.RandomHelper;
 import repast.simphony.space.grid.Grid;
 import repast.simphony.space.grid.GridPoint;
 import repast.simphony.util.ContextUtils;
@@ -18,7 +19,7 @@ public class Wolf extends SimpleAgent {
 	// This constructor is used to create an offspring
 	public Wolf (double energy){
 		this.setEnergy(energy);               // assign the offspring energy
-		this.setHeading(Math.random()*360);   // randomize the heading from 0-360 degrees
+		this.setHeading(RandomHelper.nextDoubleFromTo(0,360));   // randomize the heading from 0-360 degrees
 	}
 
 	// This constructor is used to create initial wolves from the context creator
@@ -27,13 +28,13 @@ public class Wolf extends SimpleAgent {
 		Parameters p = RunEnvironment.getInstance().getParameters();
 		double gain = (Double)p.getValue("wolfgainfromfood");
 
-		this.setEnergy(Math.random() * 2 * gain);    // set the initial energy
-		this.setHeading(Math.random()*360);          //  and initial heading
+		this.setEnergy(RandomHelper.nextDouble() * 2 * gain);    // set the initial energy
+		this.setHeading(RandomHelper.nextDoubleFromTo(0,360));   // randomize the heading from 0-360 degrees
 	}
-	
-  @Override
+
+	@Override
 	public void step() {
-    // Get the context in which the wolf resides.
+		// Get the context in which the wolf resides.
 		Context context = ContextUtils.getContext(this);
 
 		// Move the wolf
@@ -43,12 +44,12 @@ public class Wolf extends SimpleAgent {
 		this.setEnergy(this.getEnergy() - 1);
 
 		// Catch sheep
-    // Get the patch grid from the context
+		// Get the patch grid from the context
 		Grid patch = (Grid) context.getProjection("Simple Grid");
-		
+
 		// Get the wolf's current patch
 		GridPoint point = patch.getLocation(this);
-		
+
 		int x = point.getX();    // The x-ccordinate of the wolf's current patch
 		int y = point.getY();    // The y-ccordinate of the wolf's current patch
 
@@ -69,11 +70,11 @@ public class Wolf extends SimpleAgent {
 		}
 
 		// Reproduce the wolf 
-    // Get the reproduction rate from the user parameters
+		// Get the reproduction rate from the user parameters
 		double rate = (Double)p.getValue("wolfreproduce");
 
-    //	Spawn a new wolf if a random draw on [0,100) < reproduction rate
-		if (100*Math.random() < rate){
+		//	Spawn a new wolf if a random draw on [0,100) < reproduction rate
+		if (100 * RandomHelper.nextDouble() < rate){
 			this.setEnergy(this.getEnergy() / 2);      // divide the parent's energy in half
 			Wolf wolf = new Wolf(this.getEnergy());    // create a new wolf offspring and assing its energy
 			context.add(wolf);	                       // add the offspring to the root context
@@ -84,8 +85,8 @@ public class Wolf extends SimpleAgent {
 			die();
 	}
 
-	
-  // Public getter for the data gatherer for counting 
+
+	// Public getter for the data gatherer for counting 
 	@Override
 	public int isWolf() {
 		return 1;

@@ -2,14 +2,14 @@ package SimplePhysics;
 
 import java.awt.Color;
 
-import javax.vecmath.AxisAngle4f;
+import org.jogamp.vecmath.AxisAngle4f;
+
+import com.bulletphysics.linearmath.Transform;
 
 import repast.simphony.context.Context;
 import repast.simphony.engine.schedule.ScheduledMethod;
 import repast.simphony.space.physics.PhysicsSpace;
 import repast.simphony.util.ContextUtils;
-
-import com.bulletphysics.linearmath.Transform;
 
 /**
  * 

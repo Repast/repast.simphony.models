@@ -4,11 +4,11 @@ package PredatorPrey.styles;
 import java.awt.Color;
 import java.awt.Font;
 
-import javax.media.j3d.Shape3D;
-import javax.media.j3d.Transform3D;
-import javax.media.j3d.TransformGroup;
-import javax.vecmath.Vector3d;
-import javax.vecmath.Vector3f;
+import org.jogamp.java3d.Shape3D;
+import org.jogamp.java3d.Transform3D;
+import org.jogamp.java3d.TransformGroup;
+import org.jogamp.vecmath.Vector3d;
+import org.jogamp.vecmath.Vector3f;
 
 import PredatorPrey.agents.Grass;
 import PredatorPrey.agents.SimpleAgent;

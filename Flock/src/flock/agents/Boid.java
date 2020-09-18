@@ -1,6 +1,6 @@
 ﻿package flock.agents;
 
-import javax.vecmath.Vector3d;
+import org.jogamp.vecmath.Vector3d;
 
 /**
  * Boid stores a velocity vector that is updated by implementing classes.

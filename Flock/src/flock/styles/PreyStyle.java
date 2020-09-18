@@ -3,12 +3,11 @@ package flock.styles;
 import java.awt.Color;
 import java.awt.Font;
 
-import javax.media.j3d.PointArray;
-import javax.media.j3d.PointAttributes;
-import javax.media.j3d.Shape3D;
-import javax.vecmath.Point3f;
-
-import com.sun.j3d.utils.picking.PickTool;
+import org.jogamp.java3d.PointArray;
+import org.jogamp.java3d.PointAttributes;
+import org.jogamp.java3d.Shape3D;
+import org.jogamp.java3d.utils.picking.PickTool;
+import org.jogamp.vecmath.Point3f;
 
 import repast.simphony.visualization.visualization3D.AppearanceFactory;
 import repast.simphony.visualization.visualization3D.style.Style3D;

@@ -4,7 +4,7 @@ package SimplePhysics;
 import java.awt.Color;
 import java.awt.Font;
 
-import javax.media.j3d.Shape3D;
+import org.jogamp.java3d.Shape3D;
 
 import repast.simphony.visualization.visualization3D.AppearanceFactory;
 import repast.simphony.visualization.visualization3D.ShapeFactory;

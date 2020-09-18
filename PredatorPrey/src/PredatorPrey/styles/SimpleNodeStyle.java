@@ -4,7 +4,7 @@ package PredatorPrey.styles;
 import java.awt.Color;
 import java.awt.Font;
 
-import javax.media.j3d.Shape3D;
+import org.jogamp.java3d.Shape3D;
 
 import PredatorPrey.agents.Sheep;
 import PredatorPrey.agents.SimpleAgent;

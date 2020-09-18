@@ -1,6 +1,6 @@
 ﻿package flock.agents;
 
-import javax.vecmath.Vector3d;
+import org.jogamp.vecmath.Vector3d;
 
 import repast.simphony.context.Context;
 import repast.simphony.engine.environment.RunEnvironment;

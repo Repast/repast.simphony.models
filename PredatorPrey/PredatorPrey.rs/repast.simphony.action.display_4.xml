@@ -1,4 +1,4 @@
-<repast.simphony.visualization.engine.CartesianDisplayDescriptor simphonyVersion="2.7.0">
+<repast.simphony.visualization.engine.CartesianDisplayDescriptor simphonyVersion="2.8.0">
   <name>3D World</name>
   <type>3D</type>
   <styles>

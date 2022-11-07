@@ -40,9 +40,9 @@ public class SimpleNodeStyle implements Style3D<SimpleAgent> {
 	}
 
 	public String getLabel(SimpleAgent o, String currentLabel) {
-//		return null; //return currentLabel.length() > 0 ? currentLabel : String.valueOf(o.getId());
+		return null; //return currentLabel.length() > 0 ? currentLabel : String.valueOf(o.getId());
 //		return o.toString();
-		return "Hi";
+//		return "Hi";
 	}
 
 	public Color getLabelColor(SimpleAgent t, Color currentColor) {

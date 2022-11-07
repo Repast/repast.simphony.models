@@ -3,8 +3,8 @@ package geotracks.agents;
 import org.geotools.geometry.DirectPosition2D;
 import org.opengis.geometry.DirectPosition;
 
-import com.vividsolutions.jts.geom.Coordinate;
-import com.vividsolutions.jts.geom.GeometryFactory;
+import org.locationtech.jts.geom.Coordinate;
+import org.locationtech.jts.geom.GeometryFactory;
 
 import repast.simphony.context.Context;
 import repast.simphony.engine.schedule.ScheduleParameters;

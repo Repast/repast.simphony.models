@@ -1,4 +1,4 @@
-<repast.simphony.data2.engine.FileSinkDescriptor simphonyVersion="2.8.0">
+<repast.simphony.data2.engine.FileSinkDescriptor simphonyVersion="2.10.0">
   <name>Agent Counts</name>
   <dataSet>Agent Counts</dataSet>
   <delimiter>,</delimiter>

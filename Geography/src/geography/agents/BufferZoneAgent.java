@@ -1,6 +1,6 @@
 package geography.agents;
 
-import com.vividsolutions.jts.geom.Geometry;
+import org.locationtech.jts.geom.Geometry;
 
 import repast.simphony.context.Context;
 import repast.simphony.engine.environment.RunEnvironment;

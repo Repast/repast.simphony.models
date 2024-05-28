@@ -3,7 +3,7 @@ package geozombies.agents;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.vividsolutions.jts.geom.Geometry;
+import org.locationtech.jts.geom.Geometry;
 
 import repast.simphony.context.Context;
 import repast.simphony.space.gis.Geography;

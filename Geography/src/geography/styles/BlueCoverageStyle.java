@@ -3,12 +3,12 @@ package geography.styles;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.geotools.brewer.styling.builder.ColorMapBuilder;
 import org.geotools.styling.AbstractStyleVisitor;
 import org.geotools.styling.RasterSymbolizer;
 import org.geotools.styling.Rule;
 import org.geotools.styling.Style;
 import org.geotools.styling.Symbolizer;
-import org.geotools.styling.builder.ColorMapBuilder;
 
 import repast.simphony.visualization.gis3D.style.CoverageStyle;
 

@@ -1,23 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <launchConfiguration type="org.eclipse.jdt.launching.localJavaApplication">
-    <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
-        <listEntry value="/GridGameOfLife"/>
-    </listAttribute>
-    <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
-        <listEntry value="4"/>
-    </listAttribute>
     <listAttribute key="org.eclipse.debug.ui.favoriteGroups">
         <listEntry value="org.eclipse.debug.ui.launchGroup.debug"/>
         <listEntry value="org.eclipse.debug.ui.launchGroup.run"/>
     </listAttribute>
-    <booleanAttribute key="org.eclipse.jdt.launching.ATTR_ATTR_USE_ARGFILE" value="false"/>
-    <booleanAttribute key="org.eclipse.jdt.launching.ATTR_SHOW_CODEDETAILS_IN_EXCEPTION_MESSAGES" value="true"/>
-    <booleanAttribute key="org.eclipse.jdt.launching.ATTR_USE_CLASSPATH_ONLY_JAR" value="false"/>
-    <booleanAttribute key="org.eclipse.jdt.launching.ATTR_USE_START_ON_FIRST_THREAD" value="true"/>
     <stringAttribute key="org.eclipse.jdt.launching.CLASSPATH_PROVIDER" value="org.eclipse.ant.ui.AntClasspathProvider"/>
     <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="org.apache.tools.ant.launch.Launcher"/>
-    <stringAttribute key="org.eclipse.jdt.launching.MODULE_NAME" value="GridGameOfLife"/>
     <stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="-buildfile &quot;${workspace_loc:GridGameOfLife}/installer/create_model_archive.xml&quot; -DoutputInstallationFile=&quot;${folder_prompt:the Folder to output the archive (model.zip) file}&quot; -DEclipsePluginsDirectory=&quot;${eclipse_home}plugins&quot; -DREPAST_VERSION=${REPAST_VERSION}"/>
     <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="GridGameOfLife"/>
-    <stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-XX:+IgnoreUnrecognizedVMOptions&#10;--add-opens java.base/java.lang.reflect=ALL-UNNAMED&#10;--add-modules=ALL-SYSTEM&#10;--add-exports=java.base/jdk.internal.ref=ALL-UNNAMED&#10;--add-exports=java.desktop/sun.awt=ALL-UNNAMED&#10;--add-exports=java.base/java.lang=ALL-UNNAMED&#10;--add-opens java.base/java.util=ALL-UNNAMED&#10;--add-exports=java.xml/com.sun.org.apache.xpath.internal.objects=ALL-UNNAMED&#10;--add-exports=java.xml/com.sun.org.apache.xpath.internal=ALL-UNNAMED&#10;--add-opens java.base/java.lang=ALL-UNNAMED"/>
+    <stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-XX:+IgnoreUnrecognizedVMOptions --add-opens java.base/java.lang.reflect=ALL-UNNAMED --add-modules=ALL-SYSTEM --add-exports=java.base/jdk.internal.ref=ALL-UNNAMED --add-exports=java.base/java.lang=ALL-UNNAMED --add-exports java.xml/com.sun.org.apache.xpath.internal=ALL-UNNAMED --add-exports java.xml/com.sun.org.apache.xpath.internal.objects=ALL-UNNAMED --add-exports=java.desktop/sun.awt=ALL-UNNAMED --add-exports=java.desktop/sun.java2d=ALL-UNNAMED --add-opens java.base/java.lang=ALL-UNNAMED --add-opens java.base/java.util=ALL-UNNAMED "/>
 </launchConfiguration>

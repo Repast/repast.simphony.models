@@ -19,7 +19,7 @@ CP=$CP:$PWD/groovylib/$Groovy_Jar
 CP=$CP:lib/*
 
 # Change to the project directory
-cd "Heatbugs"
+cd "HeatBugs"
 
 # Start the Model
 java -XX:+IgnoreUnrecognizedVMOptions \
@@ -31,4 +31,5 @@ java -XX:+IgnoreUnrecognizedVMOptions \
     --add-opens java.base/java.util=ALL-UNNAMED \
     --add-exports=java.xml/com.sun.org.apache.xpath.internal.objects=ALL-UNNAMED \
     --add-exports=java.xml/com.sun.org.apache.xpath.internal=ALL-UNNAMED \
-    --add-opens java.base/java.lang=ALL-UNNAMED  -cp "$CP" repast.simphony.runtime.RepastMain  "./Heatbugs.rs"
+    --add-opens java.base/java.lang=ALL-UNNAMED \
+     -cp "$CP" repast.simphony.runtime.RepastMain  "./Heatbugs.rs"

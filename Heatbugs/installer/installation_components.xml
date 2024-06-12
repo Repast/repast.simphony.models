@@ -8,7 +8,7 @@
                      xsi:schemaLocation="http://izpack.org/schema/installation http://izpack.org/schema/5.0/izpack-installation-5.0.xsd">
 
     <info>
-      <appname>Heatbugs</appname>
+      <appname>HeatBugs</appname>
 	  <appversion>1.0</appversion>
       <summarylogfilepath>$INSTALL_PATH/installinfo/Summary.htm</summarylogfilepath>
     </info>
@@ -35,7 +35,7 @@
     	<variable name="Groovy_Jar" value="$Groovy_Jar"/>
     	
     	<!-- Set the default for MS Windows only.  Mac and unix use default -->
-    	<variable name="TargetPanel.dir.windows" value="$USER_HOME\Heatbugs"/>
+    	<variable name="TargetPanel.dir.windows" value="$USER_HOME\HeatBugs"/>
     </variables>
     
     <locale>
@@ -166,12 +166,12 @@
 
 		<pack name="Sources" required="no">
            	<description>The model source code</description>
-           	<file src="$StagingOptionalArea/src" targetdir="$INSTALL_PATH/Heatbugs"/>
+           	<file src="$StagingOptionalArea/src" targetdir="$INSTALL_PATH/HeatBugs"/>
         </pack>
 
         <pack name="Documentation" required="no">
            	<description>The model documentation</description>
-           	<file src="$StagingOptionalArea/docs" targetdir="$INSTALL_PATH/Heatbugs"/>
+           	<file src="$StagingOptionalArea/docs" targetdir="$INSTALL_PATH/HeatBugs"/>
         </pack>
 
     </packs>

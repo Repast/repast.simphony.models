@@ -16,7 +16,7 @@
 
 	<!-- The Repast creator version variable is hard-coded against the release 
 	     version. DO NOT USE A VARIABLE HERE! -->
-	<property name="RepastCreatorVersion" value="2.10.0" />
+	<property name="RepastCreatorVersion" value="2.11.0" />
 
 	<condition property="repast.version">
 		<equals arg1="${RepastCreatorVersion}" arg2="${REPAST_VERSION}"/>
@@ -80,7 +80,7 @@
 		<echo message="Groovy_Jar = ${Groovy_Jar}" />
 
 		<!-- A hidden staging dirctory to store the install files that will be deleted at cleanup -->
-		<property name="StagingArea" value="./.temp/Heatbugs" />
+		<property name="StagingArea" value="./.temp/HeatBugs" />
 		<property name="StagingOptionalArea" value="./.temp" />
 		<echo message="StagingArea = ${StagingArea}" />
 

@@ -80,7 +80,7 @@
 		<echo message="Groovy_Jar = ${Groovy_Jar}" />
 
 		<!-- A hidden staging dirctory to store the install files that will be deleted at cleanup -->
-		<property name="StagingArea" value="./.temp/HeatBugs" />
+		<property name="StagingArea" value="./.temp/Heatbugs" />
 		<property name="StagingOptionalArea" value="./.temp" />
 		<echo message="StagingArea = ${StagingArea}" />
 

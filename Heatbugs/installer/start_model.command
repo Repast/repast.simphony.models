@@ -19,7 +19,7 @@ CP=$CP:$PWD/groovylib/$Groovy_Jar
 CP=$CP:lib/*
 
 # Change to the project directory
-cd "HeatBugs"
+cd "Heatbugs"
 
 # Start the Model
 java -XX:+IgnoreUnrecognizedVMOptions \

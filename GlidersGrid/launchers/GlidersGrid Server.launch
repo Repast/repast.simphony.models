@@ -20,7 +20,7 @@
     <booleanAttribute key="org.eclipse.jdt.launching.DEFAULT_CLASSPATH" value="false"/>
     <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="repast.simphony.ws.RepastWS"/>
     <stringAttribute key="org.eclipse.jdt.launching.MODULE_NAME" value="GlidersGrid"/>
-    <stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="5000 &quot;${workspace_loc:GlidersGrid}/GlidersGrid.rs&quot; true"/>
+    <stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="43555 &quot;${workspace_loc:GlidersGrid}/GlidersGrid.rs&quot; true"/>
     <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="GlidersGrid"/>
     <stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-XX:+IgnoreUnrecognizedVMOptions&#10;--add-opens java.base/java.lang.reflect=ALL-UNNAMED&#10;--add-modules=ALL-SYSTEM&#10;--add-exports=java.base/jdk.internal.ref=ALL-UNNAMED&#10;--add-exports=java.desktop/sun.awt=ALL-UNNAMED&#10;--add-exports=java.base/java.lang=ALL-UNNAMED&#10;--add-opens java.base/java.util=ALL-UNNAMED&#10;--add-exports=java.xml/com.sun.org.apache.xpath.internal.objects=ALL-UNNAMED&#10;--add-exports=java.xml/com.sun.org.apache.xpath.internal=ALL-UNNAMED&#10;--add-opens java.base/java.lang=ALL-UNNAMED"/>
 </launchConfiguration>

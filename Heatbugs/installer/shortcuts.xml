@@ -5,10 +5,10 @@
 
   <skipIfNotSupported/>
   
-  <programGroup defaultName="HeatBugs" location="applications"/>
+  <programGroup defaultName="Heatbugs" location="applications"/>
   
   <shortcut
-            name="HeatBugs"
+            name="Heatbugs"
             programGroup="yes"
             desktop="no"
             applications="no"
@@ -18,7 +18,7 @@
      		commandLine=""
      		workingDirectory="$INSTALL_PATH"
             description="This runs the model"
-            iconFile="$INSTALL_PATH\HeatBugs\icons\model.bmp"
+            iconFile="$INSTALL_PATH\Heatbugs\icons\model.bmp"
      		iconIndex="0"
      		initialState="noShow">
             
@@ -32,7 +32,7 @@
             applications="no"
             startMenu="no"
             startup="no"
-            target="$INSTALL_PATH\HeatBugs\docs\index.html"
+            target="$INSTALL_PATH\Heatbugs\docs\index.html"
             commandLine=""
             iconFile="%SystemRoot%\system32\SHELL32.dll"
      		iconIndex="23" 
@@ -43,7 +43,7 @@
     </shortcut>
 
     <shortcut
-            name="HeatBugs Uninstaller"
+            name="Heatbugs Uninstaller"
             programGroup="yes"
             desktop="no"
             applications="no"
